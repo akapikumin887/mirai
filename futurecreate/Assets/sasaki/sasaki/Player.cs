@@ -22,22 +22,22 @@ public class Player : MonoBehaviour
         // ¶‚ÉˆÚ“®
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            this.transform.Translate(-0.1f, 0.0f, 0.0f);
+            this.transform.Translate(-0.03f, 0.0f, 0.0f);
         }
         // ‰E‚ÉˆÚ“®
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            this.transform.Translate(0.1f, 0.0f, 0.0f);
+            this.transform.Translate(0.03f, 0.0f, 0.0f);
         }
         // ‘O‚ÉˆÚ“®
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            this.transform.Translate(0.0f, 0.0f, 0.1f);
+            this.transform.Translate(0.0f, 0.0f, 0.03f);
         }
         // Œã‚ë‚ÉˆÚ“®
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            this.transform.Translate(0.0f, 0.0f, -0.1f);
+            this.transform.Translate(0.0f, 0.0f, -0.03f);
         }
 
 
