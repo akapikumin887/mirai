@@ -13,11 +13,6 @@ public class Patrol : MonoBehaviour
     [SerializeField] int destPoint = 0;
     private NavMeshAgent agent;
 
-    float distance;
-    [SerializeField] float trackingRange = 3f;
-    [SerializeField] float quitRange = 5f;
-    [SerializeField] bool tracking = false;
-
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -50,16 +45,5 @@ public class Patrol : MonoBehaviour
         // 次の目標地点を選択します
         if (!agent.pathPending && agent.remainingDistance < 0.5f)
             GotoNextPoint();
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        //trackingRangeの範囲を赤いワイヤーフレームで示す
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, trackingRange);
-
-        //quitRangeの範囲を青いワイヤーフレームで示す
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, quitRange);
     }
 }
