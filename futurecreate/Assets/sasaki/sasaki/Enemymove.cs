@@ -20,15 +20,8 @@ public class Enemymove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 Enemy_position = this.transform.position;
-        Vector3 Player_position = Player.transform.position;
-
-        Vector3 hit;
-        hit.x = Enemy_position.x - Player_position.x;
-        hit.y = Enemy_position.y - Player_position.y;
-        hit.z = Enemy_position.z - Player_position.z;
-
-        if(hit.x * hit.x + hit.y * hit.y < 50)
+        //“G‚Ì”ÍˆÍ‚É“ü‚Á‚½‚ç
+        if(Enemy_hit())
         {
             GetComponent<NavMeshAgent>().isStopped = false;
 
@@ -37,8 +30,24 @@ public class Enemymove : MonoBehaviour
         else
         {
             GetComponent<NavMeshAgent>().isStopped = true;
-            //Stopping distance
-            //NavMeshAgent.Stop(stopUpdates: true);
+
         }
+    }
+
+    //”ÍˆÍ‚É“ü‚Á‚½‚çtrue‚ð•Ô‚·
+    bool Enemy_hit()
+    {
+        Vector3 Enemy_position = this.transform.position;
+        Vector3 Player_position = Player.transform.position;
+
+        Vector3 hit;
+        hit.x = Enemy_position.x - Player_position.x;
+        hit.y = Enemy_position.y - Player_position.y;
+        hit.z = Enemy_position.z - Player_position.z;
+
+        if (hit.x * hit.x + hit.y * hit.y < 50)
+            return true;
+        else
+            return false;
     }
 }
