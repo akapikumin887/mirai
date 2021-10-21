@@ -30,12 +30,11 @@ public class Enemymove : MonoBehaviour
         else
         {
             GetComponent<NavMeshAgent>().isStopped = true;
-
         }
     }
 
     //”ÍˆÍ‚É“ü‚Á‚½‚çtrue‚ð•Ô‚·
-    bool Enemy_hit()
+    public bool Enemy_hit()
     {
         Vector3 Enemy_position = this.transform.position;
         Vector3 Player_position = Player.transform.position;
@@ -50,4 +49,5 @@ public class Enemymove : MonoBehaviour
         else
             return false;
     }
+
 }
