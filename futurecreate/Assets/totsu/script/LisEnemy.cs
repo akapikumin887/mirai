@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class LisEnemy : MonoBehaviour
 {
-    enum State
+    public enum State
     {
         Patrol = 0,
         Chase,
 
     };
-    [SerializeField] State state = State.Patrol;
+    public State state = State.Patrol;
 
 
     // Start is called before the first frame update
@@ -23,6 +23,11 @@ public class LisEnemy : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public State GetState()
+    {
+        return state;
     }
 
     void OnTriggerEnter(Collider other)
