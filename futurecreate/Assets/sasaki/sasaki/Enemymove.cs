@@ -45,7 +45,7 @@ public class Enemymove : MonoBehaviour
                     GetComponent<Renderer>().material.color = Color.black;        //色を変える
                     GetComponent<NavMeshAgent>().isStopped = false;               //ナビゲーションを使う
 
-                    Player_Nav.SetDestination(Player.transform.position);       //ナビゲーションの目標座標
+                    Player_Nav.SetDestination(Player.transform.position);       //ナビゲーションの目標座標 SetEnemyType(ENEMY_TYPE type)を呼び出す処理に変える
                 }
             }
             else
