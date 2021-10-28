@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 
 public class CallEnemy : MonoBehaviour
 {
-    List<Enemy> enemy_list = new List<Enemy>();
-
+    List<GameObject> enemy_list = new List<GameObject>();
+    private GameObject enemys;
     // Start is called before the first frame update
     void Start()
     {
-        enemy_list = enemy_list;//実際にはここでEnemyManagerからEnemyのリストを取得
-        enemy_list.Add(this.GetComponent<Enemy>());
+        enemy_list = enemys.GetComponent<EnemyManager>().GetEnemy();//実際にはここでEnemyManagerからEnemyのリストを取得
+       
     }
 
     // Update is called once per frame
@@ -22,12 +23,12 @@ public class CallEnemy : MonoBehaviour
             //Enemyのステートを変更
             foreach (var item in enemy_list)
             {
-                item.SetEnemyType((Enemy.ENEMY_TYPE)2);
+                item.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.TRACKING);
             }
             //Enemyを呼ぶ(目的地設定)
             foreach (var item in enemy_list)
             {
-                //item
+                item.GetComponent<NavMeshAgent>().SetDestination(this.transform.position);
             }
         } 
     }
