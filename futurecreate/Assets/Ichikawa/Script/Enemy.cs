@@ -1,11 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//NavMeshAgent使うときに必要
 using UnityEngine.AI;
-
-//オブジェクトにNavMeshAgentコンポーネントを設置
-[RequireComponent(typeof(NavMeshAgent))]
 
 public class Enemy : MonoBehaviour
 {
@@ -17,33 +13,25 @@ public class Enemy : MonoBehaviour
         TRACKING,   // 追跡
     }
 
-    public Transform[] points;
-    [SerializeField] int destPoint = 0;
-    private NavMeshAgent agent;
-    private bool discover;  //発見
-
     // 敵の状態変数
     private ENEMY_TYPE eType;
 
+    public Transform[] points;
+    private NavMeshAgent agent;
+    // 次の目的地
+    [SerializeField] int destPoint = 0;
+
     //プレイヤーの情報を宣言
-    NavMeshAgent Player_Nav;
     GameObject Player;
 
-    // Start is called before the first frame update
     void Start()
     {
-        //プレイヤーの情報を取得
-        //プレイヤーのNavMeshAgentを取得
-        Player_Nav = GetComponent<NavMeshAgent>();
-        //目的地のオブジェクトを取得
+        // 目的地のオブジェクトを取得
         Player = GameObject.Find("Player");
 
         agent = GetComponent<NavMeshAgent>();
-        //enemymove = GetComponent<Enemymove>();
 
-        // autoBraking を無効にすると、目標地点の間を継続的に移動します
-        //(つまり、エージェントは目標地点に近づいても
-        // 速度をおとしません)
+        // autoBrakingを無効にすると目的地に近づいても速度が落ちない
         agent.autoBraking = false;
 
         GotoNextPoint();
@@ -51,81 +39,53 @@ public class Enemy : MonoBehaviour
 
     void GotoNextPoint()
     {
-        // 地点がなにも設定されていないときに返します
+        // 地点がなにも設定されていないときに返す
         if (points.Length == 0)
             return;
 
-        // エージェントが現在設定された目標地点に行くように設定します
+        // 現在設定された目的地に行くように設定
         agent.destination = points[destPoint].position;
 
-        // 配列内の次の位置を目標地点に設定し、
-        // 必要ならば出発地点にもどります
+        // 配列内の次の位置を目的地に設定し
+        // 必要ならば出発地点に戻る
         destPoint = (destPoint + 1) % points.Length;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Enemy_hit();
-
         switch (eType)
         {
-            case ENEMY_TYPE.PATROL:
-                //敵の範囲に入ったら
-                if (discover)
-                {
-                    GetComponent<Renderer>().material.color = Color.black;        //色を変える
-                    GetComponent<NavMeshAgent>().isStopped = false;
-                    Player_Nav.SetDestination(Player.transform.position);
-                }
-                else
-                {
-                    GetComponent<Renderer>().material.color = Color.red;        //色を変える
-
-                    // エージェントが現目標地点に近づいてきたら、
-                    // 次の目標地点を選択します
-                    if (!agent.pathPending && agent.remainingDistance < 0.5f)
-                        GotoNextPoint();
-                }
+            case ENEMY_TYPE.PATROL: // 巡回
+                GetComponent<Renderer>().material.color = Color.red; //色を変える
+                // 現目的地に近づいたら次の目的地を選択
+                if (!agent.pathPending && agent.remainingDistance < 0.5f)
+                    GotoNextPoint();
                 break;
 
-            case ENEMY_TYPE.VIGILANCE:
+            case ENEMY_TYPE.VIGILANCE: // 警戒
                 break;
 
-            case ENEMY_TYPE.TRACKING:
+            case ENEMY_TYPE.TRACKING: // 発見
+                GetComponent<Renderer>().material.color = Color.black; //色を変える
+                GetComponent<NavMeshAgent>().isStopped = false;
+                agent.SetDestination(Player.transform.position);
                 break;
         }
     }
 
-    //敵の範囲
-    public void Enemy_hit()
-    {
-        Vector3 Enemy_position = this.transform.position;
-        Vector3 Player_position = Player.transform.position;
-
-        Vector3 hit;
-        hit.x = Enemy_position.x - Player_position.x;
-        hit.y = Enemy_position.y - Player_position.y;
-        hit.z = Enemy_position.z - Player_position.z;
-
-        if (hit.x * hit.x + hit.z * hit.z < 25)
-            discover = true;
-        else
-            discover = false;
-    }
-
-    public bool GetDiscover()
-    {
-        return discover;
-    }
-
     // ENEMY_TYPE
-    public ENEMY_TYPE GetEnemyType()
+    public ENEMY_TYPE GetEnemyType() // ゲッター
     {
         return eType;
     }
-    public void SetEnemyType(ENEMY_TYPE type)
+    public void SetEnemyType(ENEMY_TYPE type) // セッター
     {
         eType = type;
+    }
+
+    // agent
+    public NavMeshAgent GetAgent() // ゲッター
+    {
+        return agent;
     }
 }
