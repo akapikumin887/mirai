@@ -45,6 +45,21 @@ public class Player : MonoBehaviour
         {
             this.transform.Translate(0.0f, 0.0f, -PlayerSpeed);
         }
+        // 左クリック
+        if (Input.GetMouseButton(0))
+        {
+
+        }
+        // 右クリック
+        if (Input.GetMouseButton(1))
+        {
+
+        }
+        // 左シフト
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+
+        }
 
         //Vector3 diff = this.transform.position - Player_pos; //プレイヤーがどの方向に進んでいるかがわかるように、初期位置と現在地の座標差分を取得
 
