@@ -39,31 +39,34 @@ public class EnemyVisibility : MonoBehaviour
             {
                 if (hit.collider.tag == "wall")      //間に壁があるとき
                 {
-                    GetComponent<Renderer>().material.color = Color.blue;
+                    Debug.Log("壁がある");
+                    //GetComponent<Renderer>().material.color = Color.blue;
                     this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PATROL);
                     //GetComponent<NavMeshAgent>().isStopped = true;
 
                 }
                 if (hit.collider.tag == "Player")   //プレイヤーまで障害物がないとき
                 {
-                    GetComponent<Renderer>().material.color = Color.black;        //色を変える
+                    //GetComponent<Renderer>().material.color = Color.black;        //色を変える
                                                                                   //  GetComponent<NavMeshAgent>().isStopped = false;               //ナビゲーションを使う
                     Debug.Log("追っかけるよー");
                     this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.TRACKING);        //Enemyの行動パターンの変更　パトロールのパターンに変更
 
-                    Player_Nav.SetDestination(Player.transform.position);       //ナビゲーションの目標座標 SetEnemyType(ENEMY_TYPE type)を呼び出す処理に変える
+                    //Player_Nav.SetDestination(Player.transform.position);       //ナビゲーションの目標座標 SetEnemyType(ENEMY_TYPE type)を呼び出す処理に変える
                 }
             }
-            else
+            else//  目の前になにもないとき
             {
-                GetComponent<Renderer>().material.color = Color.blue;
+                Debug.Log("探すよー");
+                //GetComponent<Renderer>().material.color = Color.yellow;
                 this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PATROL);
                 //GetComponent<NavMeshAgent>().isStopped = true;
             }
         }
         else
         {
-            GetComponent<Renderer>().material.color = Color.blue;
+            Debug.Log("何も見てないよ");
+            //GetComponent<Renderer>().material.color = Color.white;
             this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PATROL);
             //GetComponent<NavMeshAgent>().isStopped = true;
 

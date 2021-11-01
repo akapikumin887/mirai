@@ -410,6 +410,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4108949690720018849, guid: 8f414e6015b648049b519127429c24e8, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4108949690720018852, guid: 8f414e6015b648049b519127429c24e8, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -675,7 +679,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8325813557657686672, guid: fa82a5772af1a034985c9038bff2e9a4, type: 3}
   m_PrefabInstance: {fileID: 444345300}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1169614687
+--- !u!114 &1169614681
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -683,6 +687,41 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1169614680}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f13209eb5293c74b97e57085541ce60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points:
+  - {fileID: 705953423}
+  - {fileID: 1061112451}
+  - {fileID: 1541721100}
+  - {fileID: 485572001}
+  - {fileID: 1545789850}
+  - {fileID: 1012401391}
+  - {fileID: 1463845418}
+  - {fileID: 762161086}
+  - {fileID: 1049590965}
+  destPoint: 0
+--- !u!114 &1169614682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169614680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3f45fb6019d704280a285f3487aaa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1169614687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169614680}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75fb8ca08aa15d44f88dda59b468a892, type: 3}
   m_Name: 
@@ -886,6 +925,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7415096672513344116, guid: 73e7d6e4f36395f4b83183c2be0903e5, type: 3}
+      propertyPath: m_TagString
+      value: wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415096672622111756, guid: 73e7d6e4f36395f4b83183c2be0903e5, type: 3}
+      propertyPath: m_TagString
+      value: wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415096673090068113, guid: 73e7d6e4f36395f4b83183c2be0903e5, type: 3}
+      propertyPath: m_TagString
+      value: wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415096673437024864, guid: 73e7d6e4f36395f4b83183c2be0903e5, type: 3}
+      propertyPath: m_TagString
+      value: wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415096673523955710, guid: 73e7d6e4f36395f4b83183c2be0903e5, type: 3}
+      propertyPath: m_TagString
+      value: wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415096673526517103, guid: 73e7d6e4f36395f4b83183c2be0903e5, type: 3}
+      propertyPath: m_TagString
+      value: wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415096673718226833, guid: 73e7d6e4f36395f4b83183c2be0903e5, type: 3}
+      propertyPath: m_TagString
+      value: wall
+      objectReference: {fileID: 0}
     - target: {fileID: 7415096673809124984, guid: 73e7d6e4f36395f4b83183c2be0903e5, type: 3}
       propertyPath: m_Name
       value: stage2
@@ -933,6 +1000,22 @@ PrefabInstance:
     - target: {fileID: 7415096673809124985, guid: 73e7d6e4f36395f4b83183c2be0903e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415096674015141998, guid: 73e7d6e4f36395f4b83183c2be0903e5, type: 3}
+      propertyPath: m_TagString
+      value: wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415096674174120398, guid: 73e7d6e4f36395f4b83183c2be0903e5, type: 3}
+      propertyPath: m_TagString
+      value: wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415096674276180353, guid: 73e7d6e4f36395f4b83183c2be0903e5, type: 3}
+      propertyPath: m_TagString
+      value: wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415096674513932471, guid: 73e7d6e4f36395f4b83183c2be0903e5, type: 3}
+      propertyPath: m_TagString
+      value: wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73e7d6e4f36395f4b83183c2be0903e5, type: 3}
