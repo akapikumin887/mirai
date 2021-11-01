@@ -4,16 +4,34 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    Rigidbody rb;
+    
     // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
+    [SerializeField] float PlayerSpeed; // ˆÚ“®‘¬“x
 
-    // Update is called once per frame
+
     void Update()
     {
-        rb.velocity = new Vector3(1.1f, 0f, 0f);
+        // ¶‚ÉˆÚ“®
+        if (Input.GetKey(KeyCode.A))
+        {
+            this.transform.Translate(-PlayerSpeed, 0.0f, 0.0f);
+        }
+        // ‰E‚ÉˆÚ“®
+        if (Input.GetKey(KeyCode.D))
+        {
+            this.transform.Translate(PlayerSpeed, 0.0f, 0.0f);
+        }
+        // ‘O‚ÉˆÚ“®
+        if (Input.GetKey(KeyCode.W))
+        {
+            this.transform.Translate(0.0f, 0.0f, PlayerSpeed);
+        }
+        // Œã‚ë‚ÉˆÚ“®
+        if (Input.GetKey(KeyCode.S))
+        {
+            this.transform.Translate(0.0f, 0.0f, -PlayerSpeed);
+        }
+        
     }
+
 }
