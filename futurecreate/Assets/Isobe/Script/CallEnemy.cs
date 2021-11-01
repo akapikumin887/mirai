@@ -11,7 +11,7 @@ public class CallEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemy_list = enemys.GetComponent<EnemyManager>().GetEnemy();//実際にはここでEnemyManagerからEnemyのリストを取得
+        enemy_list = enemys.GetComponent<GameMng>().GetEnemy();//実際にはここでEnemyManagerからEnemyのリストを取得
        
     }
 
