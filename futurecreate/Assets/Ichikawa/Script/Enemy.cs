@@ -24,16 +24,16 @@ public class Enemy : MonoBehaviour
     //プレイヤーの情報を宣言
     GameObject Player;
 
-    GameObject GameManager;
+    GameObject GAMEMASTER;
     GameMng game_mng;
 
     void Start()
     {
-        GameManager = GameObject.Find("GameMng");
-        game_mng = GameManager.GetComponent<GameMng>();
+        GAMEMASTER = GameObject.Find("GameMng");
+        game_mng = GAMEMASTER.GetComponent<GameMng>();
 
         // 目的地のオブジェクトを取得
-        Player = GameObject.Find("Player");
+        Player = game_mng.GetPlayer();
 
         agent = GetComponent<NavMeshAgent>();
 
