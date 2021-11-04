@@ -21,19 +21,21 @@ public class Enemy : MonoBehaviour
     // 次の目的地
     [SerializeField] int destPoint = 0;
 
-    //プレイヤーの情報を宣言
-    GameObject Player;
-
+    // GameManager変数
     GameObject GAMEMASTER;
     GameMng game_mng;
 
+    // 追跡中目的地
+    Vector3 Destination;
+
     void Start()
     {
+        // GameManager取得
         GAMEMASTER = GameObject.FindGameObjectWithTag("Manager");
         game_mng = GAMEMASTER.GetComponent<GameMng>();
 
-        // 目的地のオブジェクトを取得
-        Player = game_mng.GetPlayer();
+        // 追跡中目的地初期化
+        Destination = this.transform.position;
 
         agent = GetComponent<NavMeshAgent>();
 
@@ -74,7 +76,7 @@ public class Enemy : MonoBehaviour
             case ENEMY_TYPE.TRACKING: // 発見
                 GetComponent<Renderer>().material.color = Color.black; //色を変える
                 GetComponent<NavMeshAgent>().isStopped = false;
-                //agent.SetDestination(Player.transform.position);
+                agent.SetDestination(Destination);
                 break;
         }
     }
@@ -97,5 +99,11 @@ public class Enemy : MonoBehaviour
     public void SetAgent(NavMeshAgent agentType) // セッター
     {
         agent = agentType;
+    }
+
+    // Destination
+    public void SetDestination(Vector3 destination) // セッター
+    {
+        Destination = destination;
     }
 }
