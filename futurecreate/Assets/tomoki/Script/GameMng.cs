@@ -53,6 +53,7 @@ public class GameMng : MonoBehaviour
     }
 
     public List<GameObject> GetEnemy() { return _Enemys; }
+
     public GameObject GetPlayer() { return _Pleyer; }
 
     public List<GameObject> GetVisibilityEnemy()
