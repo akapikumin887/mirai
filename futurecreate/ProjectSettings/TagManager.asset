@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Bell
   - wall
+  - pin
+  - footsteps
+  - Enemy
   layers:
   - Default
   - TransparentFX
