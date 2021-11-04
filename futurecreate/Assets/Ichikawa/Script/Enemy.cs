@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        GAMEMASTER = GameObject.Find("GameMng");
+        GAMEMASTER = GameObject.FindGameObjectWithTag("Manager");
         game_mng = GAMEMASTER.GetComponent<GameMng>();
 
         // 目的地のオブジェクトを取得
