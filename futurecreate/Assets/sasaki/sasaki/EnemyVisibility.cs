@@ -45,61 +45,28 @@ public class EnemyVisibility : MonoBehaviour
                 if (hit.collider.tag == "wall")      //間に壁があるとき
                 {
                     Debug.Log("壁がある");
-                    //GetComponent<Renderer>().material.color = Color.blue;
                     this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PATROL);
-                    //GetComponent<NavMeshAgent>().isStopped = true;
 
                 }
                 if (hit.collider.tag == "Player")   //プレイヤーまで障害物がないとき
                 {
-                    //GetComponent<Renderer>().material.color = Color.black;        //色を変える
                                                                                   //  GetComponent<NavMeshAgent>().isStopped = false;               //ナビゲーションを使う
                     Debug.Log("追っかけるよー");
                     this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.TRACKING);        //Enemyの行動パターンの変更　パトロールのパターンに変更
-
+                    this.GetComponent<Enemy>().SetDestination(Player.transform.position);
                     //Player_Nav.SetDestination(Player.transform.position);       //ナビゲーションの目標座標 SetEnemyType(ENEMY_TYPE type)を呼び出す処理に変える
                 }
             }
             else//  目の前になにもないとき
             {
                 Debug.Log("探すよー");
-                //GetComponent<Renderer>().material.color = Color.yellow;
                 this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PATROL);
-                //GetComponent<NavMeshAgent>().isStopped = true;
             }
         }
         else
         {
             Debug.Log("何も見てないよ");
-            //GetComponent<Renderer>().material.color = Color.white;
             this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PATROL);
-            //GetComponent<NavMeshAgent>().isStopped = true;
-
         }
-
-        //Debug.Log(Enemy_forward_direction);
-        //------------------------------------------------------------------------------------------
-
-
-
-        ////範囲に入ったらtrueを返す
-        //public bool Enemy_hit()
-        //{
-        //    Vector3 Enemy_position = this.transform.position;
-        //    Vector3 Player_position = Player.transform.position;
-
-        //    Vector3 hit;
-        //    hit.x = Enemy_position.x - Player_position.x;
-        //    hit.y = Enemy_position.y - Player_position.y;
-        //    hit.z = Enemy_position.z - Player_position.z;
-
-        //    if (hit.x * hit.x + hit.y * hit.y < 50)
-        //        return true;
-        //    else
-        //        return false;
-        //}
-
-
-
     }
 }
