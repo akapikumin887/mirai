@@ -9,6 +9,7 @@ TagManager:
   - pin
   - footsteps
   - Enemy
+  - Manager
   layers:
   - Default
   - TransparentFX
