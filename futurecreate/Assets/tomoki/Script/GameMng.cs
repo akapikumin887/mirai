@@ -4,19 +4,33 @@ using UnityEngine;
 
 public class GameMng : MonoBehaviour
 {
+    private GameObject _Pleyer;
     private List<GameObject> _Enemys = new List<GameObject>();
+    private List<GameObject> _PathFindings = new List<GameObject>();
 
     void Awake()
     {
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("enemy");
+        //プレイヤーの取得
+        _Pleyer = GameObject.FindGameObjectWithTag("Player");
 
-        if (objects == null)
-            return;
+        //エネミーの取得
+        GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemys != null)
+        {
+            foreach (var obj in enemys)
+                _Enemys.Add(obj);
+        }
 
-        foreach (var obj in objects)
-            _Enemys.Add(obj);
+        //経路探索のポイント取得
+        GameObject point = GameObject.FindGameObjectWithTag("Point");
+        if (point != null)
+        {
+            GameObject[] points = point.GetComponentsInChildren<GameObject>();
+
+            foreach (var obj in points)
+                _PathFindings.Add(obj);
+        }
     }
-
 
     void Start()
     {
@@ -30,7 +44,8 @@ public class GameMng : MonoBehaviour
 
     public bool AddEnemy(GameObject enemy)
     {
-        if (!enemy.CompareTag("enemy"))
+        //比較じゃなくてタグ付けしてあげる
+        if (!enemy.CompareTag("Enemy"))
             return false;
 
         _Enemys.Add(enemy);
@@ -38,6 +53,7 @@ public class GameMng : MonoBehaviour
     }
 
     public List<GameObject> GetEnemy() { return _Enemys; }
+    public GameObject GetPlayer() { return _Pleyer; }
 
     public List<GameObject> GetVisibilityEnemy()
     {
@@ -67,4 +83,5 @@ public class GameMng : MonoBehaviour
         return lEnemy;
     }
 
+    public List<GameObject> GetPathFinding() { return _PathFindings; }
 }
