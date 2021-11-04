@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
         PATROL,     // 巡回
         VIGILANCE,  // 警戒
         TRACKING,   // 追跡
+        PEPPER,     // ペッパー
     }
 
     // 敵の状態変数
@@ -75,6 +76,12 @@ public class Enemy : MonoBehaviour
 
             case ENEMY_TYPE.TRACKING: // 発見
                 GetComponent<Renderer>().material.color = Color.black; //色を変える
+                GetComponent<NavMeshAgent>().isStopped = false;
+                agent.SetDestination(Destination);
+                break;
+
+            case ENEMY_TYPE.PEPPER: // ペッパー
+                GetComponent<Renderer>().material.color = Color.blue; //色を変える
                 GetComponent<NavMeshAgent>().isStopped = false;
                 agent.SetDestination(Destination);
                 break;
