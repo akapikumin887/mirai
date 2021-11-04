@@ -34,7 +34,17 @@ public class LisEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //if (Input.GetKeyDown(KeyCode.C))
+        //{
+        //    if (state == State.Chase)
+        //    {
+        //        state = State.Patrol;
+        //    }
+        //    else
+        //    {
+        //        state = State.Chase;
+        //    }
+        //}
     }
 
 
@@ -53,9 +63,18 @@ public class LisEnemy : MonoBehaviour
             this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.TRACKING);
 
 
-            Player_Nav.SetDestination(Player.transform.position);
+            //Player_Nav.SetDestination(Player.transform.position);
 
-            Instantiate(pin, other.transform.position, Quaternion.identity);
+            //Instantiate(pin, other.transform.position, Quaternion.identity);
+
+        }
+        else
+        {
+            Debug.Log("目標地点到達");
+            //巡回モードにする
+            GetComponent<Renderer>().material.color = Color.white;
+            state = State.Patrol;
+            
 
         }
 
@@ -77,11 +96,11 @@ public class LisEnemy : MonoBehaviour
     {
         if (state == State.Patrol)
         {
-
+            //GetComponent<Renderer>().material.color = Color.white;
         }
         else if (state == State.Chase)
         {
-
+           // GetComponent<Renderer>().material.color = Color.red;
         }
     }
 

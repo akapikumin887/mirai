@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BellCall : MonoBehaviour
 {
-    [SerializeField] GameObject Bell; //ここに音オブジェクト「Bell」をアタッチ
+    [SerializeField] GameObject Bell; //ここに音オブジェクトをアタッチ
 
     // Update is called once per frame
     void Update()
