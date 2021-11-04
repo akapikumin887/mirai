@@ -16,10 +16,13 @@ public class ring : MonoBehaviour
     // “–‚½‚è”»’è‚æ‚èŒã‚ÉÁ‚µ‚½‚¢‚½‚ßLateUpdate
     void LateUpdate()
     {
-        //Œp‘±ŽžŠÔI—¹Œã‚ÉÁ‚·
-        if(frame++ >= SoundTime)
+        if (SoundTime >= 1)
         {
-            Destroy(this.gameObject);
+            //Œp‘±ŽžŠÔI—¹Œã‚ÉÁ‚·
+            if (frame++ >= SoundTime)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 

@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f17b6c2c3e4147f45b244ace229752b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SoundSize: 0
-  SoundTime: 600
+  SoundSize: 5
+  SoundTime: 5
 --- !u!135 &-47277172346686686
 SphereCollider:
   m_ObjectHideFlags: 0
