@@ -10,6 +10,7 @@ TagManager:
   - footsteps
   - Enemy
   - Manager
+  - Point
   layers:
   - Default
   - TransparentFX
