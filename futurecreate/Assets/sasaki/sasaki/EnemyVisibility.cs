@@ -9,16 +9,21 @@ public class EnemyVisibility : MonoBehaviour
 
     NavMeshAgent Player_Nav;
     GameObject Player;
+    GameObject GAMEMASTER;
+    GameMng game_mng;
+
 
     // ENEMY_TYPE eNEMY_TYPE;
 
     // Start is called before the first frame update
     void Start()
     {
-        //プレイヤーのNavMeshAgentを取得
-        Player_Nav = GetComponent<NavMeshAgent>();
-        //目的地のオブジェクトを取得
-        Player = GameObject.Find("Player");
+        GAMEMASTER = GameObject.FindGameObjectWithTag("Manager");
+        game_mng = GAMEMASTER.GetComponent<GameMng>();
+
+        // 目的地のオブジェクトを取得
+        Player = game_mng.GetPlayer();
+        Debug.Log("");
     }
 
     // Update is called once per frame
