@@ -17,34 +17,34 @@ public class LisEnemy : MonoBehaviour
     };
     public State state = State.Patrol;
 
+    Vector3 GoalPos;
+
     NavMeshAgent Player_Nav;
     GameObject Player;
 
-    // ENEMY_TYPE eNEMY_TYPE;
 
     // Start is called before the first frame update
     void Start()
     {
         //プレイヤーのNavMeshAgentを取得
         Player_Nav = GetComponent<NavMeshAgent>();
-        //目的地のオブジェクトを取得
-        Player = GameObject.Find("Player");
+
+        var mng = GameObject.FindGameObjectWithTag("Manager");
+        
+        if (mng != null)
+        {
+            var mngScript = mng.GetComponent<GameMng>();
+            if (mngScript != null)
+            {
+                Player = mngScript.GetPlayer();
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.C))
-        //{
-        //    if (state == State.Chase)
-        //    {
-        //        state = State.Patrol;
-        //    }
-        //    else
-        //    {
-        //        state = State.Chase;
-        //    }
-        //}
+        
     }
 
 
@@ -63,33 +63,27 @@ public class LisEnemy : MonoBehaviour
             this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.TRACKING);
 
 
-            //Player_Nav.SetDestination(Player.transform.position);
+            Player_Nav.SetDestination(other.transform.position);
 
-            //Instantiate(pin, other.transform.position, Quaternion.identity);
+            GoalPos = other.transform.position;
 
-        }
-        else
-        {
-            Debug.Log("目標地点到達");
-            //巡回モードにする
-            GetComponent<Renderer>().material.color = Color.white;
-            state = State.Patrol;
-            
+            Instantiate(pin, other.transform.position, Quaternion.identity);
 
         }
+      
 
-        if (other.gameObject.tag == "pin")
-        {
-            Debug.Log("目標地点到達");
-            //巡回モードにする
-            GetComponent<Renderer>().material.color = Color.white;
-            state = State.Patrol;
+        //if (other.gameObject.tag == "pin")
+        //{
+        //    Debug.Log("目標地点到達");
+        //    //巡回モードにする
+        //    GetComponent<Renderer>().material.color = Color.white;
+        //    state = State.Patrol;
 
-            this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PATROL);
+        //    this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PATROL);
 
 
 
-        }
+        //}
     }
 
     void StateAct()
@@ -100,7 +94,7 @@ public class LisEnemy : MonoBehaviour
         }
         else if (state == State.Chase)
         {
-           // GetComponent<Renderer>().material.color = Color.red;
+            
         }
     }
 
