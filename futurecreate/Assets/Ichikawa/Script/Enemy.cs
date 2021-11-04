@@ -74,7 +74,7 @@ public class Enemy : MonoBehaviour
             case ENEMY_TYPE.TRACKING: // 発見
                 GetComponent<Renderer>().material.color = Color.black; //色を変える
                 GetComponent<NavMeshAgent>().isStopped = false;
-                agent.SetDestination(Player.transform.position);
+                //agent.SetDestination(Player.transform.position);
                 break;
         }
     }
@@ -93,5 +93,9 @@ public class Enemy : MonoBehaviour
     public NavMeshAgent GetAgent() // ゲッター
     {
         return agent;
+    }
+    public void SetAgent(NavMeshAgent agentType) // セッター
+    {
+        agent = agentType;
     }
 }
