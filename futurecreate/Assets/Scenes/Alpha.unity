@@ -1207,7 +1207,7 @@ GameObject:
   - component: {fileID: 759860379}
   m_Layer: 0
   m_Name: GAMEMASTER
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2472,7 +2472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731669013032052546, guid: 666a046e515c2774eba76d54e2e0b99c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2731669013032052546, guid: 666a046e515c2774eba76d54e2e0b99c, type: 3}
       propertyPath: m_TagString
@@ -2656,7 +2656,7 @@ GameObject:
   - component: {fileID: 1780241208}
   m_Layer: 0
   m_Name: Points
-  m_TagString: Untagged
+  m_TagString: Point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
