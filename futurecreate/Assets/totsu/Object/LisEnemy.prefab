@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 4352500250921637130}
   - component: {fileID: 3629173873425994064}
   - component: {fileID: 3918694507092057199}
+  - component: {fileID: 5321073584452417021}
   - component: {fileID: 8222509294132911618}
+  - component: {fileID: 7140543478309668294}
   m_Layer: 0
   m_Name: LisEnemy
   m_TagString: Untagged
@@ -109,7 +111,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa55341f3a8f034fa359e15973c2eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pin: {fileID: 5160787487514524483, guid: 4486ed3024eac5f4e82eb9af1feb71b9, type: 3}
   state: 0
+--- !u!114 &5321073584452417021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8050045740473267353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f13209eb5293c74b97e57085541ce60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points: []
+  destPoint: 0
 --- !u!54 &8222509294132911618
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -126,3 +143,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!195 &7140543478309668294
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8050045740473267353}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
