@@ -7,18 +7,23 @@ using UnityEngine.AI;
 public class CallEnemy : MonoBehaviour
 {
     List<GameObject> enemy_list = new List<GameObject>();
-    private GameObject enemys;
+    private GameObject GAMEMASTER;
+    private GameObject Player;
     // Start is called before the first frame update
     void Start()
     {
-        enemy_list = enemys.GetComponent<GameMng>().GetEnemy();//実際にはここでEnemyManagerからEnemyのリストを取得
+        GAMEMASTER = GameObject.FindGameObjectWithTag("Manager");
+        Player = GameObject.FindGameObjectWithTag("Player");
+        enemy_list = GAMEMASTER.GetComponent<GameMng>().GetEnemy();//実際にはここでEnemyManagerからEnemyのリストを取得
        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (true)//プレイヤーが範囲内に入ったら
+        float distance = Vector3.Distance(this.transform.position, Player.transform.position);
+        Debug.Log(distance);
+        if (distance<7.5f)//プレイヤーが範囲内に入ったら
         {
             //Enemyのステートを変更
             foreach (var item in enemy_list)
