@@ -43,7 +43,7 @@ public class EnemyVisibility : MonoBehaviour
             RaycastHit hit;
 
 
-            Debug.Log(Player_direction);
+           // Debug.Log(Player_direction);
 
             if (Physics.Raycast(this.transform.position, Player_direction , out hit, 6.0f))     //Ray‚É‚ ‚½‚é‚à‚Ì‚ª‚ ‚Á‚½  ÅŒã‚Ìˆø”‚ª‹——£
             {

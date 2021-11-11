@@ -16,9 +16,17 @@ public class Pause : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
            if(Time.timeScale==0)
-            Time.timeScale = 1;
-           else
-            Time.timeScale = 0;
+            {
+                GetComponent<alpha>().Alpha_Change(true);
+                Time.timeScale = 1;
+            }
+            else
+            {
+                GetComponent<alpha>().Alpha_Change(false);
+                Time.timeScale = 0;
+            }
         }
     }
+
+
 }
