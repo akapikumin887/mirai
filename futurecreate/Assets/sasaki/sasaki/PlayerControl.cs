@@ -34,7 +34,7 @@ public class PlayerControl : MonoBehaviour
         if (KeyInput())
         {
             _Time += Time.deltaTime;
-            if (_Time > 1 / 60)
+            if (_Time > 0.01666667f)
             {
                 _Frame++;
                 _Time = 0.0f;
@@ -60,7 +60,6 @@ public class PlayerControl : MonoBehaviour
         //ÉxÉãÇê∂ê¨ÇµÇƒã^éóìIÇ…ë´âπÇî≠ê∂Ç≥ÇπÇÈ
         if (_Frame > _FrameCount)
         {
-            Debug.Log("ë´âπî≠ê∂");
             GameObject bell = Instantiate(_Bell,transform.position,Quaternion.identity);
             ring b = bell.GetComponent<ring>();
             b.SetBell(20,1);
