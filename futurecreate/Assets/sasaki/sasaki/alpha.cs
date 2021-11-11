@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class alpha : MonoBehaviour
 {
-    bool Alpha_black = false;
+    bool Alpha_black = true;
 
     // Start is called before the first frame update
     void Start()
     {
+       
 
     }
 
@@ -18,11 +19,11 @@ public class alpha : MonoBehaviour
     {
         if(Alpha_black)
         {
-            GetComponent<Image>().color = new Color(0, 0, 0, 0.6f);
+            GetComponent<Image>().color = new Color(0, 0, 0, 0.0f);
         }
         else
         {
-            GetComponent<Image>().color = new Color(0, 0, 0, 0.0f);
+            GetComponent<Image>().color = new Color(0, 0, 0, 0.6f);
         }
     }
 
