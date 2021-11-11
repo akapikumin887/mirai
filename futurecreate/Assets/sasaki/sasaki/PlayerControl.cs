@@ -7,45 +7,40 @@ using UnityEngine.AI;
 
 public class PlayerControl : MonoBehaviour
 {
-    [SerializeField] private float _PlayerSpeed; // 移動速度
+    [Header("移動速度")] [SerializeField] private float _PlayerSpeed;
 
-    private Vector3 _Position; //プレイヤーのポジション
-    
+    [Header("足音を発するフレーム数")]　[SerializeField] private uint _FrameCount;
+
     [SerializeField] private GameObject _Bell;
 
-    private int frame = 0;
+    private GameMng _GameManagerScript;
+
+    //足音発生フレーム管理
+    private uint _Frame = 0;
+
+    private List<GameObject> _PathFindings = new List<GameObject>();
+
+    private float _Time;
 
     void Start()
     {
-        _Position = GetComponent<Transform>().position; //最初の時点でのプレイヤーのポジションを取得
+        _GameManagerScript = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameMng>();
+        _PathFindings = _GameManagerScript.GetPathFinding();
     }
 
     void Update()
     {
-        // 左に移動
-        if (Input.GetKey(KeyCode.A))
+        //移動と足音の処理
+        if (KeyInput())
         {
-            this.transform.Translate(-_PlayerSpeed * Time.deltaTime, 0.0f, 0.0f);
-            frame++;
+            _Time += Time.deltaTime;
+            if (_Time > 1 / 60)
+            {
+                _Frame++;
+                _Time = 0.0f;
+            }
         }
-        // 右に移動
-        if (Input.GetKey(KeyCode.D))
-        {
-            this.transform.Translate(_PlayerSpeed * Time.deltaTime, 0.0f, 0.0f);
-            frame++;
-        }
-        // 前に移動
-        if (Input.GetKey(KeyCode.W))
-        {
-            this.transform.Translate(0.0f, 0.0f, _PlayerSpeed * Time.deltaTime);
-            frame++;
-        }
-        // 後ろに移動
-        if (Input.GetKey(KeyCode.S))
-        {
-            this.transform.Translate(0.0f, 0.0f, -_PlayerSpeed * Time.deltaTime);
-            frame++;
-        }
+
         // 左クリック
         if (Input.GetMouseButton(0))
         {
@@ -63,12 +58,45 @@ public class PlayerControl : MonoBehaviour
         }
 
         //ベルを生成して疑似的に足音を発生させる
-        if (frame > 15)
+        if (_Frame > _FrameCount)
         {
+            Debug.Log("足音発生");
             GameObject bell = Instantiate(_Bell,transform.position,Quaternion.identity);
             ring b = bell.GetComponent<ring>();
-            b.SetBell(50,1);
-            frame = 0;
+            b.SetBell(20,1);
+            _Frame = 0;
         }
+    }
+
+    private bool KeyInput()
+    {
+        bool vertical = false;
+        bool horizontal = false;
+
+        Vector2 moveSpeed = new Vector2();
+
+        //左右判定
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+            moveSpeed.x = _PlayerSpeed * (Input.GetKey(KeyCode.A) ? -1 : 1);
+            vertical = true;
+        }
+
+        //上下判定
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+        {
+            moveSpeed.y = _PlayerSpeed * (Input.GetKey(KeyCode.S) ? -1 : 1);
+            horizontal = true;
+        }
+
+        //斜め入力の加速を無くす
+        if (vertical && horizontal)
+            moveSpeed /= 1.41421356f;
+        else if (!(vertical || horizontal))
+            return false;
+
+        transform.Translate(moveSpeed.x * Time.deltaTime, 0.0f, moveSpeed.y * Time.deltaTime);
+
+        return true;
     }
 }
