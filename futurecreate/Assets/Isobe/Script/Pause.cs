@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
+
+    alpha m_alpha;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_alpha = GetComponent<alpha>();
     }
 
     // Update is called once per frame
@@ -17,12 +20,12 @@ public class Pause : MonoBehaviour
         {
            if(Time.timeScale==0)
             {
-                GetComponent<alpha>().Alpha_Change(true);
+                m_alpha.Alpha_Change(true);
                 Time.timeScale = 1;
             }
             else
             {
-                GetComponent<alpha>().Alpha_Change(false);
+                m_alpha.Alpha_Change(false);
                 Time.timeScale = 0;
             }
         }

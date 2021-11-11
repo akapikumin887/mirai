@@ -29,5 +29,7 @@ public class alpha : MonoBehaviour
     public void Alpha_Change(bool b)
     {
         Alpha_black = b;
+        Debug.Log("‚­‚»‚Á‚½‚ê");
+
     }
 }
