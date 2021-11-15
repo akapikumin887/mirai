@@ -6,6 +6,7 @@ public class GameMng : MonoBehaviour
 {
     private GameObject _Pleyer;
     private List<GameObject> _Enemys = new List<GameObject>();
+    private List<GameObject> _Traps = new List<GameObject>();
     private List<GameObject> _PathFindings = new List<GameObject>();
 
     void Awake()
@@ -20,6 +21,15 @@ public class GameMng : MonoBehaviour
             foreach (var obj in enemys)
                 _Enemys.Add(obj);
         }
+
+        //トラップの取得
+        GameObject[] traps = GameObject.FindGameObjectsWithTag("Trap");
+        if (traps != null)
+        {
+            foreach (var obj in traps)
+                _Traps.Add(obj);
+        }
+
 
         //経路探索のポイント取得
         GameObject point = GameObject.FindGameObjectWithTag("Point");
@@ -41,6 +51,7 @@ public class GameMng : MonoBehaviour
     {
         
     }
+    public GameObject GetPlayer() { return _Pleyer; }
 
     public bool AddEnemy(GameObject enemy)
     {
@@ -53,8 +64,6 @@ public class GameMng : MonoBehaviour
     }
 
     public List<GameObject> GetEnemy() { return _Enemys; }
-
-    public GameObject GetPlayer() { return _Pleyer; }
 
     public List<GameObject> GetVisibilityEnemy()
     {
@@ -83,6 +92,8 @@ public class GameMng : MonoBehaviour
 
         return lEnemy;
     }
+
+    public List<GameObject> GetTrap() { return _Traps; }
 
     public List<GameObject> GetPathFinding() { return _PathFindings; }
 }

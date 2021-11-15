@@ -1618,7 +1618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _PlayerSpeed: 1
-  _FrameCount: 0
+  _FrameCount: 20
   _Bell: {fileID: 1398721664031847351, guid: 95eb86e52bda7b94bad0d1f9743ee3d1, type: 3}
 --- !u!65 &957322431
 BoxCollider:
