@@ -66,6 +66,7 @@ public class Enemy : MonoBehaviour
         {
             case ENEMY_TYPE.PATROL: // 巡回
                 GetComponent<Renderer>().material.color = Color.red; //色を変える
+                agent.speed = 1.5f;    // 移動速度1.5
                 // 現目的地に近づいたら次の目的地を選択
                 if (!agent.pathPending && agent.remainingDistance < 0.5f)
                     GotoNextPoint();
@@ -77,6 +78,7 @@ public class Enemy : MonoBehaviour
             case ENEMY_TYPE.TRACKING: // 発見
                 GetComponent<Renderer>().material.color = Color.black; //色を変える
                 GetComponent<NavMeshAgent>().isStopped = false;
+                agent.speed = 2.0f;    // 移動速度2.0
                 agent.SetDestination(Destination);
                 break;
 
@@ -88,12 +90,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // ENEMY_TYPE
-    public ENEMY_TYPE GetEnemyType() // ゲッター
+    // 現在の状態(ENEMY_TYPE)
+    public ENEMY_TYPE GetEnemyType() // 取得
     {
         return eType;
     }
-    public void SetEnemyType(ENEMY_TYPE type) // セッター
+    public void SetEnemyType(ENEMY_TYPE type) // 変更
     {
         eType = type;
     }
