@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
-
+using System.Linq;
 public class Danger : MonoBehaviour
 {
     //private float alltime;
@@ -22,7 +22,7 @@ public class Danger : MonoBehaviour
 
     void Start()
     {
-        text = this.GetComponent<Text>();
+        text = transform.GetChild(0).gameObject.GetComponent<Text>();
         GAMEMASTER = GameObject.FindGameObjectWithTag("Manager");
         enemy_list = GAMEMASTER.GetComponent<GameMng>().GetEnemy();//実際にはここでEnemyManagerからEnemyのリストを取得
         uipol = this.GetComponent<UIPolygon>();
@@ -31,7 +31,7 @@ public class Danger : MonoBehaviour
 
         for (int i = 0; i < danger_score.Capacity; i++)
         {
-            danger_score.Add(0.5f);
+            danger_score.Add(0.0f);
         }
 
         time = 0;
@@ -110,6 +110,7 @@ public class Danger : MonoBehaviour
                 //グラフの初期化処理
                 if (enemy_length.Count == 0)
                 {
+                    danger_score[i] = 0.0f;
                     uipol.SetDistance(0.5f, i);
                     continue;
                 }
@@ -117,6 +118,7 @@ public class Danger : MonoBehaviour
                 //危険度の計算
                 float value = 0.0f;
                 enemy_length.Sort();
+
                 foreach (var item in enemy_length)
                 {
                     value += (1 - item / range_max) / enemy_length.Count;//+EnemyState
@@ -128,11 +130,12 @@ public class Danger : MonoBehaviour
             }
 
             //余波計算
-            for(int i = 2; i < sides; i += 4)
+            //for(int i = 2; i < sides; i += 4)
             {
 
             }
 
+            text.text = (int)danger_score.Max()+"%";//テキスト内容
             time = 0;
         }
 
