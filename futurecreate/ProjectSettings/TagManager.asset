@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Manager
   - Point
+  - Trap
   layers:
   - Default
   - TransparentFX

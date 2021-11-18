@@ -54,8 +54,8 @@ public class Danger : MonoBehaviour
                 //”ÍˆÍ“àEnemyŒŸõ
                 foreach (var item in enemy_list)
                 {
-                    float angle = 360 / sides * i;
-                    float offset = 360 / sides * 2;
+                    float angle = 360.0f / sides * i;
+                    float offset = 360.0f / sides * 2.0f;
                     float plus = angle + offset > 360.0f ? angle + offset - 360.0f : angle + offset;
                     float minus = angle - offset < 0.0f ? angle - offset + 360.0f : angle - offset;
 
