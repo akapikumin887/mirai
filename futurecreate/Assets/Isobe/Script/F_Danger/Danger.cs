@@ -6,16 +6,35 @@ using UnityEngine.AI;
 
 public class Danger : MonoBehaviour
 {
-    private Text text;
     //private float alltime;
-    [SerializeField] float danger_score;
-    [SerializeField] GameObject enemy;
     [SerializeField] GameObject player;
+    [SerializeField] float range_max;
+    [SerializeField] float timelimit;//更新周期
+    private List<GameObject> enemy_list = new List<GameObject>();
+    private List<float> danger_score;
+    private GameObject GAMEMASTER;
+    private Text text;
+    private UIPolygon uipol;
+    private int sides;
+    private float time;
+
     // Start is called before the first frame update
 
     void Start()
     {
         text = this.GetComponent<Text>();
+        GAMEMASTER = GameObject.FindGameObjectWithTag("Manager");
+        enemy_list = GAMEMASTER.GetComponent<GameMng>().GetEnemy();//実際にはここでEnemyManagerからEnemyのリストを取得
+        uipol = this.GetComponent<UIPolygon>();
+        sides = uipol.Sides;
+        danger_score = new List<float>(sides) { };
+
+        for (int i = 0; i < danger_score.Capacity; i++)
+        {
+            danger_score.Add(0.5f);
+        }
+
+        time = 0;
         //alltime = 0.0f;
     }
 
@@ -23,13 +42,164 @@ public class Danger : MonoBehaviour
     void Update()
     {
 
+        time += Time.deltaTime;
+
+
+        if (time > timelimit)
+        {
+            for (int i = 0; i < sides; i += 4)
+            {
+                List<float> enemy_length = new List<float>();//範囲内の敵格納用
+
+                //範囲内Enemy検索
+                foreach (var item in enemy_list)
+                {
+                    float angle = 360.0f / sides * i;
+                    float offset = 360.0f / sides * 2.0f;
+                    float plus = angle + offset > 360.0f ? angle + offset - 360.0f : angle + offset;
+                    float minus = angle - offset < 0.0f ? angle - offset + 360.0f : angle - offset;
+
+                    Debug.Log(GetAngle(player.transform.position, enemy_list[0].transform.position));
+
+
+                    if (i == 0)//iが0の時だけ0度より小さいが360度以下に変わるので別枠
+                    {
+                        //範囲内確認
+                        if (GetAngle(player.transform.position, item.transform.position) >= minus || GetAngle(player.transform.position, item.transform.position) <= plus)
+                        {
+                            if (GetNavDistance(item) < range_max)
+                            {
+                                enemy_length.Add(GetNavDistance(item));//対象になる敵を追加
+                            }
+                        }
+                    }
+                    else
+                    {
+                        
+                        if (GetAngle(player.transform.position, item.transform.position) >= minus && GetAngle(player.transform.position, item.transform.position) <= plus)
+                        {
+                            if (GetNavDistance(item) < range_max)
+                            {
+                                enemy_length.Add(GetNavDistance(item));
+                            }
+                        }
+                    }
+                }
+
+                //範囲内trap検索
+                {/*
+            foreach (var item in trap_list)
+            {
+                float angle = 360 / sides * i;
+                float offset = 360 / sides * 2;
+                float plus = angle + offset > 360.0f ? angle + offset - 360.0f : angle + offset;
+                float minus = angle - offset < 0.0f ? angle - offset + 360.0f : angle - offset;
+
+                //範囲内確認
+                if (GetAngle(player.transform.position, item.transform.position) >= minus && GetAngle(player.transform.position, item.transform.position) <= plus)
+                {
+                    if (GetNavDistance(item) < range_max)
+                    {
+                        trap_length.Add(GetNavDistance(item));
+                    }
+                }
+            }
+            */
+                }
+
+                //グラフの初期化処理
+                if (enemy_length.Count == 0)
+                {
+                    uipol.SetDistance(0.5f, i);
+                    continue;
+                }
+
+                //危険度の計算
+                float value = 0.0f;
+                enemy_length.Sort();
+                foreach (var item in enemy_length)
+                {
+                    value += (1 - item / range_max) / enemy_length.Count;//+EnemyState
+                }
+                value = Mathf.Clamp((1 - enemy_length[0] / range_max) * 100.0f + value * 10.0f, 0.0f, 100.0f);
+                danger_score[i] = value;
+
+                uipol.SetDistance(0.5f+danger_score[i]/200.0f, i);
+            }
+
+            //余波計算
+            for(int i = 2; i < sides; i += 4)
+            {
+
+            }
+
+            time = 0;
+        }
+
+
+        {//for (int i = 0; i < sides; i += 4)
+         //{
+         //    List<float> enemy_length = new List<float>();//範囲内の敵格納用
+
+            //    //範囲内Enemy検索
+            //    foreach (var item in enemy_list)
+            //    {
+            //        float angle = 360 / sides * i;
+            //        float offset = 360 / sides * 2;
+            //        float plus = angle + offset > 360.0f ? angle + offset - 360.0f : angle + offset;
+            //        float minus = angle - offset < 0.0f ? angle - offset + 360.0f : angle - offset;
+
+            //        //範囲内確認
+            //        if (GetAngle(player.transform.position, item.transform.position) >= minus && GetAngle(player.transform.position, item.transform.position) <= plus)
+            //        {
+            //            if (GetNavDistance(item) < range_max)
+            //            {
+            //                enemy_length.Add(GetNavDistance(item));
+            //            }
+            //        }
+            //    }
+
+            //    //範囲内trap検索
+            //    {/*
+            //    foreach (var item in trap_list)
+            //    {
+            //        float angle = 360 / sides * i;
+            //        float offset = 360 / sides * 2;
+            //        float plus = angle + offset > 360.0f ? angle + offset - 360.0f : angle + offset;
+            //        float minus = angle - offset < 0.0f ? angle - offset + 360.0f : angle - offset;
+
+            //        //範囲内確認
+            //        if (GetAngle(player.transform.position, item.transform.position) >= minus && GetAngle(player.transform.position, item.transform.position) <= plus)
+            //        {
+            //            if (GetNavDistance(item) < range_max)
+            //            {
+            //                trap_length.Add(GetNavDistance(item));
+            //            }
+            //        }
+            //    }
+            //    */
+            //    }
+
+
+            //    //危険度の計算
+            //    float value = 0.0f;
+            //    enemy_length.Sort();
+            //    foreach (var item in enemy_length)
+            //    {
+            //        value += (1 - item / range_max) / enemy_length.Count;//+EnemyState
+            //    }
+            //    value = Mathf.Clamp((1 - enemy_length[0] / range_max) * 100.0f + value * 10.0f, 0.0f, 100.0f);
+            //    danger_score[i] = value;
+            //}
+        }
+        { 
         //alltime += Time.deltaTime;
         //Debug.Log(Mathf.Sin(alltime));
 
         //NavMeshPath path = enemy.GetComponent<NavMeshAgent>().path; //経路パス（曲がり角座標のVector3配列）を取得
         //float dist = 0f;//距離
         //Vector3 corner = player.transform.position; //自分の現在位置
-                                            
+
         //for (int i = 0; i < path.corners.Length; i++) //曲がり角間の距離を累積していく
         //{
         //    Vector3 corner2 = path.corners[i];//パスのポジション
@@ -40,15 +210,47 @@ public class Danger : MonoBehaviour
 
         //Debug.Log(dist);
 
-        danger_score = 5.0f/Vector3.Distance(enemy.transform.position,player.transform.position)*100.0f;   //リアルタイム変動
+        //danger_score = 5.0f/Vector3.Distance(enemy.transform.position,player.transform.position)*100.0f;   //リアルタイム変動
 
-        danger_score = Mathf.Clamp(danger_score, 0.0f, 100.0f);
-    
-        Debug.Log(danger_score);
-        text.text = "危険度:"+(int)danger_score+"%";                         //テキスト内容
+        //danger_score = Mathf.Clamp(danger_score, 0.0f, 100.0f);
+
+        //Debug.Log(danger_score);
+        //text.text = "危険度:"+(int)danger_score+"%";                         //テキスト内容
+    }
     }
     public void ScoreAction(int value)
     {
-        danger_score = Mathf.Clamp(danger_score + value, 0.0f, 100.0f);
+        //danger_score = Mathf.Clamp(danger_score + value, 0.0f, 100.0f);
+    }
+
+    private float GetAngle(Vector3 start, Vector3 target)
+    {
+
+        Vector2 dt = new Vector2(target.x - start.x, target.z - start.z);
+        float rad = Mathf.Atan2(dt.y, dt.x);
+        float degree = rad * Mathf.Rad2Deg;
+
+        if (degree < 0)
+        {
+            degree += 360;
+        }
+
+        return degree;
+    }
+
+    private float GetNavDistance(GameObject enemy)
+    {
+        NavMeshPath path = enemy.GetComponent<NavMeshAgent>().path; //経路パス（曲がり角座標のVector3配列）を取得
+        float dist = 0f;//距離
+        Vector3 corner = player.transform.position; //自分の現在位置
+
+        for (int i = 0; i < path.corners.Length; i++) //曲がり角間の距離を累積していく
+        {
+            Vector3 corner2 = path.corners[i];//パスのポジション
+            dist += Vector3.Distance(corner, corner2);//距離加算
+            corner = corner2;
+
+        }
+        return dist;
     }
 }

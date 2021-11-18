@@ -542,6 +542,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   danger_score: 20
+  enemy: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &6674439887264329445
 GameObject:
   m_ObjectHideFlags: 0
