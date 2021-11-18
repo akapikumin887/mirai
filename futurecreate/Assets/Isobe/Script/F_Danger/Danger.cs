@@ -61,12 +61,27 @@ public class Danger : MonoBehaviour
 
                     Debug.Log(GetAngle(player.transform.position, enemy_list[0].transform.position));
 
-                    //範囲内確認
-                    if (GetAngle(player.transform.position, item.transform.position) >= minus && GetAngle(player.transform.position, item.transform.position) <= plus)
+
+                    if (i == 0)//iが0の時だけ0度より小さいが360度以下に変わるので別枠
                     {
-                        if (GetNavDistance(item) < range_max)
+                        //範囲内確認
+                        if (GetAngle(player.transform.position, item.transform.position) >= minus || GetAngle(player.transform.position, item.transform.position) <= plus)
                         {
-                            enemy_length.Add(GetNavDistance(item));
+                            if (GetNavDistance(item) < range_max)
+                            {
+                                enemy_length.Add(GetNavDistance(item));//対象になる敵を追加
+                            }
+                        }
+                    }
+                    else
+                    {
+                        
+                        if (GetAngle(player.transform.position, item.transform.position) >= minus && GetAngle(player.transform.position, item.transform.position) <= plus)
+                        {
+                            if (GetNavDistance(item) < range_max)
+                            {
+                                enemy_length.Add(GetNavDistance(item));
+                            }
                         }
                     }
                 }
@@ -92,7 +107,7 @@ public class Danger : MonoBehaviour
             */
                 }
 
-
+                //グラフの初期化処理
                 if (enemy_length.Count == 0)
                 {
                     uipol.SetDistance(0.5f, i);
@@ -111,6 +126,13 @@ public class Danger : MonoBehaviour
 
                 uipol.SetDistance(0.5f+danger_score[i]/200.0f, i);
             }
+
+            //余波計算
+            for(int i = 2; i < sides; i += 4)
+            {
+
+            }
+
             time = 0;
         }
 
@@ -204,7 +226,7 @@ public class Danger : MonoBehaviour
     private float GetAngle(Vector3 start, Vector3 target)
     {
 
-        Vector2 dt = target - start;
+        Vector2 dt = new Vector2(target.x - start.x, target.z - start.z);
         float rad = Mathf.Atan2(dt.y, dt.x);
         float degree = rad * Mathf.Rad2Deg;
 
