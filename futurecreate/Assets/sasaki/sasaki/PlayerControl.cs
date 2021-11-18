@@ -9,7 +9,7 @@ public class PlayerControl : MonoBehaviour
 {
     [Header("Speed")] [SerializeField] private float _PlayerSpeed;
 
-    [Header("FootFrame")]Å@[SerializeField] private uint _FrameCount;
+    [Header("FootFrame")] [SerializeField] private uint _FrameCount;
 
     [SerializeField] private GameObject _Bell;
 
