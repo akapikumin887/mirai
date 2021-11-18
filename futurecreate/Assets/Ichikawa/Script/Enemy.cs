@@ -34,6 +34,9 @@ public class Enemy : MonoBehaviour
     // 追跡中の目的地
     Vector3 Destination;
 
+    // プレイヤーへのパス
+    NavMeshPath playerPath = null;
+
     void Start()
     {
         // GameManager取得
@@ -47,6 +50,9 @@ public class Enemy : MonoBehaviour
 
         // autoBrakingを無効にすると目的地に近づいても速度が落ちない
         agent.autoBraking = false;
+
+        // プレイヤーへのパス初期化
+        playerPath = new NavMeshPath();
 
         GotoNextPoint();
     }
@@ -95,6 +101,9 @@ public class Enemy : MonoBehaviour
                 agent.SetDestination(Destination);
                 break;
         }
+
+        // プレイヤーへのパス計算
+        NavMesh.CalculatePath(transform.position, points[playerPoint].position, NavMesh.AllAreas, playerPath);
     }
 
     // 現在の状態(ENEMY_TYPE)
@@ -127,5 +136,11 @@ public class Enemy : MonoBehaviour
     public Transform GetPlayerPoint()
     {
         return points[playerPoint];
+    }
+
+    // プレイヤーへのパス取得(playerPath)
+    public NavMeshPath GetToPlayerPath()
+    {
+        return playerPath;
     }
 }
