@@ -27,10 +27,12 @@ public class ring : MonoBehaviour
     }
 
     //外部スクリプトからパラメータをセットする
-    public void SetBell(float soundsize,int soundtime)
+    public void SetBell(float soundsize,int soundtime,string tag_name = "footsteps" )
     {
         SoundSize = soundsize;
         SoundTime = soundtime;
+        this.tag = tag_name;
+        Debug.Log("タグ : "+ tag_name);
         this.transform.localScale = new Vector3(SoundSize, SoundSize, SoundSize);
     }
 }
