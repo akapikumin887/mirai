@@ -7,9 +7,9 @@ using UnityEngine.AI;
 
 public class PlayerControl : MonoBehaviour
 {
-    [Header("移動速度")] [SerializeField] private float _PlayerSpeed;
+    [Header("Speed")] [SerializeField] private float _PlayerSpeed;
 
-    [Header("足音を発するフレーム数")]　[SerializeField] private uint _FrameCount;
+    [Header("FootFrame")]　[SerializeField] private uint _FrameCount;
 
     [SerializeField] private GameObject _Bell;
 
