@@ -23,12 +23,12 @@ public class GameMng : MonoBehaviour
         }
 
         //トラップの取得
-        GameObject[] traps = GameObject.FindGameObjectsWithTag("Trap");
-        if (traps != null)
-        {
-            foreach (var obj in traps)
-                _Traps.Add(obj);
-        }
+        //GameObject[] traps = GameObject.FindGameObjectsWithTag("Trap");
+        //if (traps != null)
+        //{
+        //    foreach (var obj in traps)
+        //        _Traps.Add(obj);
+        //}
 
 
         //経路探索のポイント取得

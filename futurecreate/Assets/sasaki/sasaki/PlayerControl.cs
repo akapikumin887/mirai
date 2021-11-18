@@ -69,33 +69,37 @@ public class PlayerControl : MonoBehaviour
 
     private bool KeyInput()
     {
+        //“ü—Í•ûŒü‚Ìæ“¾
         bool vertical = false;
         bool horizontal = false;
 
-        Vector2 moveSpeed = new Vector2();
+        Vector3 velocity = Vector3.zero;
 
         //¶‰E”»’è
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
-            moveSpeed.x = _PlayerSpeed * (Input.GetKey(KeyCode.A) ? -1 : 1);
+            int abs = Input.GetKey(KeyCode.A) ? -1 : 1;
+            velocity.x += 0.5f * abs;
+            velocity.z -= 0.5f * abs;
             vertical = true;
         }
 
         //ã‰º”»’è
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
         {
-            moveSpeed.y = _PlayerSpeed * (Input.GetKey(KeyCode.S) ? -1 : 1);
+            int abs = Input.GetKey(KeyCode.S) ? -1 : 1;
+            velocity.x += 0.5f * abs;
+            velocity.z += 0.5f * abs;
             horizontal = true;
         }
 
         //Î‚ß“ü—Í‚Ì‰Á‘¬‚ğ–³‚­‚·
         if (vertical && horizontal)
-            moveSpeed /= 1.41421356f;
+            velocity /= 1.41421356f;
         else if (!(vertical || horizontal))
             return false;
 
-        transform.Translate(moveSpeed.x * Time.deltaTime, 0.0f, moveSpeed.y * Time.deltaTime);
-
+        transform.position += velocity * _PlayerSpeed * Time.deltaTime;
         return true;
     }
 }
