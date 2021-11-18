@@ -135,6 +135,11 @@ public class Danger : MonoBehaviour
 
             }
 
+            for(int i = 1; i < sides; i += 2)
+            {
+                uipol.SetDistance(Random.Range(0.4f, 0.5f), i);
+            }
+
             text.text = (int)danger_score.Max()+"%";//テキスト内容
             time = 0;
         }
@@ -243,7 +248,11 @@ public class Danger : MonoBehaviour
 
     private float GetNavDistance(GameObject enemy)
     {
-        NavMeshPath path = enemy.GetComponent<NavMeshAgent>().path; //経路パス（曲がり角座標のVector3配列）を取得
+        //NavMeshPath path=null;
+        //NavMesh.CalculatePath(enemy.transform.position, player.transform.position, NavMesh.AllAreas, path);
+        NavMeshPath path = enemy.GetComponent<Enemy>().GetToPlayerPath(); //経路パス（曲がり角座標のVector3配列）を取得
+
+        //NavMeshPath path = enemy.GetComponent<NavMeshAgent>().path; //経路パス（曲がり角座標のVector3配列）を取得
         float dist = 0f;//距離
         Vector3 corner = player.transform.position; //自分の現在位置
 
