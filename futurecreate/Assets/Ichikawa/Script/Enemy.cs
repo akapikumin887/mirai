@@ -17,16 +17,21 @@ public class Enemy : MonoBehaviour
     // 敵の状態変数
     private ENEMY_TYPE eType;
 
+    // 目的地の格納場所(0はプレイヤーの場所)
     public Transform[] points;
+
     private NavMeshAgent agent;
+
     // 次の目的地
-    [SerializeField] int destPoint = 0;
+    [SerializeField] int destPoint = 1;
+    // プレイヤーの位置
+    [SerializeField] int playerPoint = 0;
 
     // GameManager変数
     GameObject GAMEMASTER;
     GameMng game_mng;
 
-    // 追跡中目的地
+    // 追跡中の目的地
     Vector3 Destination;
 
     void Start()
@@ -35,7 +40,7 @@ public class Enemy : MonoBehaviour
         GAMEMASTER = GameObject.FindGameObjectWithTag("Manager");
         game_mng = GAMEMASTER.GetComponent<GameMng>();
 
-        // 追跡中目的地初期化
+        // 追跡中の目的地初期化
         Destination = this.transform.position;
 
         agent = GetComponent<NavMeshAgent>();
@@ -56,8 +61,10 @@ public class Enemy : MonoBehaviour
         agent.destination = points[destPoint].position;
 
         // 配列内の次の位置を目的地に設定し
-        // 必要ならば出発地点に戻る
-        destPoint = (destPoint + 1) % points.Length;
+        // 必要ならば出発地点(1)に戻る
+        destPoint = (destPoint + 1) % (points.Length);
+        if (destPoint == 0)
+            destPoint = 1;
     }
 
     void Update()
@@ -114,5 +121,11 @@ public class Enemy : MonoBehaviour
     public void SetDestination(Vector3 destination) // セッター
     {
         Destination = destination;
+    }
+
+    // プレイヤーの情報(points[playerPoint])
+    public Transform GetPlayerPoint()
+    {
+        return points[playerPoint];
     }
 }
