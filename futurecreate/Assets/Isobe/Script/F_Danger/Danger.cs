@@ -131,9 +131,18 @@ public class Danger : MonoBehaviour
 
             //—]”gŒvZ
             //for(int i = 2; i < sides; i += 4)
-            {
-
-            }
+            //{
+            //    float value;
+            //    if (i == 94)
+            //    {
+            //        value = (danger_score[i - 2] + danger_score[0]) / 2;
+            //    }
+            //    else
+            //    {
+            //        value = (danger_score[i - 2] + danger_score[i + 2]) / 2;
+            //    }
+            //    uipol.SetDistance(0.5f + value / 200.0f, i);
+            //}
 
             for(int i = 1; i < sides; i += 2)
             {
