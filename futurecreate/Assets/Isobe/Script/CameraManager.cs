@@ -1,37 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-
 
 public class CameraManager : MonoBehaviour
 {
-    NavMeshAgent Player_Nav;
-    GameObject Player;
-    GameObject GAMEMASTER;
-    GameMng game_mng;
+    [SerializeField] GameObject Player;
+    Vector3 Center;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        GAMEMASTER = GameObject.FindGameObjectWithTag("Manager");
-        game_mng = GAMEMASTER.GetComponent<GameMng>();
-
-        // 目的地のオブジェクトを取得
-        Player = game_mng.GetPlayer();
+        Vector3 Center = new Vector3(Screen.width / 2, Screen.height / 2, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Player.transform.position);
+        //簡易的な追従
+        transform.position = new Vector3(Player.transform.position.x, transform.position.y, Player.transform.position.z-5.5f);
+        //Debug.Log(transform.position);
 
         test();
     }
 
     void test ()
     {
+
+
         RaycastHit hit;
 
         Vector3 Player_direction = (Player.transform.position - this.transform.position).normalized;
@@ -41,7 +38,7 @@ public class CameraManager : MonoBehaviour
         {
             //GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 
-            //Debug.Log(hit.collider.tag);
+            Debug.Log(hit.collider.tag);
 
 
             if (hit.collider.tag == "wall")
