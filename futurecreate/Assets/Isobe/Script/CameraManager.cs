@@ -19,7 +19,7 @@ public class CameraManager : MonoBehaviour
     void Update()
     {
         //�ȈՓI�ȒǏ]
-        transform.position = new Vector3(Player.transform.position.x, transform.position.y, Player.transform.position.z-5.5f);
+        //transform.position = new Vector3(Player.transform.position.x, transform.position.y, Player.transform.position.z-5.5f);
         //Debug.Log(transform.position);
 
         test();
@@ -38,12 +38,12 @@ public class CameraManager : MonoBehaviour
         {
             //GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 
-            Debug.Log(hit.collider.tag);
+            //Debug.Log(hit.collider.tag);
+            Debug.Log(this.transform.position);
 
 
             if (hit.collider.tag == "wall")
             {
-                var a = hit.collider.tag;
                 hit.collider.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
                 Debug.Log("atatta"); 
             }
@@ -53,16 +53,10 @@ public class CameraManager : MonoBehaviour
                 GameObject[] walls = GameObject.FindGameObjectsWithTag("wall");
                 foreach (GameObject wall in walls)
                 {
-                    //hit.collider.GetComponent<Renderer>().material.color = new Color(0.0f, 1.0f, 1.0f, 1.0f);
                     wall.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 }
             }
 
         }
-        else
-        {
-            //hit.collider.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-        }
-
     }
 }
