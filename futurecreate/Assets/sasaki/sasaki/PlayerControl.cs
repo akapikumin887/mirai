@@ -7,9 +7,9 @@ using UnityEngine.AI;
 
 public class PlayerControl : MonoBehaviour
 {
-    [Header("移動速度")] [SerializeField] private float _PlayerSpeed;
+    [Header("Speed")] [SerializeField] private float _PlayerSpeed;
 
-    [Header("足音を発するフレーム数")]　[SerializeField] private uint _FrameCount;
+    [Header("FootFrame")] [SerializeField] private uint _FrameCount;
 
     [SerializeField] private GameObject _Bell;
 
@@ -69,33 +69,37 @@ public class PlayerControl : MonoBehaviour
 
     private bool KeyInput()
     {
+        //入力方向の取得
         bool vertical = false;
         bool horizontal = false;
 
-        Vector2 moveSpeed = new Vector2();
+        Vector3 velocity = Vector3.zero;
 
         //左右判定
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
-            moveSpeed.x = _PlayerSpeed * (Input.GetKey(KeyCode.A) ? -1 : 1);
+            int abs = Input.GetKey(KeyCode.A) ? -1 : 1;
+            velocity.x += 0.5f * abs;
+            velocity.z -= 0.5f * abs;
             vertical = true;
         }
 
         //上下判定
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
         {
-            moveSpeed.y = _PlayerSpeed * (Input.GetKey(KeyCode.S) ? -1 : 1);
+            int abs = Input.GetKey(KeyCode.S) ? -1 : 1;
+            velocity.x += 0.5f * abs;
+            velocity.z += 0.5f * abs;
             horizontal = true;
         }
 
         //斜め入力の加速を無くす
         if (vertical && horizontal)
-            moveSpeed /= 1.41421356f;
+            velocity /= 1.41421356f;
         else if (!(vertical || horizontal))
             return false;
 
-        transform.Translate(moveSpeed.x * Time.deltaTime, 0.0f, moveSpeed.y * Time.deltaTime);
-
+        transform.position += velocity * _PlayerSpeed * Time.deltaTime;
         return true;
     }
 }
