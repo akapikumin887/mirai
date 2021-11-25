@@ -4859,6 +4859,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4352500250921637130, guid: 0bee3a80810e8ab43a4d38a284b8d164, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c375032e2c30f704293de9af676000fb, type: 2}
     - target: {fileID: 5321073584452417021, guid: 0bee3a80810e8ab43a4d38a284b8d164, type: 3}
       propertyPath: destPoint
       value: 1
@@ -4895,6 +4899,10 @@ PrefabInstance:
       propertyPath: points.Array.data[6]
       value: 
       objectReference: {fileID: 128345205}
+    - target: {fileID: 7519482355075133751, guid: 0bee3a80810e8ab43a4d38a284b8d164, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c375032e2c30f704293de9af676000fb, type: 2}
     - target: {fileID: 8050045740473267353, guid: 0bee3a80810e8ab43a4d38a284b8d164, type: 3}
       propertyPath: m_Name
       value: LisEnemy

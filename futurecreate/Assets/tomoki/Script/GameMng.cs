@@ -8,6 +8,7 @@ public class GameMng : MonoBehaviour
     private List<GameObject> _Enemys = new List<GameObject>();
     private List<GameObject> _Traps = new List<GameObject>();
     private List<GameObject> _PathFindings = new List<GameObject>();
+    private Camera _Camera;
 
     void Awake()
     {
@@ -40,6 +41,8 @@ public class GameMng : MonoBehaviour
             foreach (var obj in points)
                 _PathFindings.Add(obj);
         }
+
+        //_Camera = Camera.GetAllCameras();
     }
 
     void Start()
