@@ -14,7 +14,7 @@ public class LisEnemy : MonoBehaviour
     {
         Patrol = 0,
         Chase,
-
+        None
     };
     public State state = State.Patrol;
 
