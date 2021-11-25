@@ -16,7 +16,7 @@ public class PlayerControl : MonoBehaviour
     private GameMng _GameManagerScript;
 
     //‘«‰¹”­¶ƒtƒŒ[ƒ€ŠÇ—
-    private uint _Frame = 0;
+    private uint _Frame;
 
     private List<GameObject> _PathFindings = new List<GameObject>();
 
