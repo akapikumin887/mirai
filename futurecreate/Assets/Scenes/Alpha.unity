@@ -969,7 +969,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 295722360621577235, guid: 600f18d4d8583fc4e87bc4aca09b1e24, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 295722360621577236, guid: 600f18d4d8583fc4e87bc4aca09b1e24, type: 3}
@@ -1530,7 +1530,7 @@ GameObject:
   - component: {fileID: 466845315}
   m_Layer: 0
   m_Name: cinemachine
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
