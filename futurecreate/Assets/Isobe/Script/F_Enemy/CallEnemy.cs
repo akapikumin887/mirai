@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class CallEnemy : MonoBehaviour
 {
+    [SerializeField] float WarningDistance;
     List<GameObject> enemy_list = new List<GameObject>();
     private GameObject GAMEMASTER;
     private GameObject Player;
@@ -23,18 +24,15 @@ public class CallEnemy : MonoBehaviour
     {
         float distance = Vector3.Distance(this.transform.position, Player.transform.position);
         Debug.Log(distance);
-        if (distance<7.5f)//プレイヤーが範囲内に入ったら
+
+        if (distance<WarningDistance)//プレイヤーが範囲内に入ったら
         {
-            //Enemyのステートを変更
             foreach (var item in enemy_list)
             {
-                item.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.TRACKING);
+                item.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PEPPER); //Enemyのステートを変更
+                item.GetComponent<NavMeshAgent>().SetDestination(this.transform.position);//Enemyを呼ぶ(目的地設定)
             }
-            //Enemyを呼ぶ(目的地設定)
-            foreach (var item in enemy_list)
-            {
-                item.GetComponent<NavMeshAgent>().SetDestination(this.transform.position);
-            }
+          
         } 
     }
 }
