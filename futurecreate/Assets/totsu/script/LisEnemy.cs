@@ -14,7 +14,7 @@ public class LisEnemy : MonoBehaviour
     {
         Patrol = 0,
         Chase,
-
+        None
     };
     public State state = State.Patrol;
 
@@ -48,7 +48,7 @@ public class LisEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        StateAct();
     }
 
 
@@ -58,15 +58,15 @@ public class LisEnemy : MonoBehaviour
         //足音を検知
         if (other.gameObject.tag == "footsteps")
         {
-            Debug.Log("足音検知");
-            //追っかけモードにする
-            SetTracking();
+            //Debug.Log("足音検知");
+            ////追っかけモードにする
+            //SetTracking();
 
-            //追跡解除地点を設定
-            GoalPos = other.transform.position;
+            ////追跡解除地点を設定
+            //GoalPos = other.transform.position;
 
-            //目指す座標設定
-            this.GetComponent<Enemy>().SetDestination(GoalPos);
+            ////目指す座標設定
+            //this.GetComponent<Enemy>().SetDestination(GoalPos);
 
 
 
@@ -78,18 +78,17 @@ public class LisEnemy : MonoBehaviour
         Sound_list.Add(other.gameObject);
         //Tag_list.Add(other.gameObject.tag);
 
-        if(Sound_list.Count != 0)
-        {
-            SelectTarget();
-        }
+       
     }
 
     void SelectTarget()
     {
-
-        for (int i = 0; i < Sound_list.Count; i++)
+        if (Sound_list.Count != 0)
         {
-            Tag_list.Add(Sound_list[i].gameObject.tag);
+            for (int i = 0; i < Sound_list.Count; i++)
+            {
+                Tag_list.Add(Sound_list[i].gameObject.tag);
+            }
         }
 
         //優先順位順に繰り返す
@@ -107,17 +106,11 @@ public class LisEnemy : MonoBehaviour
         item = "footstep";
         if (Tag_list.Contains(item))
         {
-            SetTracking();
-
-            //追跡解除地点を設定
-            GoalPos = Player.transform.position;
-
-            //目指す座標設定
-            this.GetComponent<Enemy>().SetDestination(GoalPos);
+            SetTracking(Player.transform.position);
             return;
         }
 
-
+       
 
         //bool only_fs = true;   //足音のみ検知
 
@@ -185,20 +178,20 @@ public class LisEnemy : MonoBehaviour
                 }
             }
         }
-        SetTracking();
 
-        //追跡解除地点を設定
-        GoalPos = Sound_list[dis_count].transform.position;
-
-        //目指す座標設定
-        this.GetComponent<Enemy>().SetDestination(GoalPos);
+        //最も近い地点を指定
+        SetTracking(Sound_list[dis_count].transform.position);
+        
     }
 
     void StateAct()
     {
         if (state == State.Patrol)
         {
-            //GetComponent<Renderer>().material.color = Color.white;
+            if (Sound_list.Count != 0)
+            {
+                SelectTarget();
+            }
         }
         else if (state == State.Chase)
         {
@@ -220,11 +213,21 @@ public class LisEnemy : MonoBehaviour
     }
 
     //追跡状態にする
-    public void SetTracking()
+    public void SetTracking(Vector3 pos)
     {
         //追っかけモードにする
         state = State.Chase;
         this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.TRACKING);
+
+        //追跡解除地点を設定
+        GoalPos = pos;
+
+        //目指す座標設定
+        this.GetComponent<Enemy>().SetDestination(GoalPos);
+
+        //サウンドリストとタグリストをリセット
+        Sound_list.Clear();
+        Tag_list.Clear();
     }
 
     //巡回状態にする
