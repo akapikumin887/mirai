@@ -6,25 +6,33 @@ using UnityEngine.AI;
 
 public class LisEnemy : MonoBehaviour
 {
-    //[SerializeField] GameObject pin;    //ピン
+//追跡関係=======================================================================
+    
+    //リスト系
     private List<GameObject> Sound_list = new List<GameObject>();
     private List<String> Tag_list = new List<String>();
 
-    public enum State   //状態
+    //敵の状態
+    public enum State   
     {
         Patrol = 0,
         Chase,
-        None
     };
     public State state = State.Patrol;
 
-    
+    //目標座標
+    private Vector3 GoalPos;
 
-    Vector3 GoalPos;
+    //プレイヤーを追いかけフラグ
+    private bool f_TrackingPlayer = false;
 
+     //目標地点及びプレイヤーとの接触判定距離(※後でちゃんと決めること)
+    [SerializeField] float TouchDis = 1.0f;
+
+//取得関係=======================================================================
     //NavMeshAgent Player_Nav;
     [SerializeField] GameObject Player;
-
+    
 
     // Start is called before the first frame update
     void Start()
@@ -51,34 +59,43 @@ public class LisEnemy : MonoBehaviour
         StateAct();
     }
 
+    private void LateUpdate()
+    {
+        //サウンドリストとタグリストをリセット
+        Sound_list.Clear();
+        Tag_list.Clear();
 
-
+    }
+    void StateAct()
+    {
+        if (state == State.Patrol)
+        {
+            if (Sound_list.Count != 0)
+            {
+                //SelectTarget();
+            }
+        }
+        else if (state == State.Chase)
+        {
+            if (Vector3.Distance(transform.position, GoalPos) <= TouchDis)
+            {
+                //巡回モードにする
+                SetPatrol();
+                
+            }
+        }
+    }
     void OnTriggerEnter(Collider other)
     {
-        //足音を検知
-        if (other.gameObject.tag == "footsteps")
-        {
-            //Debug.Log("足音検知");
-            ////追っかけモードにする
-            //SetTracking();
-
-            ////追跡解除地点を設定
-            //GoalPos = other.transform.position;
-
-            ////目指す座標設定
-            //this.GetComponent<Enemy>().SetDestination(GoalPos);
-
-
-
-            //Instantiate(pin, other.transform.position, Quaternion.identity);
-
-        }
-
-
         Sound_list.Add(other.gameObject);
-        //Tag_list.Add(other.gameObject.tag);
-
-       
+        if (state == State.Patrol && Sound_list.Count != 0) 
+        {
+            SelectTarget();
+        }
+        else if(state == State.Chase && f_TrackingPlayer)
+        {
+            SetTracking(Player.transform.position);
+        }
     }
 
     void SelectTarget()
@@ -90,6 +107,10 @@ public class LisEnemy : MonoBehaviour
                 Tag_list.Add(Sound_list[i].gameObject.tag);
             }
         }
+        else
+        {
+            return;
+        }
 
         //優先順位順に繰り返す
         string item;
@@ -100,13 +121,14 @@ public class LisEnemy : MonoBehaviour
             SetTarget(item);
             return;
         }
-
-
-
-        item = "footstep";
+        
+        //プレイヤーを追いかける
+        item = "footsteps";
         if (Tag_list.Contains(item))
         {
+            //Debug.Log(Player.transform.position);
             SetTracking(Player.transform.position);
+            f_TrackingPlayer = true;
             return;
         }
 
@@ -184,28 +206,7 @@ public class LisEnemy : MonoBehaviour
         
     }
 
-    void StateAct()
-    {
-        if (state == State.Patrol)
-        {
-            if (Sound_list.Count != 0)
-            {
-                SelectTarget();
-            }
-        }
-        else if (state == State.Chase)
-        {
-            if (Vector3.Distance(transform.position, GoalPos) <= 0.1f)
-            {
-                Debug.Log("目標地点到達");
-                //巡回モードにする
-                SetPatrol();
-
-                
-                
-            }
-        }
-    }
+    
 
     public State GetState()
     {
@@ -226,14 +227,15 @@ public class LisEnemy : MonoBehaviour
         this.GetComponent<Enemy>().SetDestination(GoalPos);
 
         //サウンドリストとタグリストをリセット
-        Sound_list.Clear();
-        Tag_list.Clear();
+        //Sound_list.Clear();
+        //Tag_list.Clear();
     }
 
     //巡回状態にする
     public void SetPatrol() 
     {
         state = State.Patrol;
+        f_TrackingPlayer = false;
         this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PATROL);
     }
 }

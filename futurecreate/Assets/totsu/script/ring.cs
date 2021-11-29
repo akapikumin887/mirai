@@ -5,8 +5,8 @@ using UnityEngine;
 public class ring : MonoBehaviour
 {
     [SerializeField] float SoundSize = 0.0f; //音の範囲
-    [SerializeField] int SoundTime = 1; //音の継続時間(F換算)
-    int frame = 0;
+    [SerializeField] float SoundTime = 1; //音の継続時間(F換算)
+    float frame = 0;
 
     private void Start()
     {
@@ -16,23 +16,23 @@ public class ring : MonoBehaviour
     // 当たり判定より後に消したいためLateUpdate
     void LateUpdate()
     {
-        if (SoundTime >= 1)
+        frame += Time.deltaTime;
+       
+        //継続時間終了後に消す
+        if (frame >= SoundTime)
         {
-            //継続時間終了後に消す
-            if (frame++ >= SoundTime)
-            {
-                Destroy(this.gameObject);
-            }
+            Destroy(this.gameObject);
         }
+        
     }
 
     //外部スクリプトからパラメータをセットする
-    public void SetBell(float soundsize,int soundtime,string tag_name = "footsteps" )
+    public void SetBell(float soundsize,float soundtime,string tag_name = "footsteps" )
     {
         SoundSize = soundsize;
-        SoundTime = soundtime;
+        SoundTime = soundtime / 60;
         this.tag = tag_name;
-        Debug.Log("タグ : "+ tag_name);
+        //Debug.Log("タグ : "+ tag_name);
         this.transform.localScale = new Vector3(SoundSize, SoundSize, SoundSize);
     }
 }

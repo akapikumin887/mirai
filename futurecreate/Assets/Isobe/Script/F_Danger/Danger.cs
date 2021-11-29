@@ -59,8 +59,6 @@ public class Danger : MonoBehaviour
                     float plus = angle + offset > 360.0f ? angle + offset - 360.0f : angle + offset;
                     float minus = angle - offset < 0.0f ? angle - offset + 360.0f : angle - offset;
 
-                    Debug.Log(GetAngle(player.transform.position, enemy_list[0].transform.position));
-
 
                     if (i == 0)//i‚ª0‚ÌŽž‚¾‚¯0“x‚æ‚è¬‚³‚¢‚ª360“xˆÈ‰º‚É•Ï‚í‚é‚Ì‚Å•Ê˜g
                     {

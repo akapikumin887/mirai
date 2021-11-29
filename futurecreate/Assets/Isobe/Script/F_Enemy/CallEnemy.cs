@@ -14,7 +14,7 @@ public class CallEnemy : MonoBehaviour
     void Start()
     {
         GAMEMASTER = GameObject.FindGameObjectWithTag("Manager");
-        Player = GameObject.FindGameObjectWithTag("Player");
+        Player = GAMEMASTER.GetComponent<GameMng>().GetPlayer(); 
         enemy_list = GAMEMASTER.GetComponent<GameMng>().GetEnemy();//ÀÛ‚É‚Í‚±‚±‚ÅEnemyManager‚©‚çEnemy‚ÌƒŠƒXƒg‚ğæ“¾
        
     }
