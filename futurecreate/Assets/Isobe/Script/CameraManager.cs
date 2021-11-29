@@ -7,7 +7,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] GameObject Player;
     Vector3 Center;
 
-
+    List<Collider> colliders = new List<Collider>();
 
     // Start is called before the first frame update
     void Start()
@@ -32,31 +32,48 @@ public class CameraManager : MonoBehaviour
         RaycastHit hit;
 
         Vector3 Player_direction = (Player.transform.position - this.transform.position).normalized;
-        Debug.DrawRay(Player.transform.position, Player_direction* 50, Color.red, 100000, true);
+        //Debug.DrawRay(Player.transform.position, Player_direction* 50, Color.red, 100000, true);
 
         if (Physics.Raycast(this.transform.position, Player_direction, out hit, Mathf.Infinity))            //プレイヤーからカメラにレイを飛ばす
         {
             //GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 
             //Debug.Log(hit.collider.tag);
-            Debug.Log(this.transform.position);
+            //Debug.Log(this.transform.position);
 
 
             if (hit.collider.tag == "wall")
             {
-                hit.collider.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
-                Debug.Log("atatta"); 
-            }
+                //Debug.Log("atatta"); 
 
-            if (hit.collider.tag == "Player")
-            {
-                GameObject[] walls = GameObject.FindGameObjectsWithTag("wall");
-                foreach (GameObject wall in walls)
+                //タグを入れていく
+                if(colliders.Count == 0)
                 {
-                    wall.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                    colliders.Add(hit.collider);
+                    hit.collider.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+                    return;
+                }
+                //比べる
+                hit.collider.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+                foreach (Collider c in colliders)
+                {
+                    if(c == hit.collider)   //もう入っていたら
+                    {
+                        continue;
+                    }
+                   // c.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
                 }
             }
 
+            //if (hit.collider.tag == "Player")
+            //{
+            //    GameObject[] walls = GameObject.FindGameObjectsWithTag("wall");
+            //    foreach (GameObject wall in walls)
+            //    {
+            //        wall.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            //    }
+            //}
         }
+
     }
 }
