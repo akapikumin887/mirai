@@ -30,7 +30,7 @@ public class ring : MonoBehaviour
     public void SetBell(float soundsize,float soundtime,string tag_name = "footsteps" )
     {
         SoundSize = soundsize;
-        SoundTime = soundtime * 60;
+        SoundTime = soundtime / 60;
         this.tag = tag_name;
         //Debug.Log("É^ÉO : "+ tag_name);
         this.transform.localScale = new Vector3(SoundSize, SoundSize, SoundSize);
