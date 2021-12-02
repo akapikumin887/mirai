@@ -12,9 +12,6 @@ public class EnemyVisibility : MonoBehaviour
     GameObject GAMEMASTER;
     GameMng game_mng;
 
-
-    // ENEMY_TYPE eNEMY_TYPE;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -45,8 +42,6 @@ public class EnemyVisibility : MonoBehaviour
             {
                 if (hit.collider.tag == "Player")   //プレイヤーまで障害物がないとき
                 {
-                                                                                  //  GetComponent<NavMeshAgent>().isStopped = false;               //ナビゲーションを使う
-                    //Debug.Log("追っかけるよー");
                     this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.TRACKING);        //Enemyの行動パターンの変更　パトロールのパターンに変更
                     this.GetComponent<Enemy>().SetDestination(Player.transform.position);
                     return;
