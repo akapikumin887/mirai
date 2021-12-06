@@ -99,6 +99,12 @@ public class Enemy : MonoBehaviour
                 GetComponent<Renderer>().material.color = Color.blue; //色を変える
                 GetComponent<NavMeshAgent>().isStopped = false;
                 agent.SetDestination(Destination);
+                // 現目的地に近づいたら次の目的地を選択
+                if (!agent.pathPending && agent.remainingDistance < 0.5f)
+                {
+                    GotoNextPoint();
+                    SetEnemyType(ENEMY_TYPE.PATROL);
+                }
                 break;
         }
 

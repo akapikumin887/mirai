@@ -10,6 +10,8 @@ public class CallEnemy : MonoBehaviour
     List<GameObject> enemy_list = new List<GameObject>();
     private GameObject GAMEMASTER;
     private GameObject Player;
+    private bool flag=true;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,12 +29,19 @@ public class CallEnemy : MonoBehaviour
 
         if (distance<WarningDistance)//プレイヤーが範囲内に入ったら
         {
-            foreach (var item in enemy_list)
+            if (flag)
             {
-                item.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PEPPER); //Enemyのステートを変更
-                item.GetComponent<NavMeshAgent>().SetDestination(this.transform.position);//Enemyを呼ぶ(目的地設定)
+                foreach (var item in enemy_list)
+                {
+                    item.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PEPPER); //Enemyのステートを変更
+                    item.GetComponent<Enemy>().SetDestination(this.transform.position);//Enemyを呼ぶ(目的地設定)
+                }
+                flag = false;
             }
-          
-        } 
+        }
+        else
+        {
+            flag= true;
+        }
     }
 }
