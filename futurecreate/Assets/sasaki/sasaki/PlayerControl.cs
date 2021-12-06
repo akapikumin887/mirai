@@ -22,10 +22,14 @@ public class PlayerControl : MonoBehaviour
 
     private float _Time;
 
+    private Rigidbody rb;
+
     void Start()
     {
         _GameManagerScript = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameMng>();
         _PathFindings = _GameManagerScript.GetPathFinding();
+
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -39,6 +43,10 @@ public class PlayerControl : MonoBehaviour
                 _Frame++;
                 _Time = 0.0f;
             }
+        }
+        else
+        {
+            _Frame = 0;
         }
 
         // ¶ƒNƒŠƒbƒN
@@ -99,7 +107,11 @@ public class PlayerControl : MonoBehaviour
         else if (!(vertical || horizontal))
             return false;
 
-        transform.position += velocity * _PlayerSpeed * Time.deltaTime;
+        //transform.position += velocity * _PlayerSpeed * Time.deltaTime;
+        rb.AddForce(velocity * _PlayerSpeed, ForceMode.Force);
+        if (rb.velocity.magnitude >= 1.5f)
+            rb.velocity = rb.velocity.normalized * 1.5f;
+        //transform.Rotate(0.0f, 0.0f, 0.0f);
         return true;
     }
 }
