@@ -2203,7 +2203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 504b037453b19224b905cb2e92218678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _PlayerSpeed: 3
+  _PlayerSpeed: 1.8
   _FrameCount: 40
   _Bell: {fileID: 1398721664031847351, guid: 95eb86e52bda7b94bad0d1f9743ee3d1, type: 3}
 --- !u!65 &512881124

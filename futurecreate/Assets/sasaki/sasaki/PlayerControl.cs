@@ -108,10 +108,14 @@ public class PlayerControl : MonoBehaviour
             return false;
 
         //transform.position += velocity * _PlayerSpeed * Time.deltaTime;
-        rb.AddForce(velocity * _PlayerSpeed, ForceMode.Force);
-        if (rb.velocity.magnitude >= 1.5f)
-            rb.velocity = rb.velocity.normalized * 1.5f;
         //transform.Rotate(0.0f, 0.0f, 0.0f);
+
+        //ˆÚ“®
+        rb.velocity = velocity * _PlayerSpeed;
+
+
+
+        //Œü‚«‚àƒxƒNƒgƒ‹‚É‡‚í‚¹‚é
         return true;
     }
 }
