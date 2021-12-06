@@ -34,7 +34,7 @@ public class LisEnemy : MonoBehaviour
     [SerializeField] GameObject Player;
 
     //Enemy取得
-    [SerializeField] GameObject Ene;
+    //[SerializeField] GameObject Ene;
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +52,7 @@ public class LisEnemy : MonoBehaviour
         }
 
         //Enemyスクリプトを取得
-        Enemy enescr = Ene.GetComponent<Enemy>();
+        //Enemy enescr = Ene.GetComponent<Enemy>();
     }
 
     // Update is called once per frame
@@ -68,6 +68,7 @@ public class LisEnemy : MonoBehaviour
         Tag_list.Clear();
 
     }
+
     void StateAct()
     {
         if (Vector3.Distance(transform.position, GoalPos) <= TouchDis)
@@ -77,6 +78,7 @@ public class LisEnemy : MonoBehaviour
                         
         }
     }
+
     void OnTriggerEnter(Collider other)
     {
         Sound_list.Add(other.gameObject);
