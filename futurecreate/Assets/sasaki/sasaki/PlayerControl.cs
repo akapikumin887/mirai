@@ -108,10 +108,14 @@ public class PlayerControl : MonoBehaviour
             return false;
 
         //transform.position += velocity * _PlayerSpeed * Time.deltaTime;
-        rb.AddForce(velocity * _PlayerSpeed, ForceMode.Force);
-        if (rb.velocity.magnitude >= 1.5f)
-            rb.velocity = rb.velocity.normalized * 1.5f;
         //transform.Rotate(0.0f, 0.0f, 0.0f);
+
+        //移動と向き変更
+        rb.velocity = velocity * _PlayerSpeed;
+        transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
+
+
+        //向きもベクトルに合わせる
         return true;
     }
 }
