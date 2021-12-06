@@ -5,57 +5,49 @@ using UnityEngine.AI;
 
 public class key : MonoBehaviour
 {
-    NavMeshAgent Player_Nav;
-    GameObject Player;
-    GameObject GAMEMASTER;
-    GameMng game_mng;
-
     bool key_code1 = false;
     bool key_code2 = false;
+    float key_dis;
+    float door_dis;
+
+    GameObject Key;
+    GameObject Door;
 
     // Start is called before the first frame update
     void Start()
     {
-        GAMEMASTER = GameObject.FindGameObjectWithTag("Manager");
-        game_mng = GAMEMASTER.GetComponent<GameMng>();
-
-        // 目的地のオブジェクトを取得
-        Player = game_mng.GetPlayer();
+        Key = GameObject.Find("key");
+        Door = GameObject.Find("door");
     }
 
     // Update is called once per frame
     void Update()
     {
-        {         //float player_hitx = 0.0f;
-                  //float player_hitz = 0.0f;
-                  //float player_hit = 0.0f;
-
-            //player_hitx = (this.transform.position.x - Player.transform.position.x) * (this.transform.position.x - Player.transform.position.x);
-            //player_hitz = (this.transform.position.z - Player.transform.position.z) * (this.transform.position.z - Player.transform.position.z);
-
-            //player_hit = (player_hitx + player_hitz) * (player_hitx + player_hitz);
-
-            //if(player_hit < 5)
-            //{
-            //    
-            //}
-        }
-    }
-    void OnCollisionEnter(Collision collision)          //キーと当たった時オブジェクトを消す
-    {
-        // もし衝突した相手オブジェクトの名前が"Cube"ならば
-        if (collision.gameObject.name == "key")         //キーに当たったら
+        if(Key == true)
         {
-            // 衝突した相手オブジェクトを削除する
-            Destroy(collision.gameObject);
-            Getkey2();
+            key_dis = Vector3.Distance(Key.transform.position, this.transform.position);           //２点間の距離をとる
         }
 
-        if(collision.gameObject.name == "door")         //ドアに当たったら
+        if(Door == true)
         {
-            if(key_code1 == true)                       //低レベルのカギを持っていれば
+            door_dis = Vector3.Distance(Door.transform.position, this.transform.position);
+        }
+
+        if (key_dis <= 2.0f)
+        {
+            if(Input.GetKey(KeyCode.E) )
             {
-                Destroy(collision.gameObject);
+                // 衝突した相手オブジェクトを削除する
+                Destroy(Key.gameObject);
+                Getkey2();
+            }
+        }
+
+        if (door_dis <= 2.0f)                       //低レベルのカギを持っていれば
+        {
+            if(Input.GetKey(KeyCode.E)&& key_code2 == true)
+            {
+                Destroy(Door.gameObject);
             }
         }
     }
