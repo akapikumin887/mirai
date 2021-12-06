@@ -110,7 +110,7 @@ public class PlayerControl : MonoBehaviour
         //transform.position += velocity * _PlayerSpeed * Time.deltaTime;
         //transform.Rotate(0.0f, 0.0f, 0.0f);
 
-        //ˆÚ“®
+        //ˆÚ“®‚ÆŒü‚«•ÏX
         rb.velocity = velocity * _PlayerSpeed;
 
 
