@@ -132,8 +132,8 @@ public class PlayerControl : MonoBehaviour
 
         //移動と向き変更
         rb.velocity = velocity * _PlayerSpeed;
-        transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
-
+        //transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(rb.velocity, Vector3.up), 200.0f * Time.deltaTime);
 
         //向きもベクトルに合わせる
         return true;
