@@ -13,13 +13,14 @@ public class PivotColliderController : MonoBehaviour
     [SerializeField] Transform m_start;
     /// <summary>コライダーの終点</summary>
     [SerializeField] Transform m_end;
+    [SerializeField] Vector2 size;//透明化する範囲調整
 
     private BoxCollider col;
     void Start()
     {
         col = GetComponent<BoxCollider>();
         //col.size = new Vector3(m_end.GetComponent<BoxCollider>().size.x, m_end.GetComponent<BoxCollider>().size.y, col.size.z);
-        col.size = new Vector3(1.0f, 1.5f, col.size.z);
+        col.size = new Vector3(size.x, size.y, col.size.z);
         if (!m_start || !m_end)
         {
             Debug.LogError(name + " needs both Start and End.");
