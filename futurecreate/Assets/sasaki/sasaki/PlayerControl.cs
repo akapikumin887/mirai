@@ -28,10 +28,9 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         _GameManagerScript = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameMng>();
         _PathFindings = _GameManagerScript.GetPathFinding();
-
-        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
