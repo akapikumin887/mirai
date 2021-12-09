@@ -2148,7 +2148,7 @@ MonoBehaviour:
   m_start: {fileID: 354603515}
   m_end: {fileID: 2039007715}
   size: {x: 1, y: 1.5}
-  offset_z: 0
+  offset_z: -2
 --- !u!65 &1582889707
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2354,7 +2354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 504b037453b19224b905cb2e92218678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _PlayerSpeed: 2
+  _PlayerSpeed: 5
   _FrameCount: 15
   _Bell: {fileID: 1398721664031847351, guid: 95eb86e52bda7b94bad0d1f9743ee3d1, type: 3}
 --- !u!65 &2039007717
