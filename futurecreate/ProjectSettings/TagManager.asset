@@ -12,6 +12,7 @@ TagManager:
   - Manager
   - Point
   - Trap
+  - key
   layers:
   - Default
   - TransparentFX

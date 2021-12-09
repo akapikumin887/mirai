@@ -52,7 +52,21 @@ public class GameMng : MonoBehaviour
 
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            var controllerNames = Input.GetJoystickNames();
+            if (controllerNames[0] == "")
+                Debug.Log("コントローラー未接続");
+            else
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (controllerNames[i] == null)
+                        break;
+                    Debug.Log(controllerNames[i]);
+                }
+            }
+        }
     }
     public GameObject GetPlayer() { return _Pleyer; }
 

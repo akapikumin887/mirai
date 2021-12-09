@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 /*NavMesh
 using UnityEngine.AI;
 //*/
@@ -22,8 +24,11 @@ public class PlayerControl : MonoBehaviour
 
     private float _Time;
 
+    private Rigidbody rb;
+
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         _GameManagerScript = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameMng>();
         _PathFindings = _GameManagerScript.GetPathFinding();
     }
@@ -39,6 +44,10 @@ public class PlayerControl : MonoBehaviour
                 _Frame++;
                 _Time = 0.0f;
             }
+        }
+        else
+        {
+            _Frame = 0;
         }
 
         // 左クリック
@@ -60,9 +69,9 @@ public class PlayerControl : MonoBehaviour
         //ベルを生成して疑似的に足音を発生させる
         if (_Frame > _FrameCount)
         {
-            GameObject bell = Instantiate(_Bell,transform.position,Quaternion.identity);
+            GameObject bell = Instantiate(_Bell, transform.position, Quaternion.identity);
             ring b = bell.GetComponent<ring>();
-            b.SetBell(20,1);
+            b.SetBell(20, 1);
             _Frame = 0;
         }
     }
@@ -74,24 +83,42 @@ public class PlayerControl : MonoBehaviour
         bool horizontal = false;
 
         Vector3 velocity = Vector3.zero;
-
-        //左右判定
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        
+        // ゲームパッドが接続されていないとnullになる。
+        if (Gamepad.current == null)
         {
-            int abs = Input.GetKey(KeyCode.A) ? -1 : 1;
-            velocity.x += 0.5f * abs;
-            velocity.z -= 0.5f * abs;
+            //左右判定
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            {
+                int abs = Input.GetKey(KeyCode.A) ? -1 : 1;
+                velocity.x += 0.5f * abs;
+                velocity.z -= 0.5f * abs;
+                vertical = true;
+            }
+
+            //上下判定
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+            {
+                int abs = Input.GetKey(KeyCode.S) ? -1 : 1;
+                velocity.x += 0.5f * abs;
+                velocity.z += 0.5f * abs;
+                horizontal = true;
+            }
+
+        }
+        else
+        {
+            Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
+
+            // 方向キーの入力値とカメラの向きから、移動方向を決定
+            Vector3 moveForward = cameraForward * Gamepad.current.leftStick.ReadValue().y + Camera.main.transform.right * Gamepad.current.leftStick.ReadValue().x;
+
+            // 移動方向にスピードを掛ける。ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す。
+            velocity = moveForward + new Vector3(0, rb.velocity.y, 0);
+
             vertical = true;
         }
 
-        //上下判定
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
-        {
-            int abs = Input.GetKey(KeyCode.S) ? -1 : 1;
-            velocity.x += 0.5f * abs;
-            velocity.z += 0.5f * abs;
-            horizontal = true;
-        }
 
         //斜め入力の加速を無くす
         if (vertical && horizontal)
@@ -99,7 +126,15 @@ public class PlayerControl : MonoBehaviour
         else if (!(vertical || horizontal))
             return false;
 
-        transform.position += velocity * _PlayerSpeed * Time.deltaTime;
+        //transform.position += velocity * _PlayerSpeed * Time.deltaTime;
+        //transform.Rotate(0.0f, 0.0f, 0.0f);
+
+        //移動と向き変更
+        rb.velocity = velocity * _PlayerSpeed;
+        //transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(rb.velocity, Vector3.up), 200.0f * Time.deltaTime);
+
+        //向きもベクトルに合わせる
         return true;
     }
 }

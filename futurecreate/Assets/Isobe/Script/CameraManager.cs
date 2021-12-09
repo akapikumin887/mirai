@@ -18,17 +18,11 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //簡易的な追従
-        //transform.position = new Vector3(Player.transform.position.x, transform.position.y, Player.transform.position.z-5.5f);
-        //Debug.Log(transform.position);
-
         test();
     }
 
     void test ()
     {
-
-
         RaycastHit hit;
 
         Vector3 Player_direction = (Player.transform.position - this.transform.position).normalized;
@@ -36,16 +30,9 @@ public class CameraManager : MonoBehaviour
 
         if (Physics.Raycast(this.transform.position, Player_direction, out hit, Mathf.Infinity))            //プレイヤーからカメラにレイを飛ばす
         {
-            //GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-
-            //Debug.Log(hit.collider.tag);
-            //Debug.Log(this.transform.position);
-
 
             if (hit.collider.tag == "wall")
             {
-                //Debug.Log("atatta"); 
-
                 //タグを入れていく
                 if(colliders.Count == 0)
                 {
@@ -61,18 +48,8 @@ public class CameraManager : MonoBehaviour
                     {
                         continue;
                     }
-                   // c.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
                 }
             }
-
-            //if (hit.collider.tag == "Player")
-            //{
-            //    GameObject[] walls = GameObject.FindGameObjectsWithTag("wall");
-            //    foreach (GameObject wall in walls)
-            //    {
-            //        wall.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-            //    }
-            //}
         }
 
     }
