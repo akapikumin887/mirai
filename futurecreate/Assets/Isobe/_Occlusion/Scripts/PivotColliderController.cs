@@ -14,7 +14,7 @@ public class PivotColliderController : MonoBehaviour
     /// <summary>コライダーの終点</summary>
     [SerializeField] Transform m_end;
     [SerializeField] Vector2 size;//透明化する範囲調整
-
+    [SerializeField] float offset_z;
     private BoxCollider col;
     void Start()
     {
@@ -37,7 +37,7 @@ public class PivotColliderController : MonoBehaviour
             Vector3 dir = m_end.position - transform.position;
             transform.forward = dir;
             float distance = Vector3.Distance(m_start.position, m_end.position);
-            col.size = new Vector3(col.size.x, col.size.y, distance);
+            col.size = new Vector3(col.size.x, col.size.y, distance+offset_z);
         }
     }
 }

@@ -2147,7 +2147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_start: {fileID: 354603515}
   m_end: {fileID: 2039007715}
-  size: {x: 10, y: 1.5}
+  size: {x: 1, y: 1.5}
+  offset_z: 0
 --- !u!65 &1582889707
 BoxCollider:
   m_ObjectHideFlags: 0
