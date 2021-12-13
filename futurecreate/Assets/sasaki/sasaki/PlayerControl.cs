@@ -100,7 +100,7 @@ public class PlayerControl : MonoBehaviour
         {
             GetComponent<Animator>().SetBool("run", true);
         }
-
+        Debug.Log(Gamepad.current);
         // ゲームパッドが接続されていないとnullになる。
         if (Gamepad.current == null)
         {

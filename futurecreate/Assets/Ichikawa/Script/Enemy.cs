@@ -195,4 +195,13 @@ public class Enemy : MonoBehaviour
     {
         return playerPath;
     }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            game_mng.SetGameOver(true);
+        }
+    }
 }
