@@ -9,6 +9,7 @@ public class GameMng : MonoBehaviour
     private List<GameObject> _Traps = new List<GameObject>();
     private List<GameObject> _PathFindings = new List<GameObject>();
     private Camera _Camera;
+    private bool GameOver;//trueでゲームオーバー
 
     void Awake()
     {
@@ -67,6 +68,11 @@ public class GameMng : MonoBehaviour
                 }
             }
         }
+
+        if (GameOver)
+        {
+            scene_manager.FadeOut(0);
+        }
     }
     public GameObject GetPlayer() { return _Pleyer; }
 
@@ -113,4 +119,6 @@ public class GameMng : MonoBehaviour
     public List<GameObject> GetTrap() { return _Traps; }
 
     public List<GameObject> GetPathFinding() { return _PathFindings; }
+
+    public void SetGameOver(bool flag) { GameOver = flag; }
 }
