@@ -27,8 +27,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 120, y: 120, z: 120}
   m_Children:
-  - {fileID: 1399115923529845570}
   - {fileID: 1256303443174687577}
+  - {fileID: 1399115923529845570}
   - {fileID: 6596404402371852680}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -44,8 +44,9 @@ GameObject:
   - component: {fileID: 1256303443174687577}
   - component: {fileID: 2924177761145619335}
   - component: {fileID: 5489932758189072676}
+  - component: {fileID: 7060097917552540041}
   m_Layer: 0
-  m_Name: slidedoorB
+  m_Name: slideGate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,11 +60,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1087313401334428350}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 916089454001818049}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2924177761145619335
 MeshFilter:
@@ -114,6 +115,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7060097917552540041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087313401334428350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d60a116775e11442b0130a932ecf938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_step: 0.01
 --- !u!1 &2689627024216499092
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,6 +139,7 @@ GameObject:
   - component: {fileID: 1399115923529845570}
   - component: {fileID: 5848680974542910774}
   - component: {fileID: 122676905920726800}
+  - component: {fileID: 7505736375168770255}
   m_Layer: 0
   m_Name: slidedoorA
   m_TagString: Untagged
@@ -144,7 +159,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 916089454001818049}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5848680974542910774
 MeshFilter:
@@ -195,6 +210,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7505736375168770255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2689627024216499092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d60a116775e11442b0130a932ecf938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_step: 0.01
 --- !u!1 &7864454360294983897
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,8 +234,9 @@ GameObject:
   - component: {fileID: 6596404402371852680}
   - component: {fileID: 3430661586460052397}
   - component: {fileID: 8089499655176328487}
+  - component: {fileID: 5069022267639863522}
   m_Layer: 0
-  m_Name: slideGate
+  m_Name: slidedoorB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -276,3 +305,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5069022267639863522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7864454360294983897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d60a116775e11442b0130a932ecf938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_step: 0.01

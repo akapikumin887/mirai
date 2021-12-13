@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3975455162231381845}
   - component: {fileID: 1211274931063204767}
   - component: {fileID: 523963202910903508}
+  - component: {fileID: 7514958517666609089}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -62,6 +63,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 6d220ded9e0d9bc4194ad16b130b247b, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,6 +98,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_step: 0.01
+--- !u!65 &7514958517666609089
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851088322279508554}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.05, z: 0.002}
+  m_Center: {x: 0, y: 0.025, z: 0}
 --- !u!1001 &3590221655441731278
 PrefabInstance:
   m_ObjectHideFlags: 0
