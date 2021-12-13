@@ -22,6 +22,21 @@ public class Enemy : MonoBehaviour
 
     private NavMeshAgent agent;
 
+    // 足跡プレハブ格納場所
+    public GameObject footPrint_L;
+    public GameObject footPrint_R;
+
+    // 足跡生成フレーム管理
+    private uint frame;
+    // 足跡生成間隔
+    public uint frameCount;
+    // 左右管理(trueで右falseで左)
+    private bool footPrint_RoL;
+    // 足跡の生成場所-----------------------------------------------------------------------------------
+    private Vector3 footPrintPotision;
+    // 足跡の生成角度
+    private Quaternion footPrintAngle;
+
     // 次の目的地
     [SerializeField] int destPoint = 1;
     // プレイヤーの位置
@@ -50,6 +65,15 @@ public class Enemy : MonoBehaviour
 
         // autoBrakingを無効にすると目的地に近づいても速度が落ちない
         agent.autoBraking = false;
+
+        // 足跡生成フレーム初期化
+        frame = 0;
+        // 右足跡から生成
+        footPrint_RoL = true;
+        // 足跡生成場所初期化-------------------------------------------------------------------------
+        footPrintPotision = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y, this.transform.localPosition.z);
+        // 足跡生成角度初期化
+        footPrintAngle = Quaternion.Euler(this.transform.localEulerAngles.x + 90.0f, this.transform.localEulerAngles.y, this.transform.localEulerAngles.z - 90.0f);
 
         // プレイヤーへのパス初期化
         playerPath = new NavMeshPath();
@@ -108,6 +132,28 @@ public class Enemy : MonoBehaviour
                 break;
         }
 
+        frame++;
+
+        // 足跡生成--------------------------------------------------------------------------------
+        if (frame > frameCount)
+        {
+            if (footPrint_RoL)
+            {
+                // 右足跡
+                footPrintPotision = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y, this.transform.localPosition.z - 0.2f);
+                Instantiate(footPrint_R, footPrintPotision, footPrintAngle);
+                footPrint_RoL = false;
+            }
+            else
+            {
+                // 左足跡
+                footPrintPotision = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y, this.transform.localPosition.z + 0.2f);
+                Instantiate(footPrint_L, footPrintPotision, footPrintAngle);
+                footPrint_RoL = true;
+            }
+            frame = 0;
+        }
+
         // プレイヤーへのパス計算
         NavMesh.CalculatePath(transform.position, points[playerPoint].position, NavMesh.AllAreas, playerPath);
     }
@@ -148,5 +194,14 @@ public class Enemy : MonoBehaviour
     public NavMeshPath GetToPlayerPath()
     {
         return playerPath;
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            game_mng.SetGameOver(true);
+        }
     }
 }

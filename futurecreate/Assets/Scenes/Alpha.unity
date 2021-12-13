@@ -5875,6 +5875,22 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6225079897152043359, guid: 666a046e515c2774eba76d54e2e0b99c, type: 3}
+      propertyPath: frameCount
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6225079897152043359, guid: 666a046e515c2774eba76d54e2e0b99c, type: 3}
+      propertyPath: _FrameCount
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 6225079897152043359, guid: 666a046e515c2774eba76d54e2e0b99c, type: 3}
+      propertyPath: footPrint_L
+      value: 
+      objectReference: {fileID: 9026116702965889150, guid: ebdbda6016902a048ae9d9bcbbf6bd2f, type: 3}
+    - target: {fileID: 6225079897152043359, guid: 666a046e515c2774eba76d54e2e0b99c, type: 3}
+      propertyPath: footPrint_R
+      value: 
+      objectReference: {fileID: 8881907086572217497, guid: c7f7c1cd08256804a970be4d96d3ee54, type: 3}
+    - target: {fileID: 6225079897152043359, guid: 666a046e515c2774eba76d54e2e0b99c, type: 3}
       propertyPath: points.Array.size
       value: 7
       objectReference: {fileID: 0}
@@ -6096,6 +6112,22 @@ PrefabInstance:
       propertyPath: destPoint
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5321073584452417021, guid: 0bee3a80810e8ab43a4d38a284b8d164, type: 3}
+      propertyPath: frameCount
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5321073584452417021, guid: 0bee3a80810e8ab43a4d38a284b8d164, type: 3}
+      propertyPath: _FrameCount
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 5321073584452417021, guid: 0bee3a80810e8ab43a4d38a284b8d164, type: 3}
+      propertyPath: footPrint_L
+      value: 
+      objectReference: {fileID: 9026116702965889150, guid: ebdbda6016902a048ae9d9bcbbf6bd2f, type: 3}
+    - target: {fileID: 5321073584452417021, guid: 0bee3a80810e8ab43a4d38a284b8d164, type: 3}
+      propertyPath: footPrint_R
+      value: 
+      objectReference: {fileID: 8881907086572217497, guid: c7f7c1cd08256804a970be4d96d3ee54, type: 3}
     - target: {fileID: 5321073584452417021, guid: 0bee3a80810e8ab43a4d38a284b8d164, type: 3}
       propertyPath: points.Array.size
       value: 7
