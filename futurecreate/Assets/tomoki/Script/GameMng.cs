@@ -78,7 +78,7 @@ public class GameMng : MonoBehaviour
 
         if (GameOver)
         {
-            scene_manager.FadeOut(0);
+            scene_manager.FadeOut(3);
         }
     }
     public GameObject GetPlayer() { return _Pleyer; }
