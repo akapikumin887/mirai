@@ -67,31 +67,19 @@ public class key : MonoBehaviour
         //    }
         //}
     }
-    void OnTriggerStay(Collider other)
-    { 
-        Debug.Log("atatta");
-        //接触しているオブジェクトのタグが"Player"のとき
-        if (other.CompareTag("Player"))
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == ("key") )
         {
-            Destroy(this.gameObject);
-            ////オブジェクトの色を赤に変更する
-            //GetComponent<Renderer>().material.color = Color.red;
+            Destroy(collision.gameObject);
+            Getkey1();
         }
+
+        if (collision.gameObject.tag == ("door") && key_code1 == true)
+            Destroy(collision.gameObject);
+
     }
-
-    //void OnCollisionEnter(Collision collision)
-    //{
-    //    Debug.Log("atatta");
-    //    if (collision.gameObject.tag == ("key"))
-    //    {
-    //        Destroy(collision.gameObject);
-    //        Getkey1();
-    //    }
-
-    //    if (collision.gameObject.tag == ("door") && key_code1 == true)
-    //        Destroy(collision.gameObject);
-
-    //}
 
 
     void Getkey1()
