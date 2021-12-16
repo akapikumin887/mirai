@@ -9,9 +9,6 @@ public class DoorController : MonoBehaviour
     private List<GameObject> enemy_list = new List<GameObject>();
     private bool door;//trueÇ≈ÉIÅ[ÉvÉì
 
-    public AnimationClip opendoor;
-    public AnimationClip closedoor;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -24,19 +21,15 @@ public class DoorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(this.transform.position, Player.transform.position) <= 3.0f&&!door)
+        if (Vector3.Distance(this.transform.position, Player.transform.position) <= 5.0f&&!door)
         {
             Animation animation = this.GetComponent<Animation>();
-            animation.Stop();
-            animation.clip = opendoor;
             animation.Play("opendoor");
             door = true;
         }
-        else if(Vector3.Distance(this.transform.position, Player.transform.position) > 3.0f && door)
+        else if(Vector3.Distance(this.transform.position, Player.transform.position) > 5.0f && door)
         {
             Animation animation = this.GetComponent<Animation>();
-            animation.Stop();
-            animation.clip = closedoor;
             animation.Play("closedoor");
             door = false;
         }
