@@ -135,7 +135,7 @@ public class Enemy : MonoBehaviour
         frame++;
 
         // ‘«Õ¶¬--------------------------------------------------------------------------------
-        if (frame > frameCount)
+        if (frame > frameCount)//ƒ¢time’Ç‰Á‚·‚é
         {
             if (footPrint_RoL)
             {
