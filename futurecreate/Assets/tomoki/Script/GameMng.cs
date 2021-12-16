@@ -11,6 +11,13 @@ public class GameMng : MonoBehaviour
     private Camera _Camera;
     private bool GameOver;//trueでゲームオーバー
 
+    //public GameObject _Pleyer { set; get; }
+    //public List<GameObject> _Enemys { set; get; } = new List<GameObject>();
+    //public List<GameObject> _Traps { set; get; } = new List<GameObject>();
+    //public List<GameObject> _PathFindings { set; get; } = new List<GameObject>();
+    //public bool GameOver { sey; get; }//trueでゲームオーバー
+
+
     void Awake()
     {
         //プレイヤーの取得
