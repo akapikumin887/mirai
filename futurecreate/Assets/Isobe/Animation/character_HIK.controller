@@ -36,7 +36,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Runing
-  m_Speed: 1.5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 3576226742220443917}
@@ -50,7 +50,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: d4e499907ea7dfe488c156d0a1e2d55d, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: d0948578e9519024389e3090c46e31d7, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

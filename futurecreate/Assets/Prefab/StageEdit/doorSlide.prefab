@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 2924177761145619335}
   - component: {fileID: 5489932758189072676}
   - component: {fileID: 7060097917552540041}
+  - component: {fileID: 4162748837654908525}
   m_Layer: 0
   m_Name: slideGate
   m_TagString: Untagged
@@ -155,6 +156,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_step: 0.01
+--- !u!64 &4162748837654908525
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087313401334428350}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4164850941166550790, guid: 7ba9bc984acf59c4c97653fa375c67de, type: 3}
 --- !u!1 &2689627024216499092
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,6 +182,7 @@ GameObject:
   - component: {fileID: 5848680974542910774}
   - component: {fileID: 122676905920726800}
   - component: {fileID: 7505736375168770255}
+  - component: {fileID: 3768679618368256471}
   m_Layer: 0
   m_Name: slidedoorA
   m_TagString: Untagged
@@ -250,6 +266,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_step: 0.01
+--- !u!64 &3768679618368256471
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2689627024216499092}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 384017890768130341, guid: 7ba9bc984acf59c4c97653fa375c67de, type: 3}
 --- !u!1 &7864454360294983897
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,6 +292,7 @@ GameObject:
   - component: {fileID: 3430661586460052397}
   - component: {fileID: 8089499655176328487}
   - component: {fileID: 5069022267639863522}
+  - component: {fileID: 5248041491527711908}
   m_Layer: 0
   m_Name: slidedoorB
   m_TagString: Untagged
@@ -345,3 +376,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_step: 0.01
+--- !u!64 &5248041491527711908
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7864454360294983897}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4636101047690994075, guid: 7ba9bc984acf59c4c97653fa375c67de, type: 3}
