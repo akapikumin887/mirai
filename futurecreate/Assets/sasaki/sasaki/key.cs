@@ -72,11 +72,16 @@ public class key : MonoBehaviour
     {
         Debug.Log("atatta");
         //接触しているオブジェクトのタグが"Player"のとき
-        if (other.CompareTag("Player"))
+        if(Input.GetKey(KeyCode.E))
         {
-            Destroy(this.gameObject);
-            ////オブジェクトの色を赤に変更する
-            //GetComponent<Renderer>().material.color = Color.red;
+            if (other.CompareTag("Player"))
+            {
+                Destroy(this.gameObject);
+                ////オブジェクトの色を赤に変更する
+                //GetComponent<Renderer>().material.color = Color.red;
+            }
+
+
         }
     }
 
