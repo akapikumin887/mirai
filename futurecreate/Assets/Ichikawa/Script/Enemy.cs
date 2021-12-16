@@ -3,81 +3,97 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/*=========================================================
+
+    インスペクター
+
+    Points:ルートに沿ったPointを入れる
+         ただし、パスを取得するため0にはプレイヤーを入れる
+
+    FootPrint_L,R:左右の足跡のプレハブを入れる
+
+    frameCount:足跡の生成間隔を設定(秒)
+
+=========================================================*/
+
 public class Enemy : MonoBehaviour
 {
-    // 敵の状態
+    // NavMesh
+    private NavMeshAgent agent;
+
+    // GameManager変数
+    private GameObject gameMaster;
+    private GameMng gameManager;
+
+    /*-----------------------
+      敵の状態
+    -----------------------*/
     public enum ENEMY_TYPE
     {
         PATROL,     // 巡回
         VIGILANCE,  // 警戒
         TRACKING,   // 追跡
-        PEPPER,     // ペッパー
+        PEPPER,     // ペッパー(呼び寄せられてる)
     }
-
-    // 敵の状態変数
+    // 現在の状態
     private ENEMY_TYPE eType;
 
-    // 目的地の格納場所(0はプレイヤーの場所)
+    /*-----------------------
+      目的地
+    -----------------------*/
+    [Header("Destination")]
+    // 格納場所(0にプレイヤーの場所)
     public Transform[] points;
+    // 次の目的地
+    private int nextPoint = 1;
+    // プレイヤーの位置
+    private int playerPoint = 0;
+    // 追跡中の目的地
+    private Vector3 destination;
+    // プレイヤーへのパス
+    private NavMeshPath playerPath = null;
 
-    private NavMeshAgent agent;
-
-    // 足跡プレハブ格納場所
+    /*-----------------------
+      足跡
+    -----------------------*/
+    [Header("FootPrint")]
+    // プレハブ格納場所
     public GameObject footPrint_L;
     public GameObject footPrint_R;
-
-    // 足跡生成フレーム管理
-    private uint frame;
-    // 足跡生成間隔
+    // 生成フレーム管理
+    private float frame;
+    // 生成間隔(秒)
     public uint frameCount;
     // 左右管理(trueで右falseで左)
     private bool footPrint_RoL;
-    // 足跡の生成場所-----------------------------------------------------------------------------------
+    // 生成場所
     private Vector3 footPrintPotision;
-    // 足跡の生成角度
+    // 生成角度
     private Quaternion footPrintAngle;
-
-    // 次の目的地
-    [SerializeField] int destPoint = 1;
-    // プレイヤーの位置
-    [SerializeField] int playerPoint = 0;
-
-    // GameManager変数
-    GameObject GAMEMASTER;
-    GameMng game_mng;
-
-    // 追跡中の目的地
-    Vector3 Destination;
-
-    // プレイヤーへのパス
-    NavMeshPath playerPath = null;
 
     void Start()
     {
-        // GameManager取得
-        GAMEMASTER = GameObject.FindGameObjectWithTag("Manager");
-        game_mng = GAMEMASTER.GetComponent<GameMng>();
-
-        // 追跡中の目的地初期化
-        Destination = this.transform.position;
-
         agent = GetComponent<NavMeshAgent>();
-
         // autoBrakingを無効にすると目的地に近づいても速度が落ちない
         agent.autoBraking = false;
+
+        // GameManager取得
+        gameMaster = GameObject.FindGameObjectWithTag("Manager");
+        gameManager = gameMaster.GetComponent<GameMng>();
+
+        // 追跡中の目的地初期化
+        destination = this.transform.position;
+        // プレイヤーへのパス初期化
+        playerPath = new NavMeshPath();
 
         // 足跡生成フレーム初期化
         frame = 0;
         // 右足跡から生成
         footPrint_RoL = true;
-        // 足跡生成場所初期化-------------------------------------------------------------------------
-        footPrintPotision = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y, this.transform.localPosition.z);
         // 足跡生成角度初期化
-        footPrintAngle = Quaternion.Euler(this.transform.localEulerAngles.x + 90.0f, this.transform.localEulerAngles.y, this.transform.localEulerAngles.z - 90.0f);
+        footPrintAngle = Quaternion.Euler(transform.localEulerAngles.x + 90.0f, transform.localEulerAngles.y, transform.localEulerAngles.z);
 
-        // プレイヤーへのパス初期化
-        playerPath = new NavMeshPath();
-
+        // 目的地に向かう
         GotoNextPoint();
     }
 
@@ -88,13 +104,13 @@ public class Enemy : MonoBehaviour
             return;
 
         // 現在設定された目的地に行くように設定
-        agent.destination = points[destPoint].position;
+        agent.destination = points[nextPoint].position;
 
         // 配列内の次の位置を目的地に設定し
         // 必要ならば出発地点(1)に戻る
-        destPoint = (destPoint + 1) % (points.Length);
-        if (destPoint == 0)
-            destPoint = 1;
+        nextPoint = (nextPoint + 1) % (points.Length);
+        if (nextPoint == 0)
+            nextPoint = 1;
     }
 
     void Update()
@@ -116,13 +132,13 @@ public class Enemy : MonoBehaviour
                 GetComponent<Renderer>().material.color = Color.black; //色を変える
                 GetComponent<NavMeshAgent>().isStopped = false;
                 agent.speed = 2.0f;    // 移動速度2.0
-                agent.SetDestination(Destination);
+                agent.SetDestination(destination);
                 break;
 
             case ENEMY_TYPE.PEPPER: // ペッパー
                 GetComponent<Renderer>().material.color = Color.blue; //色を変える
                 GetComponent<NavMeshAgent>().isStopped = false;
-                agent.SetDestination(Destination);
+                agent.SetDestination(destination);
                 // 現目的地に近づいたら次の目的地を選択
                 if (!agent.pathPending && agent.remainingDistance < 0.5f)
                 {
@@ -132,25 +148,33 @@ public class Enemy : MonoBehaviour
                 break;
         }
 
-        frame++;
+        frame += Time.deltaTime;
 
-        // 足跡生成--------------------------------------------------------------------------------
-        if (frame > frameCount)//Δtime追加する
+        // 足跡生成
+        if (frame > frameCount)
         {
+            // 角度調整
+            footPrintAngle = Quaternion.Euler(this.transform.localEulerAngles.x + 90.0f, this.transform.localEulerAngles.y, this.transform.localEulerAngles.z);
+
             if (footPrint_RoL)
             {
                 // 右足跡
-                footPrintPotision = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y, this.transform.localPosition.z - 0.2f);
+                footPrintPotision = this.transform.localPosition
+                                    - transform.up * 0.49f    // 上下調整
+                                    + transform.right * 0.2f; // 左右調整
                 Instantiate(footPrint_R, footPrintPotision, footPrintAngle);
                 footPrint_RoL = false;
             }
             else
             {
                 // 左足跡
-                footPrintPotision = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y, this.transform.localPosition.z + 0.2f);
+                footPrintPotision = this.transform.localPosition
+                                    - transform.up * 0.49f
+                                    - transform.right * 0.2f;
                 Instantiate(footPrint_L, footPrintPotision, footPrintAngle);
                 footPrint_RoL = true;
             }
+
             frame = 0;
         }
 
@@ -178,10 +202,10 @@ public class Enemy : MonoBehaviour
         agent = agentType;
     }
 
-    // Destination
-    public void SetDestination(Vector3 destination) // セッター
+    // destination
+    public void SetDestination(Vector3 dest) // セッター
     {
-        Destination = destination;
+        destination = dest;
     }
 
     // プレイヤーの情報(points[playerPoint])
@@ -201,7 +225,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            game_mng.SetGameOver(true);
+            gameManager.SetGameOver(true);
         }
     }
 }
