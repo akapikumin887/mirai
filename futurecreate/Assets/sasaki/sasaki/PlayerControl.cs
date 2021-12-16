@@ -91,7 +91,7 @@ public class PlayerControl : MonoBehaviour
             GetComponent<Animator>().SetBool("walk", false);
             GetComponent<Animator>().SetBool("run", false);
         }
-        else if(rb.velocity.magnitude <= _PlayerSpeed)
+        else if(rb.velocity.magnitude <= _PlayerSpeed+0.5f)
         {
             GetComponent<Animator>().SetBool("walk", true);
             GetComponent<Animator>().SetBool("run", false);
@@ -133,10 +133,15 @@ public class PlayerControl : MonoBehaviour
 
             // 方向キーの入力値とカメラの向きから、移動方向を決定
             Vector3 moveForward = cameraForward * Gamepad.current.leftStick.ReadValue().y + Camera.main.transform.right * Gamepad.current.leftStick.ReadValue().x;
-
-            Run = Gamepad.current.leftStickButton.isPressed;
+            Run = Gamepad.current.rightShoulder.isPressed;
             // 移動方向にスピードを掛ける。ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す。
-            velocity = moveForward + new Vector3(0, rb.velocity.y, 0);
+            velocity = moveForward.normalized + new Vector3(0, rb.velocity.y, 0);
+
+            if (Gamepad.current.leftStick.ReadValue().magnitude <= 0.0f)
+            {
+                rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, 0.1f);
+                return false;
+            }
 
             vertical = true;
         }
