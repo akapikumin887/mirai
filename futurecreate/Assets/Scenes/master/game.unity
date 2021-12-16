@@ -676,15 +676,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1211867144951527506, guid: a5fe4d5aaac81de4aae06965bd2e24ff, type: 3}
       propertyPath: m_LocalScale.x
-      value: 17.5
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 1211867144951527506, guid: a5fe4d5aaac81de4aae06965bd2e24ff, type: 3}
       propertyPath: m_LocalScale.y
-      value: 17.5
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 1211867144951527506, guid: a5fe4d5aaac81de4aae06965bd2e24ff, type: 3}
       propertyPath: m_LocalScale.z
-      value: 17.5
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 1211867144951527506, guid: a5fe4d5aaac81de4aae06965bd2e24ff, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1969,11 +1969,25 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 5431d4535d8fa8148a3f6e208fb14dce, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 5431d4535d8fa8148a3f6e208fb14dce, type: 2}
-  - {fileID: 7400000, guid: 5431d4535d8fa8148a3f6e208fb14dce, type: 2}
+  - {fileID: 7400000, guid: 37cb7be47142d134f9bf6941e91f5665, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
+  m_AnimatePhysics: 1
   m_CullingType: 0
+--- !u!114 &1178066069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178066064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a23ce6a04d44ed94dbfefbbfe2b5fb1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opendoor: {fileID: 7400000, guid: 5431d4535d8fa8148a3f6e208fb14dce, type: 2}
+  closedoor: {fileID: 7400000, guid: 37cb7be47142d134f9bf6941e91f5665, type: 2}
 --- !u!1001 &1206424384
 PrefabInstance:
   m_ObjectHideFlags: 0
