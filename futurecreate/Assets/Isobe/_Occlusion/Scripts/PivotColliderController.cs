@@ -35,7 +35,7 @@ public class PivotColliderController : MonoBehaviour
             Vector3 pivotPosition = (m_end.position + m_start.position) / 2;
             transform.position = pivotPosition;
             Vector3 dir = m_end.position - transform.position;
-            transform.forward = dir;
+            //transform.forward = dir;
             float distance = Vector3.Distance(m_start.position, m_end.position);
             col.size = new Vector3(col.size.x, col.size.y, distance+offset_z);
         }
