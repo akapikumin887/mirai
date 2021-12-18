@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 4162748837654908525}
   m_Layer: 0
   m_Name: slideGate
-  m_TagString: Untagged
+  m_TagString: door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 3768679618368256471}
   m_Layer: 0
   m_Name: slidedoorA
-  m_TagString: Untagged
+  m_TagString: door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 5248041491527711908}
   m_Layer: 0
   m_Name: slidedoorB
-  m_TagString: Untagged
+  m_TagString: door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
