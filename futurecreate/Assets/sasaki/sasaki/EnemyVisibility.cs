@@ -36,49 +36,72 @@ public class EnemyVisibility : MonoBehaviour
         //ベクトルの宣言（せってい）
         Enemy_forward_direction = this.transform.forward;//敵の正面ベクトルを取得
         Player_direction = (Player.transform.position - this.transform.position).normalized;     // プレイヤーの方向ベクトル
+        //RaycastHit hit = new RaycastHit();
 
-        if (light_visibility(Enemy_forward_direction, Player_direction, 6.0f, 0.4f))
+        Debug.DrawLine(this.transform.position, Player_direction * 100, Color.red);
+
+
+        //if (light_visibility(this.transform.position, Player.transform.position, Mathf.Infinity, 0.0f))
+        //{
+
+        //    if (hit.collider.tag == "wall")   //プレイヤーまで障害物がないとき
+        //    {
+        //        Debug.Log("かべがあったよ");
+        //        return;
+        //    }
+
+        //}
+
+        if (light_visibility(Enemy_forward_direction, Player_direction, 6.1f, 0.4f))
         {
-            if (hit.collider.tag == "Player")   //プレイヤーまで障害物がないとき
+
+            if (hit.collider.tag == "wall")   //プレイヤーまで障害物がないとき
             {
-                this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.TRACKING);        //Enemyの行動パターンの変更　パトロールのパターンに変更
-                this.GetComponent<Enemy>().SetDestination(Player.transform.position);
-                Debug.Log("見つかった");
-                return;
+                if (this.GetComponent<Enemy>().GetEnemyType() != Enemy.ENEMY_TYPE.PEPPER)
+                {
+                    this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PATROL);
+                    Debug.Log("壁を見つけたよ");
+                    return;
+                }
             }
+
+            Debug.Log("視界に入ったよ");
+
+            this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.TRACKING);
+            this.GetComponent<Enemy>().SetDestination(Player.transform.position);
+            //Debug.Log("見つかった");
+            
         }
         else
         {
             if (this.GetComponent<Enemy>().GetEnemyType() != Enemy.ENEMY_TYPE.PEPPER)
             {
                 this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PATROL);
+                return;
             }
         }
 
-        {         ////敵の視界の設定
-                  //float dot = Vector3.Dot(Enemy_forward_direction, Player_direction);     //敵の前方ベクトルとプレイヤー方向とのベクトルの内積計算
-                  //if (dot > 0.4f)     //内積
-                  //{
-                  //    //Rayのせってい　壁かどうか判定するため
-                  //    RaycastHit hit;
+        //{
+        //    if (light_visibility(Enemy_forward_direction, Player_direction, 6.0f, 0.4f))
+        //    {
+        //        Debug.Log(hit.collider.tag);
 
-            //    if (Physics.Raycast(this.transform.position, Player_direction , out hit, 6.0f))     //Rayにあたるものがあった時  最後の引数が距離
-            //    {
-            //        if (hit.collider.tag == "Player")   //プレイヤーまで障害物がないとき
-            //        {
-            //            this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.TRACKING);        //Enemyの行動パターンの変更　パトロールのパターンに変更
-            //            this.GetComponent<Enemy>().SetDestination(Player.transform.position);
-            //            return;
-            //        }
-            //    }
-
-            //}
-            //if(this.GetComponent<Enemy>().GetEnemyType() != Enemy.ENEMY_TYPE.PEPPER)
-            //{
-            //    this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PATROL);
-            //}
-        }
-
+        //        if (hit.collider.tag == "Player")   //プレイヤーまで障害物がないとき
+        //        {
+        //            this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.TRACKING);        //Enemyの行動パターンの変更　パトロールのパターンに変更
+        //            this.GetComponent<Enemy>().SetDestination(Player.transform.position);
+        //            Debug.Log("見つかった");
+        //            return;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (this.GetComponent<Enemy>().GetEnemyType() != Enemy.ENEMY_TYPE.PEPPER)
+        //        {
+        //            this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PATROL);
+        //        }
+        //    }
+        //}
     }
 
     bool light_visibility(Vector3 vector3, Vector3 vector3_player, float kyori, float hanni)
