@@ -22,7 +22,7 @@ public class Danger : MonoBehaviour
 
     void Start()
     {
-        text = transform.GetChild(0).gameObject.GetComponent<Text>();
+        text = transform.GetChild(1).gameObject.GetComponent<Text>();
         GAMEMASTER = GameObject.FindGameObjectWithTag("Manager");
         enemy_list = GAMEMASTER.GetComponent<GameMng>().GetEnemy();//ÀÛ‚É‚Í‚±‚±‚ÅEnemyManager‚©‚çEnemy‚ÌƒŠƒXƒg‚ğæ“¾
         uipol = this.GetComponent<UIPolygon>();

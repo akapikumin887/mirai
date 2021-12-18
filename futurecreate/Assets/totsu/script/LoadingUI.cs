@@ -57,7 +57,7 @@ public class LoadingUI : MonoBehaviour
 
     private void RotIrregular()
     {
-        time += Time.deltaTime;
+        time += Time.deltaTime * timeAct;
         rotSpd = Mathf.Cos(time) /** rotSpdAct*/;
         //transform.Rotate(0f, 0f, rotSpd * Time.deltaTime);
         transform.Rotate(new Vector3(0, 0, rotSpd));
