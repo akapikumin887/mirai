@@ -4309,6 +4309,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 565950921538343634, guid: 288d7822d172a4e408dfda844886dded, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 590670641465714637, guid: 288d7822d172a4e408dfda844886dded, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -11104,7 +11108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 768530963142782084, guid: 706ee7418632ecf4d987c1b47fb1eb53, type: 3}
       propertyPath: m_Center.z
-      value: -3.15
+      value: -3.35
       objectReference: {fileID: 0}
     - target: {fileID: 768530963142782085, guid: 706ee7418632ecf4d987c1b47fb1eb53, type: 3}
       propertyPath: m_end
