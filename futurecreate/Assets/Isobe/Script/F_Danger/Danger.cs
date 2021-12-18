@@ -147,6 +147,19 @@ public class Danger : MonoBehaviour
                 uipol.SetDistance(Random.Range(0.4f, 0.5f), i);
             }
 
+            if (danger_score.Max() < 50.0f)
+            {
+                uipol.color=new Color32(112, 217, 239, 255);
+            }
+            else if (danger_score.Max() < 80.0f)
+            {
+                uipol.color = new Color32(249, 253, 68, 255);
+            }
+            else
+            {
+                uipol.color = new Color32(234, 21, 37, 255);
+            }
+
             text.text = (int)danger_score.Max()+"%";//テキスト内容
             time = 0;
         }
