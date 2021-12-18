@@ -77,7 +77,7 @@ public class EnemyVisibility : MonoBehaviour
             if (this.GetComponent<Enemy>().GetEnemyType() != Enemy.ENEMY_TYPE.PEPPER)
             {
                 this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PATROL);
-                return;
+
             }
         }
 
