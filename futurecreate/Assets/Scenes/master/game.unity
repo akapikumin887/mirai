@@ -2163,6 +2163,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 911968703563982316, guid: b4482f0677841804da57c5f1912e515a, type: 3}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
+    - target: {fileID: 911968703563982316, guid: b4482f0677841804da57c5f1912e515a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
@@ -4031,6 +4035,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8893836286125489662, guid: b4482f0677841804da57c5f1912e515a, type: 3}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893836286125489662, guid: b4482f0677841804da57c5f1912e515a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
@@ -4135,6 +4143,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 98838883460490194, guid: 288d7822d172a4e408dfda844886dded, type: 3}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
     - target: {fileID: 103637459451327866, guid: 288d7822d172a4e408dfda844886dded, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -4214,6 +4226,10 @@ PrefabInstance:
     - target: {fileID: 441402611263865680, guid: 288d7822d172a4e408dfda844886dded, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 507002754871306033, guid: 288d7822d172a4e408dfda844886dded, type: 3}
+      propertyPath: m_TagString
+      value: door
       objectReference: {fileID: 0}
     - target: {fileID: 509795249479736744, guid: 288d7822d172a4e408dfda844886dded, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4883,6 +4899,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1217612171451048795, guid: 288d7822d172a4e408dfda844886dded, type: 3}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
     - target: {fileID: 1217820598962851682, guid: 288d7822d172a4e408dfda844886dded, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -5022,6 +5042,10 @@ PrefabInstance:
     - target: {fileID: 1693548769681666137, guid: 288d7822d172a4e408dfda844886dded, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711607264029429013, guid: 288d7822d172a4e408dfda844886dded, type: 3}
+      propertyPath: m_TagString
+      value: door
       objectReference: {fileID: 0}
     - target: {fileID: 1712386578468290832, guid: 288d7822d172a4e408dfda844886dded, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8911,6 +8935,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4064234807525558550, guid: 288d7822d172a4e408dfda844886dded, type: 3}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
     - target: {fileID: 4102364732216183744, guid: 288d7822d172a4e408dfda844886dded, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -9311,6 +9339,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 22ac5475051dde949aa28260401134ff, type: 2}
+    - target: {fileID: 5913235585587549492, guid: 288d7822d172a4e408dfda844886dded, type: 3}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
     - target: {fileID: 5919497705282316583, guid: 288d7822d172a4e408dfda844886dded, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -9395,6 +9427,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6236163009931717443, guid: 288d7822d172a4e408dfda844886dded, type: 3}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
     - target: {fileID: 6254917267587841941, guid: 288d7822d172a4e408dfda844886dded, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -9406,6 +9442,10 @@ PrefabInstance:
     - target: {fileID: 6297537449144102058, guid: 288d7822d172a4e408dfda844886dded, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302486127619425294, guid: 288d7822d172a4e408dfda844886dded, type: 3}
+      propertyPath: m_TagString
+      value: door
       objectReference: {fileID: 0}
     - target: {fileID: 6314009818915499477, guid: 288d7822d172a4e408dfda844886dded, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -9847,6 +9887,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7798676100791424326, guid: 288d7822d172a4e408dfda844886dded, type: 3}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
     - target: {fileID: 7848270208484000338, guid: 288d7822d172a4e408dfda844886dded, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -9974,6 +10018,10 @@ PrefabInstance:
     - target: {fileID: 8239109406117177336, guid: 288d7822d172a4e408dfda844886dded, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268735492935050755, guid: 288d7822d172a4e408dfda844886dded, type: 3}
+      propertyPath: m_TagString
+      value: door
       objectReference: {fileID: 0}
     - target: {fileID: 8275546460393878867, guid: 288d7822d172a4e408dfda844886dded, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -10400,7 +10448,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b796053f6197443a39618910481ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_transparency: 0.1
+  Wall_transparency: 0.1
+  Item_transparency: 0.2
+  Door_transparency: 0.5
 --- !u!114 &1582889706
 MonoBehaviour:
   m_ObjectHideFlags: 0
