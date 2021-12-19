@@ -14,6 +14,36 @@ public class PanelManager : MonoBehaviour {
 
 	const string k_OpenTransitionName = "Open";
 	const string k_ClosedStateName = "Closed";
+	[SerializeField] GameObject menu;
+	
+	private GameObject main;
+	private Animator main_anim;
+	private GameObject controller;
+	private Animator controller_anim;
+	private GameObject window;
+	private Animator window_anim;
+	private GameObject window2;
+	private Animator window2_anim;
+	private GameObject audio;
+	private Animator audio_anim;
+
+	private void Start()
+	{
+		main = menu.transform.GetChild(0).GetChild(6).gameObject;
+		main_anim = main.GetComponent<Animator>();
+
+		controller = menu.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
+		controller_anim = controller.GetComponent<Animator>();
+
+		window = menu.transform.GetChild(0).GetChild(3).gameObject;
+		window_anim = window.GetComponent<Animator>();
+
+		window2 = menu.transform.GetChild(0).GetChild(4).gameObject;
+		window2_anim = window2.GetComponent<Animator>();
+
+		audio = menu.transform.GetChild(0).GetChild(0).GetChild(1).gameObject;
+		audio_anim = audio.GetComponent<Animator>();
+	}
 
 	public void OnEnable()
 	{
@@ -71,6 +101,16 @@ public class PanelManager : MonoBehaviour {
 		m_Open = null;
 	}
 
+	public void CloseCurrent(Animator anim)
+	{
+		if (anim.gameObject == null)
+			return;
+
+		anim.SetBool(m_OpenParameterId, false);
+		SetSelected(m_PreviouslySelected);
+		StartCoroutine(DisablePanelDeleyed(anim));
+	}
+
 	IEnumerator DisablePanelDeleyed(Animator anim)
 	{
 		bool closedStateReached = false;
@@ -92,5 +132,24 @@ public class PanelManager : MonoBehaviour {
 	private void SetSelected(GameObject go)
 	{
 		EventSystem.current.SetSelectedGameObject(go);
+	}
+
+	public void CloseAll()
+	{
+		main_anim.SetBool("Open", false);
+
+		if (controller_anim != null)
+			CloseCurrent(controller_anim);
+
+		if (window_anim != null)
+			CloseCurrent(window_anim);
+
+		if (window2_anim != null)
+			CloseCurrent(window2_anim);
+
+		if (audio_anim != null)
+			CloseCurrent(audio_anim);
+
+		m_Open = null;
 	}
 }
