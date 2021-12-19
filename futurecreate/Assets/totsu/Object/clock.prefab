@@ -269,7 +269,7 @@ Transform:
   m_GameObject: {fileID: 2437409488637515198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 8153968748188791518}
   - {fileID: 8111488299719637566}
@@ -295,7 +295,7 @@ MonoBehaviour:
   Bell: {fileID: 1398721664031847351, guid: bd97f986c140657428c28d781e8fb78d, type: 3}
   IdlingTime: 5
   Size: 100
-  RingingTime: 5
+  RingingTime: 300
 --- !u!1 &6173640430679429113
 GameObject:
   m_ObjectHideFlags: 0

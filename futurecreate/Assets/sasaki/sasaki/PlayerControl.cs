@@ -28,7 +28,6 @@ public class PlayerControl : MonoBehaviour
 
     private Rigidbody rb;
 
-
     private bool Run = false;
 
     void Start()
@@ -96,6 +95,7 @@ public class PlayerControl : MonoBehaviour
         //“ü—Í•ûŒü‚ÌŽæ“¾
         bool vertical = false;
         bool horizontal = false;
+        Run = false;
 
         Vector3 velocity = Vector3.zero;
 
