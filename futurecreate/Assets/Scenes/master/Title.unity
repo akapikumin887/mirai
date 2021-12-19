@@ -10408,7 +10408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1105592452
 Transform:
   m_ObjectHideFlags: 0
@@ -10710,7 +10710,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1118642498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.417507, y: -11.83906, z: 5.1756744}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1923110430}
@@ -10733,6 +10733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fae6bf8e447d98478d21605c280e6ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panel: {fileID: 2047707311}
 --- !u!1001 &1123372830
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18362,7 +18363,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 1105592454}
+  m_Camera: {fileID: 1855926881}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
