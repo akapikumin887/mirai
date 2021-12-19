@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7913096052171579245}
   - component: {fileID: 1284790787852759684}
   - component: {fileID: -47277172346686686}
+  - component: {fileID: -8903169180366066591}
   m_Layer: 0
   m_Name: bell
   m_TagString: Bell
@@ -45,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SoundSize: 0
+  SoundTime: 1
 --- !u!135 &-47277172346686686
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -58,3 +60,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &-8903169180366066591
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398721664031847351}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
