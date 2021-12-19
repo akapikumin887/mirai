@@ -34,7 +34,7 @@ public class PlayerControl : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         _GameManagerScript = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameMng>();
-        _PathFindings = _GameManagerScript.GetPathFinding();
+        _PathFindings = _GameManagerScript._PathFindings;
     }
 
     void Update()

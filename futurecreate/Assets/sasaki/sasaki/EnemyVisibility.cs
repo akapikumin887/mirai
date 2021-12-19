@@ -26,7 +26,7 @@ public class EnemyVisibility : MonoBehaviour
         game_mng = GAMEMASTER.GetComponent<GameMng>();
 
         // 目的地のオブジェクトを取得
-        Player = game_mng.GetPlayer();
+        Player = game_mng._Pleyer;
     }
 
     // Update is called once per frame

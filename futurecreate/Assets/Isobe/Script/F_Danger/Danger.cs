@@ -25,7 +25,7 @@ public class Danger : MonoBehaviour
     {
         text = transform.GetChild(1).gameObject.GetComponent<Text>();
         GAMEMASTER = GameObject.FindGameObjectWithTag("Manager");
-        enemy_list = GAMEMASTER.GetComponent<GameMng>().GetEnemy();//実際にはここでEnemyManagerからEnemyのリストを取得
+        enemy_list = GAMEMASTER.GetComponent<GameMng>()._Enemys;//実際にはここでEnemyManagerからEnemyのリストを取得
 
         uipol = this.GetComponent<UIPolygon>();
         sides = uipol.Sides;

@@ -47,7 +47,7 @@ public class LisEnemy : MonoBehaviour
             var mngScript = mng.GetComponent<GameMng>();
             if (mngScript != null)
             {
-                Player = mngScript.GetPlayer();
+                Player = mngScript._Pleyer;
             }
         }
 

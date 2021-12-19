@@ -260,7 +260,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            gameManager.SetGameOver(true);
+            gameManager.GameOver = true;
         }
     }
 }

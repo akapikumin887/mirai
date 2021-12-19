@@ -17,15 +17,15 @@ public class DoorController : MonoBehaviour
     void Start()
     {
         GameManagerScript = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameMng>();
-        Player=GameManagerScript.GetPlayer();
-        enemy_list = GameManagerScript.GetComponent<GameMng>().GetEnemy();
+        Player=GameManagerScript._Pleyer;
+        enemy_list = GameManagerScript.GetComponent<GameMng>()._Enemys;
         door = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isLock && !GameManagerScript.GetKey(lockNum))
+        if (isLock && !GameManagerScript._Keys[lockNum])
             return;
 
 
