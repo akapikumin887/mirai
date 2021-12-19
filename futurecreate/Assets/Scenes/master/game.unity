@@ -1093,6 +1093,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 3629173873425994064, guid: 0bee3a80810e8ab43a4d38a284b8d164, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3918694507092057199, guid: 0bee3a80810e8ab43a4d38a284b8d164, type: 3}
       propertyPath: TouchDis
       value: 0.3
