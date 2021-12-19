@@ -172,6 +172,7 @@ public class LisEnemy : MonoBehaviour
 
         //追跡解除地点を設定
         GoalPos = pos;
+        Debug.Log(GoalPos);
 
         //目指す座標設定
         this.GetComponent<Enemy>().SetDestination(GoalPos);
