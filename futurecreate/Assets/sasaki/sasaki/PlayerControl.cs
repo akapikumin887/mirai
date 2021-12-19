@@ -15,6 +15,7 @@ public class PlayerControl : MonoBehaviour
     [Header("FootFrame")] [SerializeField] private uint _FrameCount;
 
     [SerializeField] private GameObject _Bell;
+    [SerializeField] private GameObject _Alarm;
 
     private GameMng _GameManagerScript;
 
@@ -53,6 +54,10 @@ public class PlayerControl : MonoBehaviour
         {
             _Frame = 0;
         }
+
+        //矢印↓で目覚まし時計設置
+        if (Input.GetKey(KeyCode.DownArrow))
+            Instantiate(_Alarm);
 
         // 左クリック
         if (Input.GetMouseButton(0))
