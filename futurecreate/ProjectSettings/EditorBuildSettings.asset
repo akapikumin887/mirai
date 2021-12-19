@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Isobe/Scene/proto.unity
     guid: c0b1384430edd6e4fa6bb0b5c01c1bc8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Alpha.unity
     guid: 9b8c3776577ff6d4da6958769d1036bc
   - enabled: 1
