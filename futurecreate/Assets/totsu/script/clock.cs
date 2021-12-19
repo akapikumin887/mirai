@@ -7,7 +7,7 @@ public class clock : MonoBehaviour
     [SerializeField] GameObject Bell; //音オブジェクト
     [SerializeField] float IdlingTime = 5.0f;
     [SerializeField] float Size = 100.0f;
-    [SerializeField] float RingingTime = 5.0f;
+    [SerializeField] float RingingTime = 300.0f;
 
 
     private float frame = 0.0f;
@@ -26,11 +26,15 @@ public class clock : MonoBehaviour
             ring b = bell.GetComponent<ring>();
             //音の設定(規模、なっている時間(f),タグ)
             b.SetBell(Size, RingingTime, "Bell");
+
+            Debug.Log("お隣");
+
+            Ring = true;
         }
 
-        if(frame >= IdlingTime + RingingTime)
+        if(frame >= IdlingTime + RingingTime / 60)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 }

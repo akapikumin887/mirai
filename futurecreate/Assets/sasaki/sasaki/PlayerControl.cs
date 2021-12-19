@@ -28,7 +28,6 @@ public class PlayerControl : MonoBehaviour
 
     private Rigidbody rb;
 
-
     private bool Run = false;
 
     void Start()
@@ -56,8 +55,8 @@ public class PlayerControl : MonoBehaviour
         }
 
         //矢印↓で目覚まし時計設置
-        if (Input.GetKey(KeyCode.DownArrow))
-            Instantiate(_Alarm);
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+            Instantiate(_Alarm,transform.position,Quaternion.identity);
 
         // 左クリック
         if (Input.GetMouseButton(0))
@@ -96,6 +95,7 @@ public class PlayerControl : MonoBehaviour
         //入力方向の取得
         bool vertical = false;
         bool horizontal = false;
+        Run = false;
 
         Vector3 velocity = Vector3.zero;
 
@@ -115,7 +115,7 @@ public class PlayerControl : MonoBehaviour
         }
         //Debug.Log(Gamepad.current);
         // ゲームパッドが接続されていないとnullになる。
-        if (Gamepad.current != null)
+        if (Gamepad.current == null)
         {
             if (Input.GetKey(KeyCode.LeftShift)
                 || Input.GetKey(KeyCode.RightShift))
