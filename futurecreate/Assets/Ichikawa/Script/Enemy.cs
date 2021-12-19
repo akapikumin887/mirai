@@ -7,8 +7,10 @@ using UnityEngine.AI;
 
     インスペクター
 
+    eClass:敵の種類を指定(Vis,Lis,Pep)
+
     Points:ルートに沿ったPointを入れる
-         ただし、パスを取得するため0にはプレイヤーを入れる
+           ただし、パスを取得するため0にはプレイヤーを入れる
 
     FootPrint_L,R:左右の足跡のプレハブを入れる
 
@@ -26,8 +28,9 @@ public class Enemy : MonoBehaviour
     private GameMng gameManager;
 
     /*-----------------------
-      敵の状態
+      敵の情報
     -----------------------*/
+    // 敵の状態
     public enum ENEMY_TYPE
     {
         PATROL,     // 巡回
@@ -37,6 +40,16 @@ public class Enemy : MonoBehaviour
     }
     // 現在の状態
     private ENEMY_TYPE eType;
+
+    // 敵の種類
+    public enum ENEMY_CLASS
+    {
+        VISIBIITY,  // 目がいい敵
+        LISTENING,  // 耳がいい敵
+        PEPPER,     // ペッパー(呼び寄せる)
+    }
+    // この敵の種類
+    public ENEMY_CLASS eClass;
 
     /*-----------------------
       目的地
@@ -63,7 +76,7 @@ public class Enemy : MonoBehaviour
     // 生成フレーム管理
     private float frame;
     // 生成間隔(秒)
-    public uint frameCount;
+    public float frameCount;
     // 左右管理(trueで右falseで左)
     private bool footPrint_RoL;
     // 生成場所
@@ -156,23 +169,20 @@ public class Enemy : MonoBehaviour
             // 角度調整
             footPrintAngle = Quaternion.Euler(this.transform.localEulerAngles.x + 90.0f, this.transform.localEulerAngles.y, this.transform.localEulerAngles.z);
 
-            if (footPrint_RoL)
+            switch (eClass)
             {
-                // 右足跡
-                footPrintPotision = this.transform.localPosition
-                                    - transform.up * 0.49f    // 上下調整
-                                    + transform.right * 0.2f; // 左右調整
-                Instantiate(footPrint_R, footPrintPotision, footPrintAngle);
-                footPrint_RoL = false;
-            }
-            else
-            {
-                // 左足跡
-                footPrintPotision = this.transform.localPosition
-                                    - transform.up * 0.49f
-                                    - transform.right * 0.2f;
-                Instantiate(footPrint_L, footPrintPotision, footPrintAngle);
-                footPrint_RoL = true;
+                case ENEMY_CLASS.VISIBIITY: // 目がいい敵(二足歩行)
+                    CreateFootPrint(0);
+                    break;
+
+                case ENEMY_CLASS.LISTENING: // 耳がいい敵(四足歩行)
+                    CreateFootPrint(0.5f);
+                    CreateFootPrint(-0.5f);
+                    break;
+
+                case ENEMY_CLASS.PEPPER:    // ペッパー
+                    CreateFootPrint(0);
+                    break;
             }
 
             frame = 0;
@@ -220,6 +230,30 @@ public class Enemy : MonoBehaviour
         return playerPath;
     }
 
+    // 足跡生成関数(xpos -> 前後調整)
+    public void CreateFootPrint(float xpos)
+    {
+        if (footPrint_RoL)
+        {
+            // 右足跡
+            footPrintPotision = this.transform.position
+                                + transform.forward * xpos  // 前後調整
+                                - transform.up * 0.49f      // 上下調整
+                                + transform.right * 0.2f;   // 左右調整
+            Instantiate(footPrint_R, footPrintPotision, footPrintAngle);
+            footPrint_RoL = false;
+        }
+        else
+        {
+            // 左足跡
+            footPrintPotision = this.transform.position
+                                + transform.forward * xpos
+                                - transform.up * 0.49f
+                                - transform.right * 0.2f;
+            Instantiate(footPrint_L, footPrintPotision, footPrintAngle);
+            footPrint_RoL = true;
+        }
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
