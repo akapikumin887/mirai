@@ -11,6 +11,9 @@ public class GameMng : MonoBehaviour
     private Camera _Camera;
     private bool GameOver;//trueでゲームオーバー
     private List<bool> _Keys = new List<bool>();
+    [SerializeField] private int _KeyCount;
+    private List<bool> _Item = new List<bool>();
+    [SerializeField] private int _ItemCount;
 
     //public GameObject _Pleyer { set; get; }
     //public List<GameObject> _Enemys { set; get; } = new List<GameObject>();
@@ -52,8 +55,12 @@ public class GameMng : MonoBehaviour
         }
 
         //鍵の初期化
-        for (uint i = 0; i < 3; i++)
+        for (uint i = 0; i < _KeyCount; i++)
             _Keys.Add(false);
+
+        //アイテムの初期化
+        for (int i = 0; i < _ItemCount; i++)
+            _Item.Add(false);
 
         //_Camera = Camera.GetAllCameras();
     }
