@@ -8,6 +8,10 @@ public class DoorController : MonoBehaviour
     private GameObject Player;
     private List<GameObject> enemy_list = new List<GameObject>();
     private bool door;//trueÇ≈ÉIÅ[ÉvÉì
+    [SerializeField]
+    private bool isLock = false;
+    [SerializeField]
+    private int lockNum = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +25,9 @@ public class DoorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isLock && !GameManagerScript.GetKey(lockNum))
+            return;
+
         if (Vector3.Distance(this.transform.position, Player.transform.position) <= 5.0f&&!door)
         {
             Animation animation = this.GetComponent<Animation>();

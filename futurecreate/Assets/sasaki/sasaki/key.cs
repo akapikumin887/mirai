@@ -15,10 +15,15 @@ public class key : MonoBehaviour
     GameObject Key;
     //GameObject[] Door;
 
+    [SerializeField] private int _KeyNum;
+    GameMng _Script;
+
     // Start is called before the first frame update
     void Start()
     {
         Key = GameObject.Find("key");
+
+        _Script = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameMng>();
 
         //Door = GameObject.FindGameObjectsWithTag("door");
 
@@ -77,6 +82,7 @@ public class key : MonoBehaviour
             if (other.CompareTag("Player"))
             {
                 Destroy(this.gameObject);
+                _Script.SetKey(true, _KeyNum);
                 ////オブジェクトの色を赤に変更する
                 //GetComponent<Renderer>().material.color = Color.red;
             }
