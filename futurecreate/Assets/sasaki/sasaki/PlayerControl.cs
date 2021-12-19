@@ -72,7 +72,7 @@ public class PlayerControl : MonoBehaviour
         {
             GameObject bell = Instantiate(_Bell, transform.position, Quaternion.identity);
             ring b = bell.GetComponent<ring>();
-            b.SetBell(60, 3);
+            b.SetBell(60, 1);
             _Frame = 0;
         }
     }
