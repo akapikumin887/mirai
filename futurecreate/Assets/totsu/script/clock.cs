@@ -26,11 +26,15 @@ public class clock : MonoBehaviour
             ring b = bell.GetComponent<ring>();
             //‰¹‚ÌÝ’è(‹K–ÍA‚È‚Á‚Ä‚¢‚éŽžŠÔ(f),ƒ^ƒO)
             b.SetBell(Size, RingingTime, "Bell");
+
+            Debug.Log("‚¨—×");
+
+            Ring = true;
         }
 
         if(frame >= IdlingTime + RingingTime)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 }
