@@ -27,6 +27,9 @@ public class PlayerControl : MonoBehaviour
 
     private Rigidbody rb;
 
+
+    private bool Run = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -72,7 +75,13 @@ public class PlayerControl : MonoBehaviour
         {
             GameObject bell = Instantiate(_Bell, transform.position, Quaternion.identity);
             ring b = bell.GetComponent<ring>();
-            b.SetBell(20, 2);
+
+            float soundSize = 20.0f;
+            if(Run)
+            {
+                soundSize *= 2.0f;
+            }
+            b.SetBell(soundSize, 2);
             _Frame = 0;
         }
     }
@@ -82,7 +91,6 @@ public class PlayerControl : MonoBehaviour
         //入力方向の取得
         bool vertical = false;
         bool horizontal = false;
-        bool Run = false;
 
         Vector3 velocity = Vector3.zero;
 
@@ -104,7 +112,8 @@ public class PlayerControl : MonoBehaviour
         // ゲームパッドが接続されていないとnullになる。
         if (Gamepad.current == null)
         {
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift)
+                || Input.GetKey(KeyCode.RightShift))
             {
                 Run = true;
             }

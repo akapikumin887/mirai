@@ -26,7 +26,7 @@ public class GamepadExample : MonoBehaviour
         GUILayout.Label($"buttonNorth: {Gamepad.current.buttonNorth.isPressed}");
         GUILayout.Label($"buttonSouth: {Gamepad.current.buttonSouth.isPressed}");
         GUILayout.Label($"buttonEast: {Gamepad.current.buttonEast.isPressed}");
-        GUILayout.Label($"buttonWest: {Gamepad.current.buttonWest.isPressed}");
+        GUILayout.Label($"buttonWest: {Gamepad.current.startButton.isPressed}");
         GUILayout.Label($"leftShoulder: {Gamepad.current.leftShoulder.ReadValue()}");
         GUILayout.Label($"leftTrigger: {Gamepad.current.leftTrigger.ReadValue()}");
         GUILayout.Label($"rightShoulder: {Gamepad.current.rightShoulder.ReadValue()}");

@@ -73,7 +73,6 @@ public class MenuManager : MonoBehaviour
 		StartCoroutine(DisablePanelDeleyed(m_Open));
 		m_Open = null;
 	}
-
 	IEnumerator DisablePanelDeleyed(Animator anim)
 	{
 		bool closedStateReached = false;

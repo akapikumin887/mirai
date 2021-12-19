@@ -17,7 +17,7 @@ public class Danger : MonoBehaviour
     private UIPolygon uipol;
     private int sides;
     private float time;
-
+    private List<NavMeshPath> path_list = new List<NavMeshPath>();
     // Start is called before the first frame update
 
     void Start()
@@ -25,6 +25,11 @@ public class Danger : MonoBehaviour
         text = transform.GetChild(1).gameObject.GetComponent<Text>();
         GAMEMASTER = GameObject.FindGameObjectWithTag("Manager");
         enemy_list = GAMEMASTER.GetComponent<GameMng>().GetEnemy();//実際にはここでEnemyManagerからEnemyのリストを取得
+        foreach (var item in enemy_list)
+        {
+            path_list.Add(item.GetComponent<Enemy>().GetToPlayerPath());
+        }
+
         uipol = this.GetComponent<UIPolygon>();
         sides = uipol.Sides;
         danger_score = new List<float>(sides) { };
@@ -51,6 +56,7 @@ public class Danger : MonoBehaviour
             {
                 List<float> enemy_length = new List<float>();//範囲内の敵格納用
 
+                int num = 0;
                 //範囲内Enemy検索
                 foreach (var item in enemy_list)
                 {
@@ -65,9 +71,9 @@ public class Danger : MonoBehaviour
                         //範囲内確認
                         if (GetAngle(player.transform.position, item.transform.position) >= minus || GetAngle(player.transform.position, item.transform.position) <= plus)
                         {
-                            if (GetNavDistance(item) < range_max)
+                            if (GetNavDistance(item,path_list[num]) < range_max)
                             {
-                                enemy_length.Add(GetNavDistance(item));//対象になる敵を追加
+                                enemy_length.Add(GetNavDistance(item, path_list[num]));//対象になる敵を追加
                             }
                         }
                     }
@@ -76,12 +82,13 @@ public class Danger : MonoBehaviour
                         
                         if (GetAngle(player.transform.position, item.transform.position) >= minus && GetAngle(player.transform.position, item.transform.position) <= plus)
                         {
-                            if (GetNavDistance(item) < range_max)
+                            if (GetNavDistance(item, path_list[num]) < range_max)
                             {
-                                enemy_length.Add(GetNavDistance(item));
+                                enemy_length.Add(GetNavDistance(item, path_list[num]));
                             }
                         }
                     }
+                    num++;
                 }
 
                 //範囲内trap検索
@@ -266,12 +273,15 @@ public class Danger : MonoBehaviour
         return degree;
     }
 
-    private float GetNavDistance(GameObject enemy)
+    private float GetNavDistance(GameObject enemy,NavMeshPath path_data)
     {
         //NavMeshPath path=null;
         //NavMesh.CalculatePath(enemy.transform.position, player.transform.position, NavMesh.AllAreas, path);
         NavMeshPath path = enemy.GetComponent<Enemy>().GetToPlayerPath(); //経路パス（曲がり角座標のVector3配列）を取得
-
+        if (path.corners.Length == 0)
+        {
+            path = path_data;
+        }
         //NavMeshPath path = enemy.GetComponent<NavMeshAgent>().path; //経路パス（曲がり角座標のVector3配列）を取得
         float dist = 0f;//距離
         Vector3 corner = player.transform.position; //自分の現在位置
@@ -283,6 +293,8 @@ public class Danger : MonoBehaviour
             corner = corner2;
 
         }
+        path_data = path;
+
         return dist;
     }
 }
