@@ -55,8 +55,8 @@ public class PlayerControl : MonoBehaviour
         }
 
         //矢印↓で目覚まし時計設置
-        if (Input.GetKey(KeyCode.DownArrow))
-            Instantiate(_Alarm);
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+            Instantiate(_Alarm,transform.position,Quaternion.identity);
 
         // 左クリック
         if (Input.GetMouseButton(0))

@@ -781,6 +781,7 @@ MonoBehaviour:
   _PlayerSpeed: 5
   _FrameCount: 15
   _Bell: {fileID: 1398721664031847351, guid: 95eb86e52bda7b94bad0d1f9743ee3d1, type: 3}
+  _Alarm: {fileID: 2437409488637515198, guid: 1f1d10959f505a6459a477a5249c2a2f, type: 3}
 --- !u!95 &575608787
 Animator:
   serializedVersion: 3
