@@ -13,4 +13,9 @@ public class scene_transition : MonoBehaviour
            scene_manager.FadeOut(num);
         }
     }
+
+    public void SceneGame()
+    {
+        scene_manager.FadeOut(num);
+    }
 }
