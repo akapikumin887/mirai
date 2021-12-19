@@ -167,12 +167,12 @@ public class LisEnemy : MonoBehaviour
     {
         //追っかけモードにする
         //state = State.Chase;
-        Debug.Log("追跡状態");
+        //Debug.Log("追跡状態");
         this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.TRACKING);
 
         //追跡解除地点を設定
         GoalPos = pos;
-        Debug.Log(GoalPos);
+        //Debug.Log(GoalPos);
 
         //目指す座標設定
         this.GetComponent<Enemy>().SetDestination(GoalPos);
@@ -186,7 +186,7 @@ public class LisEnemy : MonoBehaviour
     public void SetPatrol() 
     {
         //state = State.Patrol;
-        Debug.Log("巡回状態");
+        //Debug.Log("巡回状態");
         f_TrackingPlayer = false;
         this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PATROL);
     }
