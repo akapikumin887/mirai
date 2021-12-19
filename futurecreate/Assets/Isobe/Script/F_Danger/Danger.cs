@@ -47,7 +47,8 @@ public class Danger : MonoBehaviour
         {
             foreach (var item in enemy_list)
             {
-                path_list.Add(item.GetComponent<Enemy>().GetToPlayerPath());
+                //path_list.Add(item.GetComponent<Enemy>().GetToPlayerPath());
+                path_list.Add(item.GetComponent<Enemy>().playerPath);
             }
             flag = true;
         }
@@ -282,7 +283,8 @@ public class Danger : MonoBehaviour
     {
         //NavMeshPath path=null;
         //NavMesh.CalculatePath(enemy.transform.position, player.transform.position, NavMesh.AllAreas, path);
-        NavMeshPath path = enemy.GetComponent<Enemy>().GetToPlayerPath(); //経路パス（曲がり角座標のVector3配列）を取得
+        //NavMeshPath path = enemy.GetComponent<Enemy>().GetToPlayerPath(); //経路パス（曲がり角座標のVector3配列）を取得
+        NavMeshPath path = enemy.GetComponent<Enemy>().playerPath; //経路パス（曲がり角座標のVector3配列）を取得
         if (path.corners.Length == 0)
         {
             path = path_data;

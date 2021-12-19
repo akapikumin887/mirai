@@ -57,9 +57,10 @@ public class EnemyVisibility : MonoBehaviour
 
             if (hit.collider.tag == "wall")   //ÉvÉåÉCÉÑÅ[Ç‹Ç≈è·äQï®Ç™Ç»Ç¢Ç∆Ç´
             {
-                if (this.GetComponent<Enemy>().GetEnemyType() != Enemy.ENEMY_TYPE.PEPPER)
+                if (this.GetComponent<Enemy>().eType != Enemy.ENEMY_TYPE.PEPPER)
                 {
-                    this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PATROL);
+                    //this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PATROL);
+                    this.GetComponent<Enemy>().eType = Enemy.ENEMY_TYPE.PATROL;
                     Debug.Log("ï«Çå©Ç¬ÇØÇΩÇÊ");
                     return;
                 }
@@ -67,16 +68,19 @@ public class EnemyVisibility : MonoBehaviour
 
             Debug.Log("éãäEÇ…ì¸Ç¡ÇΩÇÊ");
 
-            this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.TRACKING);
-            this.GetComponent<Enemy>().SetDestination(Player.transform.position);
+            //this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.TRACKING);
+            this.GetComponent<Enemy>().eType = Enemy.ENEMY_TYPE.TRACKING;
+            //this.GetComponent<Enemy>().SetDestination(Player.transform.position);
+            this.GetComponent<Enemy>().destination = Player.transform.position;
             //Debug.Log("å©Ç¬Ç©Ç¡ÇΩ");
             
         }
         else
         {
-            if (this.GetComponent<Enemy>().GetEnemyType() != Enemy.ENEMY_TYPE.PEPPER)
+            if (this.GetComponent<Enemy>().eType != Enemy.ENEMY_TYPE.PEPPER)
             {
-                this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PATROL);
+                //this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PATROL);
+                this.GetComponent<Enemy>().eType = Enemy.ENEMY_TYPE.PATROL;
 
             }
         }

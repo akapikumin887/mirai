@@ -39,7 +39,8 @@ public class Enemy : MonoBehaviour
         PEPPER,     // ペッパー(呼び寄せられてる)
     }
     // 現在の状態
-    private ENEMY_TYPE eType;
+    //private ENEMY_TYPE eType;
+    public ENEMY_TYPE eType { set; get; }
 
     // 敵の種類
     public enum ENEMY_CLASS
@@ -62,9 +63,11 @@ public class Enemy : MonoBehaviour
     // プレイヤーの位置
     private int playerPoint = 0;
     // 追跡中の目的地
-    private Vector3 destination;
+    //private Vector3 destination;
+    public Vector3 destination { set; get; }
     // プレイヤーへのパス
-    private NavMeshPath playerPath = null;
+    //private NavMeshPath playerPath = null;
+    public NavMeshPath playerPath { set; get; } = null;
 
     /*-----------------------
       足跡
@@ -157,7 +160,8 @@ public class Enemy : MonoBehaviour
                 if (!agent.pathPending && agent.remainingDistance < 0.5f)
                 {
                     GotoNextPoint();
-                    SetEnemyType(ENEMY_TYPE.PATROL);
+                    //SetEnemyType(ENEMY_TYPE.PATROL);
+                    eType = ENEMY_TYPE.PATROL;
                 }
                 break;
         }

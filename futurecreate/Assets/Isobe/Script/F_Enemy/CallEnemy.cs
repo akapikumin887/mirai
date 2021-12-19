@@ -33,8 +33,10 @@ public class CallEnemy : MonoBehaviour
             {
                 foreach (var item in enemy_list)
                 {
-                    item.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PEPPER); //Enemyのステートを変更
-                    item.GetComponent<Enemy>().SetDestination(this.transform.position);//Enemyを呼ぶ(目的地設定)
+                    //item.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.PEPPER); //Enemyのステートを変更
+                    item.GetComponent<Enemy>().eType = Enemy.ENEMY_TYPE.PEPPER; //Enemyのステートを変更
+                    //item.GetComponent<Enemy>().SetDestination(this.transform.position);//Enemyを呼ぶ(目的地設定)
+                    item.GetComponent<Enemy>().destination = this.transform.position;//Enemyを呼ぶ(目的地設定)
                 }
                 flag = false;
             }
