@@ -70,7 +70,7 @@ public class OccludeeController : MonoBehaviour
             while (m_material.color.a > m_targetAlpha)
             {
                 Color c = m_material.color;
-                c.a -= m_step;
+                c.a -= m_step * 2;
                 m_material.color = c;
                 yield return new WaitForEndOfFrame();
             }

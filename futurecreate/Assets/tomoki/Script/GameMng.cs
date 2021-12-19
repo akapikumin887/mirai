@@ -10,6 +10,7 @@ public class GameMng : MonoBehaviour
     private List<GameObject> _PathFindings = new List<GameObject>();
     private Camera _Camera;
     private bool GameOver;//trueでゲームオーバー
+    private List<bool> _Keys = new List<bool>();
 
     //public GameObject _Pleyer { set; get; }
     //public List<GameObject> _Enemys { set; get; } = new List<GameObject>();
@@ -50,6 +51,10 @@ public class GameMng : MonoBehaviour
                 _PathFindings.Add(obj);
         }
 
+        //鍵の初期化
+        for (uint i = 0; i < 3; i++)
+            _Keys.Add(false);
+
         //_Camera = Camera.GetAllCameras();
     }
 
@@ -78,7 +83,7 @@ public class GameMng : MonoBehaviour
 
         if (GameOver)
         {
-            scene_manager.FadeOut(3);
+            scene_manager.FadeOut(1);
         }
     }
     public GameObject GetPlayer() { return _Pleyer; }
@@ -128,4 +133,13 @@ public class GameMng : MonoBehaviour
     public List<GameObject> GetPathFinding() { return _PathFindings; }
 
     public void SetGameOver(bool flag) { GameOver = flag; }
+
+
+    public bool GetKey(int num)
+    {
+        if (_Keys.Count - 1 < num)
+            return false;
+        return _Keys[num];
+    }
+    public void SetKey(bool flag, int num) { _Keys[num] = flag; }
 }

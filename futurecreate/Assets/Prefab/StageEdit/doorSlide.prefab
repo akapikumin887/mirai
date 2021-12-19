@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 916089454001818049}
-  - component: {fileID: 2656215614769327005}
+  - component: {fileID: 8853590915326143876}
+  - component: {fileID: 516180349518356347}
   m_Layer: 0
   m_Name: doorSlide
   m_TagString: Untagged
@@ -34,7 +35,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2656215614769327005
+--- !u!114 &8853590915326143876
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,9 +44,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 575697887241098107}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eddb8496571346a4798e517d1beba667, type: 3}
+  m_Script: {fileID: 11500000, guid: a23ce6a04d44ed94dbfefbbfe2b5fb1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLock: 0
+  lockNum: 0
+--- !u!111 &516180349518356347
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575697887241098107}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 973ce3ce81340ba4f9d6e9655d4ac696, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 973ce3ce81340ba4f9d6e9655d4ac696, type: 2}
+  - {fileID: 7400000, guid: 5431d4535d8fa8148a3f6e208fb14dce, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1087313401334428350
 GameObject:
   m_ObjectHideFlags: 0
