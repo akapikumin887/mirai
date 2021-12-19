@@ -72,7 +72,7 @@ public class PlayerControl : MonoBehaviour
         {
             GameObject bell = Instantiate(_Bell, transform.position, Quaternion.identity);
             ring b = bell.GetComponent<ring>();
-            b.SetBell(60, 1);
+            b.SetBell(20, 2);
             _Frame = 0;
         }
     }
@@ -100,7 +100,7 @@ public class PlayerControl : MonoBehaviour
         {
             GetComponent<Animator>().SetBool("run", true);
         }
-        Debug.Log(Gamepad.current);
+        //Debug.Log(Gamepad.current);
         // ゲームパッドが接続されていないとnullになる。
         if (Gamepad.current == null)
         {
