@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 public class MenuController : MonoBehaviour
 {
+    [SerializeField] PanelManager panel;
     private GameObject main;
     private Animator main_anim;
     private GameObject controller;
@@ -46,10 +47,14 @@ public class MenuController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Gamepad.current.startButton.isPressed)
         {
+            if (!this.transform.GetChild(0).gameObject.active)
+            this.transform.GetChild(0).gameObject.SetActive(true);
+
             main_anim.SetBool("Open", true);
         }
         if (SceneManager.GetActiveScene().name == "game"&&!flag)
         {
+            panel.CloseAll();
             this.transform.GetChild(0).gameObject.SetActive(false);
             flag = true;
         }
