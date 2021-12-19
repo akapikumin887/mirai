@@ -17,6 +17,7 @@ public class MenuController : MonoBehaviour
     private GameObject audio;
     private Animator audio_anim;
 
+    bool flag=false;
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -39,19 +40,18 @@ public class MenuController : MonoBehaviour
         audio = this.transform.GetChild(0).GetChild(0).GetChild(1).gameObject;
         audio_anim = audio.GetComponent<Animator>();
     }
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Gamepad.current.startButton.isPressed)
         {
             main_anim.SetBool("Open", true);
-            //controller_anim.SetBool("Open", main_anim.GetBool("Open"));
-            //window_anim.SetBool("Open", main_anim.GetBool("Open"));
-            //window2_anim.SetBool("Open", main_anim.GetBool("Open"));
         }
-        if (SceneManager.GetActiveScene().name == "game")
+        if (SceneManager.GetActiveScene().name == "game"&&!flag)
         {
             this.transform.GetChild(0).gameObject.SetActive(false);
+            flag = true;
         }
     }
 
