@@ -1156,6 +1156,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3629173873425994064, guid: 0bee3a80810e8ab43a4d38a284b8d164, type: 3}
+      propertyPath: m_Radius
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4352500250921637130, guid: 0bee3a80810e8ab43a4d38a284b8d164, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5321073584452417021, guid: 0bee3a80810e8ab43a4d38a284b8d164, type: 3}
       propertyPath: frameCount
       value: 1
@@ -1184,9 +1192,17 @@ PrefabInstance:
       propertyPath: points.Array.data[2]
       value: 
       objectReference: {fileID: 456882523}
+    - target: {fileID: 7519482355075133751, guid: 0bee3a80810e8ab43a4d38a284b8d164, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8050045740473267353, guid: 0bee3a80810e8ab43a4d38a284b8d164, type: 3}
       propertyPath: m_Name
       value: LisEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050045740473267353, guid: 0bee3a80810e8ab43a4d38a284b8d164, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bee3a80810e8ab43a4d38a284b8d164, type: 3}
@@ -1652,6 +1668,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731669013032052556, guid: 666a046e515c2774eba76d54e2e0b99c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2731669013032052558, guid: 666a046e515c2774eba76d54e2e0b99c, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6225079897152043359, guid: 666a046e515c2774eba76d54e2e0b99c, type: 3}
@@ -10625,7 +10645,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1836879294
 Transform:
   m_ObjectHideFlags: 0
