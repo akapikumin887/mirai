@@ -99,6 +99,7 @@ public class LisEnemy : MonoBehaviour
             for (int i = 0; i < Sound_list.Count; i++)
             {
                 Tag_list.Add(Sound_list[i].gameObject.tag);
+                //Debug.Log(Sound_list[i].gameObject.tag);
             }
         }
         else
@@ -113,6 +114,7 @@ public class LisEnemy : MonoBehaviour
         if (Tag_list.Contains(item))
         {
             SetTarget(item);
+            //Debug.Log("目覚まし聞こえた");
             return;
         }
         
@@ -167,7 +169,7 @@ public class LisEnemy : MonoBehaviour
     {
         //追っかけモードにする
         //state = State.Chase;
-        //Debug.Log("追跡状態");
+        Debug.Log("追跡状態");
         this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.TRACKING);
 
         //追跡解除地点を設定

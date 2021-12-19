@@ -53,7 +53,7 @@ public class Danger : MonoBehaviour
         }
 
         time += Time.deltaTime;
-        Debug.Log(path_list[0].corners.Length);
+        //Debug.Log(path_list[0].corners.Length);
 
         if (time > timelimit)
         {
