@@ -28,17 +28,32 @@ public class DoorController : MonoBehaviour
         if (isLock && !GameManagerScript.GetKey(lockNum))
             return;
 
-        if (Vector3.Distance(this.transform.position, Player.transform.position) <= 5.0f&&!door)
+
+        if ((DistancePlayer() || DistanceEnemy()) && !door)
         {
             Animation animation = this.GetComponent<Animation>();
             animation.Play("opendoor");
             door = true;
         }
-        else if(Vector3.Distance(this.transform.position, Player.transform.position) > 5.0f && door)
+        else if ((!DistancePlayer() && !DistanceEnemy()) && door)
         {
             Animation animation = this.GetComponent<Animation>();
             animation.Play("closedoor");
             door = false;
         }
+    }
+
+    private bool DistancePlayer()
+    {
+        return Vector3.Distance(this.transform.position, Player.transform.position) <= 5.0f ? true : false;
+    }
+
+    private bool DistanceEnemy()
+    {
+        foreach (var enemy in enemy_list)
+            if (Vector3.Distance(this.transform.position, enemy.transform.position) <= 5.0f)
+                return true;
+
+        return false;
     }
 }
