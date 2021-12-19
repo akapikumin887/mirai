@@ -115,7 +115,7 @@ public class PlayerControl : MonoBehaviour
         }
         //Debug.Log(Gamepad.current);
         // ゲームパッドが接続されていないとnullになる。
-        if (Gamepad.current == null)
+        if (Gamepad.current != null)
         {
             if (Input.GetKey(KeyCode.LeftShift)
                 || Input.GetKey(KeyCode.RightShift))

@@ -18,6 +18,7 @@ public class Danger : MonoBehaviour
     private int sides;
     private float time;
     private List<NavMeshPath> path_list = new List<NavMeshPath>();
+    private bool flag = false;
     // Start is called before the first frame update
 
     void Start()
@@ -25,10 +26,6 @@ public class Danger : MonoBehaviour
         text = transform.GetChild(1).gameObject.GetComponent<Text>();
         GAMEMASTER = GameObject.FindGameObjectWithTag("Manager");
         enemy_list = GAMEMASTER.GetComponent<GameMng>().GetEnemy();//ÀÛ‚É‚Í‚±‚±‚ÅEnemyManager‚©‚çEnemy‚ÌƒŠƒXƒg‚ğæ“¾
-        foreach (var item in enemy_list)
-        {
-            path_list.Add(item.GetComponent<Enemy>().GetToPlayerPath());
-        }
 
         uipol = this.GetComponent<UIPolygon>();
         sides = uipol.Sides;
@@ -46,9 +43,17 @@ public class Danger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!flag)
+        {
+            foreach (var item in enemy_list)
+            {
+                path_list.Add(item.GetComponent<Enemy>().GetToPlayerPath());
+            }
+            flag = true;
+        }
 
         time += Time.deltaTime;
-
+        Debug.Log(path_list[0].corners.Length);
 
         if (time > timelimit)
         {

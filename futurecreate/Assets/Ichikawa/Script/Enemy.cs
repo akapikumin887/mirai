@@ -98,7 +98,8 @@ public class Enemy : MonoBehaviour
         destination = this.transform.position;
         // プレイヤーへのパス初期化
         playerPath = new NavMeshPath();
-
+        // プレイヤーへのパス計算
+        NavMesh.CalculatePath(transform.position, points[playerPoint].position, NavMesh.AllAreas, playerPath);
         // 足跡生成フレーム初期化
         frame = 0;
         // 右足跡から生成
