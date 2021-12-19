@@ -29,16 +29,16 @@ public class PanelManager : MonoBehaviour {
 
 	private void Start()
 	{
-		main = menu.transform.GetChild(0).GetChild(6).gameObject;
+		main = menu.transform.GetChild(0).GetChild(4).gameObject;
 		main_anim = main.GetComponent<Animator>();
 
 		controller = menu.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
 		controller_anim = controller.GetComponent<Animator>();
 
-		window = menu.transform.GetChild(0).GetChild(3).gameObject;
+		window = menu.transform.GetChild(0).GetChild(2).gameObject;
 		window_anim = window.GetComponent<Animator>();
 
-		window2 = menu.transform.GetChild(0).GetChild(4).gameObject;
+		window2 = menu.transform.GetChild(0).GetChild(3).gameObject;
 		window2_anim = window2.GetComponent<Animator>();
 
 		audio = menu.transform.GetChild(0).GetChild(0).GetChild(1).gameObject;

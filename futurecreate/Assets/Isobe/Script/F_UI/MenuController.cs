@@ -26,16 +26,16 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
-        main = this.transform.GetChild(0).GetChild(6).gameObject;
+        main = this.transform.GetChild(0).GetChild(4).gameObject;
         main_anim = main.GetComponent<Animator>();
 
         controller = this.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
         controller_anim = controller.GetComponent<Animator>();
 
-        window = this.transform.GetChild(0).GetChild(3).gameObject;
+        window = this.transform.GetChild(0).GetChild(2).gameObject;
         window_anim = window.GetComponent<Animator>();
 
-        window2 = this.transform.GetChild(0).GetChild(4).gameObject;
+        window2 = this.transform.GetChild(0).GetChild(3).gameObject;
         window2_anim = window2.GetComponent<Animator>();
 
         audio = this.transform.GetChild(0).GetChild(0).GetChild(1).gameObject;
@@ -47,21 +47,30 @@ public class MenuController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Gamepad.current.startButton.isPressed)
         {
-            if (!this.transform.GetChild(0).gameObject.active)
-            this.transform.GetChild(0).gameObject.SetActive(true);
-
-            main_anim.SetBool("Open", true);
+            OpenWindow();
         }
         if (SceneManager.GetActiveScene().name == "game"&&!flag)
         {
-            panel.CloseAll();
-            this.transform.GetChild(0).gameObject.SetActive(false);
-            flag = true;
+            CloseWindow();
         }
+
     }
 
  
+    public void OpenWindow()
+    {
+        if (!this.transform.GetChild(0).gameObject.active)
+            this.transform.GetChild(0).gameObject.SetActive(true);
 
+        main_anim.SetBool("Open", true);
+    }
+
+    public void CloseWindow()
+    {
+        panel.CloseAll();
+        this.transform.GetChild(0).gameObject.SetActive(false);
+        flag = true;
+    }
   
 
     
