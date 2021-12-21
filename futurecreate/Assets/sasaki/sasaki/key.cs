@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class key : MonoBehaviour
 {
     [SerializeField] private int _KeyNum;
+    [SerializeField] private GameObject notificationUI;
+    [SerializeField] private GameObject findUI;
     GameMng _Script;
 
     void Start()
@@ -21,15 +23,22 @@ public class key : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         //接触しているオブジェクトのタグが"Player"のとき
-        if(Input.GetKey(KeyCode.E))
+        if (other.CompareTag("Player"))
         {
-            if (other.CompareTag("Player"))
+            //UIの表示
+
+
+            //keyを押したらアイテム入手
+            if (Input.GetKey(KeyCode.E))
             {
                 Destroy(this.gameObject);
                 _Script._Keys[_KeyNum] = true;
+                Notification nof = notificationUI.GetComponent<Notification>();
+                nof.CallNotification("社員用カードキーを入手した");
                 ////オブジェクトの色を赤に変更する
                 //GetComponent<Renderer>().material.color = Color.red;
             }
+
         }
     }
 }
