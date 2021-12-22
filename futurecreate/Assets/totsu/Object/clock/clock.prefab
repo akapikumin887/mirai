@@ -299,7 +299,7 @@ MonoBehaviour:
   IdlingTime: 5
   Size: 100
   RingingTime: 300
-  alarm: {fileID: 8300000, guid: 250ead22a9f221749bdfce932a1443c0, type: 3}
+  clip: {fileID: 8300000, guid: 250ead22a9f221749bdfce932a1443c0, type: 3}
 --- !u!95 &296164443240727912
 Animator:
   serializedVersion: 3

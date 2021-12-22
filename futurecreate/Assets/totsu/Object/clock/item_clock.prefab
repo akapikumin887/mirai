@@ -252,7 +252,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5685460597878064528}
-  - component: {fileID: 7364943901903142291}
   - component: {fileID: 6945188475421331452}
   - component: {fileID: 5879822228210073710}
   - component: {fileID: 5706046837833397319}
@@ -283,22 +282,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7364943901903142291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5020670151250468650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a7f8612dd228e74b8edb8cc2f1616ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Bell: {fileID: 1398721664031847351, guid: bd97f986c140657428c28d781e8fb78d, type: 3}
-  IdlingTime: 5
-  Size: 100
-  RingingTime: 300
 --- !u!95 &6945188475421331452
 Animator:
   serializedVersion: 3
@@ -329,7 +312,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8, y: 1, z: 8}
+  m_Size: {x: 10, y: 1, z: 10}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &5706046837833397319
 MonoBehaviour:
