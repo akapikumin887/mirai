@@ -14,7 +14,7 @@ public class GameMng : MonoBehaviour
     public List<GameObject> _PathFindings { set; get; } = new List<GameObject>();
     public bool GameOver { set; get; }//trueでゲームオーバー
     public List<bool> _Keys { set; get; } = new List<bool>();
-    public List<bool> _Items { set; get; } = new List<bool>();
+    public uint _ClockCount { set; get; }
 
     void Awake()
     {
@@ -45,9 +45,7 @@ public class GameMng : MonoBehaviour
             _Keys.Add(false);
 
         //アイテムの初期化
-        for (int i = 0; i < _ItemCount; i++)
-            _Items.Add(false);
-
+        _ClockCount = 0;
     }
 
     void Start()

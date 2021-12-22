@@ -68,15 +68,17 @@ public class EnemyVisibility : MonoBehaviour
                     return;
                 }
             }
+            else if (hit.collider.tag == "Player")
+            {
+                Debug.Log("Ž‹ŠE‚É“ü‚Á‚½‚æ");
 
-            Debug.Log("Ž‹ŠE‚É“ü‚Á‚½‚æ");
+                //this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.TRACKING);
+                this.GetComponent<Enemy>().eType = Enemy.ENEMY_TYPE.TRACKING;
+                //this.GetComponent<Enemy>().SetDestination(Player.transform.position);
+                this.GetComponent<Enemy>().destination = Player.transform.position;
+                //Debug.Log("Œ©‚Â‚©‚Á‚½");
+            }
 
-            //this.GetComponent<Enemy>().SetEnemyType(Enemy.ENEMY_TYPE.TRACKING);
-            this.GetComponent<Enemy>().eType = Enemy.ENEMY_TYPE.TRACKING;
-            //this.GetComponent<Enemy>().SetDestination(Player.transform.position);
-            this.GetComponent<Enemy>().destination = Player.transform.position;
-            //Debug.Log("Œ©‚Â‚©‚Á‚½");
-            
         }
         else
         {
