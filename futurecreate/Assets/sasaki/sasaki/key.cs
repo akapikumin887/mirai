@@ -11,6 +11,7 @@ public class key : MonoBehaviour
     [SerializeField] private GameObject findUI;
 
     [SerializeField] private GameObject enemyPoints;
+    [SerializeField] private GameObject denger;
     GameMng _Script;
 
     void Start()
@@ -48,11 +49,16 @@ public class key : MonoBehaviour
                         //Å‰‚ÌƒJƒM‚ğ“üè‚µ‚½‚ç“G‚ğ¶¬‚·‚é
                         var enemy = _Script.AddEnemyVisibility(new Vector3(50.0f, 0.5f, 41.0f));
                         var enemyScript = enemy.GetComponent<Enemy>();
+
+                        var dengerScript = denger.GetComponent<Danger>();
+                        dengerScript.AddPathList(enemyScript.playerPath);
+
                         enemyScript.points.Add(_Script._Pleyer.transform);
 
                         var objs = enemyPoints.GetComponentsInChildren<Transform>();
                         foreach (var obj in objs)
                             enemyScript.points.Add(obj);
+
 
                         break;
                     case 1:
