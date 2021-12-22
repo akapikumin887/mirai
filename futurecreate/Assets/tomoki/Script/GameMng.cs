@@ -6,6 +6,8 @@ public class GameMng : MonoBehaviour
 {
     [SerializeField] private int _KeyCount;
     [SerializeField] private int _ItemCount;
+    [SerializeField] private GameObject _VisEnemy;
+    [SerializeField] private GameObject _LisEnemy;
 
     public GameObject _Pleyer { set; get; }
     public List<GameObject> _Enemys { set; get; } = new List<GameObject>();
@@ -50,30 +52,48 @@ public class GameMng : MonoBehaviour
 
     void Start()
     {
-        
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            var controllerNames = Input.GetJoystickNames();
-            if (controllerNames[0] == "")
-                Debug.Log("コントローラー未接続");
-            else
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    if (controllerNames[i] == null)
-                        break;
-                    Debug.Log(controllerNames[i]);
-                }
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    var controllerNames = Input.GetJoystickNames();
+        //    if (controllerNames[0] == "")
+        //        Debug.Log("コントローラー未接続");
+        //    else
+        //    {
+        //        for (int i = 0; i < 5; i++)
+        //        {
+        //            if (controllerNames[i] == null)
+        //                break;
+        //            Debug.Log(controllerNames[i]);
+        //        }
+        //    }
+        //}
 
         if (GameOver)
         {
             scene_manager.FadeOut(1);
         }
+
+        //if (Input.GetKey(KeyCode.Space))
+        //{
+        //    Notification nof = GameObject.Find("Image3").GetComponent<Notification>();
+        //    nof.CallNotification("やあ");
+        //}
     }
+
+    public void AddEnemyVisibility(Vector3 pos)
+    {
+        var enemy = Instantiate(_VisEnemy, pos, Quaternion.identity);
+        _Enemys.Add(enemy);
+    }
+
+    public void AddEnemyListen(Vector3 pos)
+    {
+        var enemy = Instantiate(_LisEnemy, pos, Quaternion.identity);
+        _Enemys.Add(enemy);
+    }
+
 }

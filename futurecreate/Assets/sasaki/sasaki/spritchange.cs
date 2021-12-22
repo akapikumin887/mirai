@@ -13,26 +13,32 @@ public class spritchange : MonoBehaviour
     void Start()
     {
         m_Image = GetComponent<Image>();
-
+        m_Image.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // スペースキーが押された場合
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (cardchange >= 4)
-                cardchange = 0;
-            m_Image.sprite = m_Sprite[cardchange];
-            cardchange++;
-            //Debug.Log(cardchange);
-        }
+        //// スペースキーが押された場合
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    if (cardchange >= 4)
+        //        cardchange = 0;
+        //    m_Image.sprite = m_Sprite[cardchange];
+        //    cardchange++;
+        //    //Debug.Log(cardchange);
+        //}
     }
 
-    int Cardnumber()
+    public void GetCardKey()
     {
-        return cardchange;
+        if (!m_Image.enabled)
+        {
+            m_Image.enabled = true;
+            return;
+        }
+        cardchange++;
+        m_Image.sprite = m_Sprite[cardchange];
     }
 
 }

@@ -48,7 +48,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3559836454202362056}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -147,7 +147,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8050045740473267353}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -207,6 +207,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  TouchDis: 1
+  Player: {fileID: 0}
 --- !u!114 &5321073584452417021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,8 +221,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f13209eb5293c74b97e57085541ce60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eClass: 0
   points: []
-  destPoint: 0
+  footPrint_L: {fileID: 9026116702965889150, guid: ebdbda6016902a048ae9d9bcbbf6bd2f, type: 3}
+  footPrint_R: {fileID: 8881907086572217497, guid: c7f7c1cd08256804a970be4d96d3ee54, type: 3}
+  frameCount: 0
 --- !u!195 &7140543478309668294
 NavMeshAgent:
   m_ObjectHideFlags: 0
