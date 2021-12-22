@@ -9,6 +9,8 @@ public class key : MonoBehaviour
     [SerializeField] private GameObject notificationUI;
     [SerializeField] private GameObject keyUI;
     [SerializeField] private GameObject findUI;
+
+    [SerializeField] private GameObject enemyPoints;
     GameMng _Script;
 
     void Start()
@@ -44,7 +46,14 @@ public class key : MonoBehaviour
                         keyChange.GetCardKey();
 
                         //ç≈èâÇÃÉJÉMÇì¸éËÇµÇΩÇÁìGÇê∂ê¨Ç∑ÇÈ
-                        _Script.AddEnemyVisibility(new Vector3(50.0f, 0.5f, 41.0f));
+                        var enemy = _Script.AddEnemyVisibility(new Vector3(50.0f, 0.5f, 41.0f));
+                        var enemyScript = enemy.GetComponent<Enemy>();
+                        enemyScript.points.Add(_Script._Pleyer.transform);
+
+                        var objs = enemyPoints.GetComponentsInChildren<Transform>();
+                        foreach (var obj in objs)
+                            enemyScript.points.Add(obj);
+
                         break;
                     case 1:
                         break;

@@ -56,9 +56,8 @@ public class Enemy : MonoBehaviour
     /*-----------------------
       目的地
     -----------------------*/
-    [Header("Destination")]
     // 格納場所(0にプレイヤーの場所)
-    private List<Transform> points = new List<Transform>();
+    public List<Transform> points { set; get; } = new List<Transform>();
     // 次の目的地
     private int nextPoint = 1;
     // プレイヤーの位置
@@ -88,6 +87,8 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        eType = ENEMY_TYPE.NULL;
+
         agent = GetComponent<NavMeshAgent>();
         // autoBrakingを無効にすると目的地に近づいても速度が落ちない
         agent.autoBraking = false;
@@ -96,23 +97,23 @@ public class Enemy : MonoBehaviour
         gameMaster = GameObject.FindGameObjectWithTag("Manager");
         gameManager = gameMaster.GetComponent<GameMng>();
 
-        // プレイヤー取得
-        GameObject playerObj = GameObject.Find("character");
-        // 目的地のポイント取得
-        GameObject pointObj = GameObject.Find("Points"); //ポイントのまとまり
-        GameObject[] pointsObj = new GameObject[pointObj.transform.childCount]; //それぞれのポイント
-        for (int i = 0; i < pointObj.transform.childCount; i++)
-        {
-            pointsObj[i] = pointObj.transform.GetChild(i).gameObject;
-        }
+        //// プレイヤー取得
+        //GameObject playerObj = GameObject.Find("character");
+        //// 目的地のポイント取得
+        //GameObject pointObj = GameObject.Find("Points"); //ポイントのまとまり
+        //GameObject[] pointsObj = new GameObject[pointObj.transform.childCount]; //それぞれのポイント
+        //for (int i = 0; i < pointObj.transform.childCount; i++)
+        //{
+        //    pointsObj[i] = pointObj.transform.GetChild(i).gameObject;
+        //}
 
-        // 目的地リストをクリアしてプレイヤーとポイントを追加
-        points.Clear();
-        points.Add(playerObj.transform);
-        for (int j = 0; j < pointsObj.Length; j++)
-        {
-            points.Add(pointsObj[j].transform);
-        }
+        //// 目的地リストをクリアしてプレイヤーとポイントを追加
+        //points.Clear();
+        //points.Add(playerObj.transform);
+        //for (int j = 0; j < pointsObj.Length; j++)
+        //{
+        //    points.Add(pointsObj[j].transform);
+        //}
         // 追跡中の目的地初期化
         destination = this.transform.position;
         // プレイヤーへのパス初期化
@@ -128,7 +129,6 @@ public class Enemy : MonoBehaviour
 
         // 最初の目的地に向かう
         //GotoNextPoint();
-        eType = ENEMY_TYPE.NULL;
     }
 
     // 目的地管理関数
@@ -150,6 +150,8 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(eType);
+
         switch (eType)
         {
             case ENEMY_TYPE.PATROL: // 巡回
