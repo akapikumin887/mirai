@@ -14282,7 +14282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731669013032052546, guid: 666a046e515c2774eba76d54e2e0b99c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2731669013032052546, guid: 666a046e515c2774eba76d54e2e0b99c, type: 3}
       propertyPath: m_TagString
@@ -17585,6 +17585,10 @@ PrefabInstance:
       propertyPath: keyUI
       value: 
       objectReference: {fileID: 30444578}
+    - target: {fileID: 6301107824951056239, guid: 495508f865191d64ba0c39b7b95c1afe, type: 3}
+      propertyPath: enemyPoints
+      value: 
+      objectReference: {fileID: 2124498418}
     - target: {fileID: 6301107824951056239, guid: 495508f865191d64ba0c39b7b95c1afe, type: 3}
       propertyPath: notificationUI
       value: 
