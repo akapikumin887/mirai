@@ -197,43 +197,43 @@ public class Enemy : MonoBehaviour
         NavMesh.CalculatePath(transform.position, points[playerPoint].position, NavMesh.AllAreas, playerPath);
     }
 
-    // 現在の状態(ENEMY_TYPE)
-    public ENEMY_TYPE GetEnemyType() // 取得
-    {
-        return eType;
-    }
-    public void SetEnemyType(ENEMY_TYPE type) // 変更
-    {
-        eType = type;
-    }
+    //// 現在の状態(ENEMY_TYPE)
+    //public ENEMY_TYPE GetEnemyType() // 取得
+    //{
+    //    return eType;
+    //}
+    //public void SetEnemyType(ENEMY_TYPE type) // 変更
+    //{
+    //    eType = type;
+    //}
 
-    // agent
-    public NavMeshAgent GetAgent() // ゲッター
-    {
-        return agent;
-    }
-    public void SetAgent(NavMeshAgent agentType) // セッター
-    {
-        agent = agentType;
-    }
+    //// agent
+    //public NavMeshAgent GetAgent() // ゲッター
+    //{
+    //    return agent;
+    //}
+    //public void SetAgent(NavMeshAgent agentType) // セッター
+    //{
+    //    agent = agentType;
+    //}
 
-    // destination
-    public void SetDestination(Vector3 dest) // セッター
-    {
-        destination = dest;
-    }
+    //// destination
+    //public void SetDestination(Vector3 dest) // セッター
+    //{
+    //    destination = dest;
+    //}
 
-    // プレイヤーの情報(points[playerPoint])
-    public Transform GetPlayerPoint()
-    {
-        return points[playerPoint];
-    }
+    //// プレイヤーの情報(points[playerPoint])
+    //public Transform GetPlayerPoint()
+    //{
+    //    return points[playerPoint];
+    //}
 
-    // プレイヤーへのパス取得(playerPath)
-    public NavMeshPath GetToPlayerPath()
-    {
-        return playerPath;
-    }
+    //// プレイヤーへのパス取得(playerPath)
+    //public NavMeshPath GetToPlayerPath()
+    //{
+    //    return playerPath;
+    //}
 
     // 足跡生成関数(xpos -> 前後調整)
     public void CreateFootPrint(float xpos)

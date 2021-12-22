@@ -84,16 +84,20 @@ public class GameMng : MonoBehaviour
         //}
     }
 
-    public void AddEnemyVisibility(Vector3 pos)
+    public GameObject AddEnemyVisibility(Vector3 pos)
     {
         var enemy = Instantiate(_VisEnemy, pos, Quaternion.identity);
         _Enemys.Add(enemy);
+
+        return enemy;
     }
 
-    public void AddEnemyListen(Vector3 pos)
+    public GameObject AddEnemyListen(Vector3 pos)
     {
         var enemy = Instantiate(_LisEnemy, pos, Quaternion.identity);
         _Enemys.Add(enemy);
+
+        return enemy;
     }
 
 }

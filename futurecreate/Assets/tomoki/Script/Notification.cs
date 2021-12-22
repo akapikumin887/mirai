@@ -17,7 +17,7 @@ public class Notification : MonoBehaviour
     void Start()
     {
         _Text = transform.GetChild(0).gameObject.GetComponent<Text>();
-        _Text.color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
+        //_Text.color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
 
         _RectTransform = GetComponent<RectTransform>();
 
