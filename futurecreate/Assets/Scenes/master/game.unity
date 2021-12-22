@@ -9808,6 +9808,10 @@ PrefabInstance:
       value: stage02
       objectReference: {fileID: 0}
     - target: {fileID: 7011799155316428295, guid: 2b123cc3e251e4f4a80e5666be367d77, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011799155316428295, guid: 2b123cc3e251e4f4a80e5666be367d77, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
