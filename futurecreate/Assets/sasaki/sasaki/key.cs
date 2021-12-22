@@ -59,6 +59,8 @@ public class key : MonoBehaviour
                         foreach (var obj in objs)
                             enemyScript.points.Add(obj);
 
+                        enemyScript.eType = Enemy.ENEMY_TYPE.PATROL;
+                        enemyScript.GotoNextPoint();
 
                         break;
                     case 1:

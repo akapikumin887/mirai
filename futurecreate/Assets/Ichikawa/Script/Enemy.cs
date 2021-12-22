@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        eType = ENEMY_TYPE.NULL;
+        //eType = ENEMY_TYPE.NULL;
 
         agent = GetComponent<NavMeshAgent>();
         // autoBrakingを無効にすると目的地に近づいても速度が落ちない
@@ -132,7 +132,7 @@ public class Enemy : MonoBehaviour
     }
 
     // 目的地管理関数
-    void GotoNextPoint()
+    public void GotoNextPoint()
     {
         // 地点がなにも設定されていないときに返す
         if (points.Count == null)

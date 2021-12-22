@@ -34,7 +34,6 @@ public class EnemyVisibility : MonoBehaviour
     {
         if (this.GetComponent<Enemy>().eType == Enemy.ENEMY_TYPE.NULL)
             return;
-        Debug.Log("チェーンメール");
 
         //----------------------------------------------------------------------------------------
         //ベクトルの宣言（せってい）
