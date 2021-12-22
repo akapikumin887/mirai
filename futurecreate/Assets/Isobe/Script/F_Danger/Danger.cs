@@ -62,7 +62,7 @@ public class Danger : MonoBehaviour
             {
                 List<float> enemy_length = new List<float>();//”ÍˆÍ“à‚Ì“GŠi”[—p
 
-                int num = 0;
+                int num = -1;
                 //”ÍˆÍ“àEnemyŒŸõ
                 foreach (var item in enemy_list)
                 {
@@ -70,8 +70,12 @@ public class Danger : MonoBehaviour
                     float offset = 360.0f / sides * 2.0f;
                     float plus = angle + offset > 360.0f ? angle + offset - 360.0f : angle + offset;
                     float minus = angle - offset < 0.0f ? angle - offset + 360.0f : angle - offset;
+                    num++;
 
-
+                    if (path_list[num] == null)
+                    {
+                        continue;
+                    }
                     if (i == 0)//i‚ª0‚ÌŽž‚¾‚¯0“x‚æ‚è¬‚³‚¢‚ª360“xˆÈ‰º‚É•Ï‚í‚é‚Ì‚Å•Ê˜g
                     {
                         //”ÍˆÍ“àŠm”F
@@ -94,7 +98,6 @@ public class Danger : MonoBehaviour
                             }
                         }
                     }
-                    num++;
                 }
 
                 //”ÍˆÍ“àtrapŒŸõ
