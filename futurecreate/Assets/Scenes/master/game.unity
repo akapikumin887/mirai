@@ -17236,6 +17236,10 @@ PrefabInstance:
       propertyPath: obj
       value: 
       objectReference: {fileID: 932184317}
+    - target: {fileID: 6301107824951056239, guid: 495508f865191d64ba0c39b7b95c1afe, type: 3}
+      propertyPath: notificationUI
+      value: 
+      objectReference: {fileID: 932184317}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 495508f865191d64ba0c39b7b95c1afe, type: 3}
 --- !u!1001 &1333073204
