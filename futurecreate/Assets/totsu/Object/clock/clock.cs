@@ -16,6 +16,14 @@ public class clock : MonoBehaviour
 
     private bool Ring = false;
 
+    [SerializeField] AudioClip alarm;
+    AudioSource audioSource;
+    void Start()
+    {
+        //Component‚ðŽæ“¾
+        audioSource = GetComponent<AudioSource>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -31,6 +39,8 @@ public class clock : MonoBehaviour
             b.SetBell(Size, RingingTime, "Bell");
 
             //Debug.Log("‚¨—×");
+
+            audioSource.PlayOneShot(alarm);
 
             transform.position += new Vector3(0.0f, 1.0f, 0.0f);
             Ring = true;
