@@ -9,7 +9,9 @@ public class clockget : MonoBehaviour
     [SerializeField] private GameObject notificationUI;
     [SerializeField] private GameObject clockUI;
     [SerializeField] private GameObject findUI;
-    GameMng _Script;
+    private GameMng _Script;
+
+    private bool _FirstTime;    //始めてだったらここをtrueにする
 
     void Start()
     {
@@ -33,27 +35,9 @@ public class clockget : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 Destroy(this.gameObject);
-                //_Script._clocks[_clockNum] = true;
+                _Script._ClockCount++;
                 Notification nof = notificationUI.GetComponent<Notification>();
 
-                switch (_clockNum)
-                {
-                    case 0:
-                        nof.CallNotification("社員用カードキーを入手した");
-                        var clockChange = clockUI.GetComponent<spritchange>();
-                        //clockChange.GetCardclock();
-
-                        //最初のカギを入手したら敵を生成する
-                        _Script.AddEnemyVisibility(new Vector3(50.0f, 0.5f, 41.0f));
-                        break;
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                }
-
-                ////オブジェクトの色を赤に変更する
-                //GetComponent<Renderer>().material.color = Color.red;
             }
 
         }
