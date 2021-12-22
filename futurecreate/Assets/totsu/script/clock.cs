@@ -11,6 +11,9 @@ public class clock : MonoBehaviour
 
 
     private float frame = 0.0f;
+    private float oldframe = 0.0f;
+    private float clkrot = 10.0f;
+
     private bool Ring = false;
 
     // Update is called once per frame
@@ -29,12 +32,26 @@ public class clock : MonoBehaviour
 
             Debug.Log("‚¨—×");
 
+            transform.position += new Vector3(0.0f, 1.0f, 0.0f);
             Ring = true;
+        }
+
+        if(Ring)
+        {
+            Ringing(frame);
         }
 
         if(frame >= IdlingTime + RingingTime / 60)
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void Ringing(float frm)
+    {
+       
+        clkrot *= -1;
+        
+        transform.rotation = Quaternion.Euler(clkrot, 0f, 0f); 
     }
 }
