@@ -32,6 +32,9 @@ public class EnemyVisibility : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (this.GetComponent<Enemy>().eType == Enemy.ENEMY_TYPE.NULL)
+            return;
+
         //----------------------------------------------------------------------------------------
         //ベクトルの宣言（せってい）
         Enemy_forward_direction = this.transform.forward;//敵の正面ベクトルを取得

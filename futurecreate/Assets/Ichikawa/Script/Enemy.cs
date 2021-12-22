@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections.Generic;
 
 /*=========================================================
 
@@ -37,9 +38,9 @@ public class Enemy : MonoBehaviour
         VIGILANCE,  // 警戒
         TRACKING,   // 追跡
         PEPPER,     // ペッパー(呼び寄せられてる)
+        NULL,
     }
     // 現在の状態
-    //private ENEMY_TYPE eType;
     public ENEMY_TYPE eType { set; get; }
 
     // 敵の種類
@@ -49,7 +50,7 @@ public class Enemy : MonoBehaviour
         LISTENING,  // 耳がいい敵
         PEPPER,     // ペッパー(呼び寄せる)
     }
-    // この敵の種類
+    // この敵の種類 足跡で使用
     public ENEMY_CLASS eClass;
 
     /*-----------------------
@@ -57,16 +58,14 @@ public class Enemy : MonoBehaviour
     -----------------------*/
     [Header("Destination")]
     // 格納場所(0にプレイヤーの場所)
-    public Transform[] points;
+    private List<Transform> points = new List<Transform>();
     // 次の目的地
     private int nextPoint = 1;
     // プレイヤーの位置
     private int playerPoint = 0;
     // 追跡中の目的地
-    //private Vector3 destination;
     public Vector3 destination { set; get; }
     // プレイヤーへのパス
-    //private NavMeshPath playerPath = null;
     public NavMeshPath playerPath { set; get; } = null;
 
     /*-----------------------
@@ -97,6 +96,23 @@ public class Enemy : MonoBehaviour
         gameMaster = GameObject.FindGameObjectWithTag("Manager");
         gameManager = gameMaster.GetComponent<GameMng>();
 
+        // プレイヤー取得
+        GameObject playerObj = GameObject.Find("character");
+        // 目的地のポイント取得
+        GameObject pointObj = GameObject.Find("Points"); //ポイントのまとまり
+        GameObject[] pointsObj = new GameObject[pointObj.transform.childCount]; //それぞれのポイント
+        for (int i = 0; i < pointObj.transform.childCount; i++)
+        {
+            pointsObj[i] = pointObj.transform.GetChild(i).gameObject;
+        }
+
+        // 目的地リストをクリアしてプレイヤーとポイントを追加
+        points.Clear();
+        points.Add(playerObj.transform);
+        for (int j = 0; j < pointsObj.Length; j++)
+        {
+            points.Add(pointsObj[j].transform);
+        }
         // 追跡中の目的地初期化
         destination = this.transform.position;
         // プレイヤーへのパス初期化
@@ -110,14 +126,16 @@ public class Enemy : MonoBehaviour
         // 足跡生成角度初期化
         footPrintAngle = Quaternion.Euler(transform.localEulerAngles.x + 90.0f, transform.localEulerAngles.y, transform.localEulerAngles.z);
 
-        // 目的地に向かう
-        GotoNextPoint();
+        // 最初の目的地に向かう
+        //GotoNextPoint();
+        eType = ENEMY_TYPE.NULL;
     }
 
+    // 目的地管理関数
     void GotoNextPoint()
     {
         // 地点がなにも設定されていないときに返す
-        if (points.Length == 0)
+        if (points.Count == null)
             return;
 
         // 現在設定された目的地に行くように設定
@@ -125,7 +143,7 @@ public class Enemy : MonoBehaviour
 
         // 配列内の次の位置を目的地に設定し
         // 必要ならば出発地点(1)に戻る
-        nextPoint = (nextPoint + 1) % (points.Length);
+        nextPoint = (nextPoint + 1) % (points.Count);
         if (nextPoint == 0)
             nextPoint = 1;
     }
@@ -138,8 +156,8 @@ public class Enemy : MonoBehaviour
                 GetComponent<Renderer>().material.color = Color.red; //色を変える
                 agent.speed = 1.5f;    // 移動速度1.5
                 // 現目的地に近づいたら次の目的地を選択
-                if (!agent.pathPending && agent.remainingDistance < 0.5f)
-                    GotoNextPoint();
+                //if (!agent.pathPending && agent.remainingDistance < 0.5f)
+                //    GotoNextPoint();
                 break;
 
             case ENEMY_TYPE.VIGILANCE: // 警戒
@@ -164,6 +182,9 @@ public class Enemy : MonoBehaviour
                     eType = ENEMY_TYPE.PATROL;
                 }
                 break;
+
+            case ENEMY_TYPE.NULL:
+                return;
         }
 
         frame += Time.deltaTime;
@@ -196,44 +217,6 @@ public class Enemy : MonoBehaviour
         // プレイヤーへのパス計算
         NavMesh.CalculatePath(transform.position, points[playerPoint].position, NavMesh.AllAreas, playerPath);
     }
-
-    //// 現在の状態(ENEMY_TYPE)
-    //public ENEMY_TYPE GetEnemyType() // 取得
-    //{
-    //    return eType;
-    //}
-    //public void SetEnemyType(ENEMY_TYPE type) // 変更
-    //{
-    //    eType = type;
-    //}
-
-    //// agent
-    //public NavMeshAgent GetAgent() // ゲッター
-    //{
-    //    return agent;
-    //}
-    //public void SetAgent(NavMeshAgent agentType) // セッター
-    //{
-    //    agent = agentType;
-    //}
-
-    //// destination
-    //public void SetDestination(Vector3 dest) // セッター
-    //{
-    //    destination = dest;
-    //}
-
-    //// プレイヤーの情報(points[playerPoint])
-    //public Transform GetPlayerPoint()
-    //{
-    //    return points[playerPoint];
-    //}
-
-    //// プレイヤーへのパス取得(playerPath)
-    //public NavMeshPath GetToPlayerPath()
-    //{
-    //    return playerPath;
-    //}
 
     // 足跡生成関数(xpos -> 前後調整)
     public void CreateFootPrint(float xpos)
