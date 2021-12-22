@@ -43,15 +43,15 @@ public class Danger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!flag)
-        {
-            foreach (var item in enemy_list)
-            {
-                //path_list.Add(item.GetComponent<Enemy>().GetToPlayerPath());
-                path_list.Add(item.GetComponent<Enemy>().playerPath);
-            }
-            flag = true;
-        }
+        //if (!flag)
+        //{
+        //    foreach (var item in enemy_list)
+        //    {
+        //        //path_list.Add(item.GetComponent<Enemy>().GetToPlayerPath());
+        //        path_list.Add(item.GetComponent<Enemy>().playerPath);
+        //    }
+        //    flag = true;
+        //}
 
         time += Time.deltaTime;
         //Debug.Log(path_list[0].corners.Length);
@@ -306,5 +306,10 @@ public class Danger : MonoBehaviour
         path_data = path;
 
         return dist;
+    }
+
+    public void AddPathList(NavMeshPath path)
+    {
+        path_list.Add(path);
     }
 }
