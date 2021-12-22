@@ -30,8 +30,14 @@ public class PlayerControl : MonoBehaviour
 
     private bool Run = false;
 
+    [SerializeField] private AudioClip clip;
+    private AudioSource audioSource;
+
     void Start()
     {
+        //Component‚ðŽæ“¾
+        audioSource = GetComponent<AudioSource>();
+
         rb = GetComponent<Rigidbody>();
         _GameManagerScript = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameMng>();
         _PathFindings = _GameManagerScript._PathFindings;
@@ -89,6 +95,7 @@ public class PlayerControl : MonoBehaviour
                 soundSize *= 2.0f;
             }
             b.SetBell(soundSize, 2);
+            //audioSource.PlayOneShot(clip);
             _Frame = 0;
         }
     }

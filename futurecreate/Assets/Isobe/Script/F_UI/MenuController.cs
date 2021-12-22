@@ -19,6 +19,9 @@ public class MenuController : MonoBehaviour
     private Animator audio_anim;
 
     bool flag=false;
+
+    [SerializeField] private AudioClip SeleSE;
+    private AudioSource audioSource;
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -40,6 +43,9 @@ public class MenuController : MonoBehaviour
 
         audio = this.transform.GetChild(0).GetChild(0).GetChild(1).gameObject;
         audio_anim = audio.GetComponent<Animator>();
+
+        //Component‚ðŽæ“¾
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

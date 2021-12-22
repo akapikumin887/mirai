@@ -13,9 +13,15 @@ public class DoorController : MonoBehaviour
     [SerializeField]
     private int lockNum = 0;
 
+    [SerializeField] private AudioClip se;
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        //Component‚ðŽæ“¾
+        audioSource = GetComponent<AudioSource>();
+
         GameManagerScript = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameMng>();
         Player=GameManagerScript._Pleyer;
         enemy_list = GameManagerScript.GetComponent<GameMng>()._Enemys;
@@ -34,12 +40,16 @@ public class DoorController : MonoBehaviour
             Animation animation = this.GetComponent<Animation>();
             animation.Play("opendoor");
             door = true;
+
+            audioSource.PlayOneShot(se);
         }
         else if ((!DistancePlayer() && !DistanceEnemy()) && door)
         {
             Animation animation = this.GetComponent<Animation>();
             animation.Play("closedoor");
             door = false;
+
+            audioSource.PlayOneShot(se);
         }
     }
 
