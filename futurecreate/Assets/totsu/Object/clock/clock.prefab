@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: -9057897083829569785}
   - component: {fileID: 296164443240727912}
   - component: {fileID: 3884135648214338298}
-  - component: {fileID: -897613689941634498}
+  - component: {fileID: -5315061590594220010}
   m_Layer: 0
   m_Name: clock
   m_TagString: Untagged
@@ -299,7 +299,6 @@ MonoBehaviour:
   IdlingTime: 5
   Size: 100
   RingingTime: 300
-  alarm: {fileID: 0}
 --- !u!95 &296164443240727912
 Animator:
   serializedVersion: 3
@@ -332,7 +331,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8, y: 1, z: 8}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!82 &-897613689941634498
+--- !u!82 &-5315061590594220010
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

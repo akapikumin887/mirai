@@ -16,8 +16,8 @@ public class clock : MonoBehaviour
 
     private bool Ring = false;
 
-    [SerializeField] AudioClip alarm;
-    AudioSource audioSource;
+    private AudioClip alarm;
+    private AudioSource audioSource;
     void Start()
     {
         //Component‚ðŽæ“¾
@@ -40,7 +40,8 @@ public class clock : MonoBehaviour
 
             //Debug.Log("‚¨—×");
 
-            audioSource.PlayOneShot(alarm);
+
+            audioSource.PlayOneShot(alarm) ;
 
             transform.position += new Vector3(0.0f, 1.0f, 0.0f);
             Ring = true;
