@@ -25205,5 +25205,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Image3
       objectReference: {fileID: 0}
+    - target: {fileID: 8392796588526314019, guid: fc2cdf967598db84fa47356dd28f6345, type: 3}
+      propertyPath: m_TagString
+      value: Danger
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc2cdf967598db84fa47356dd28f6345, type: 3}

@@ -15,6 +15,7 @@ public class GameMng : MonoBehaviour
     public bool GameOver { set; get; }//trueでゲームオーバー
     public List<bool> _Keys { set; get; } = new List<bool>();
     public uint _ClockCount { set; get; }
+    public GameObject _Danger { set; get; }
 
     void Awake()
     {
@@ -46,6 +47,10 @@ public class GameMng : MonoBehaviour
 
         //アイテムの初期化
         _ClockCount = 0;
+
+        //危険度のオブジェクト取得
+        _Danger = GameObject.FindGameObjectWithTag("Danger");
+        Debug.Log(_Danger);
     }
 
     void Start()

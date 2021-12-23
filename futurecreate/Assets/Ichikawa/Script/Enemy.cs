@@ -83,6 +83,7 @@ public class Enemy : MonoBehaviour
     // ê∂ê¨äpìx
     private Quaternion footPrintAngle;
 
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -183,6 +184,9 @@ public class Enemy : MonoBehaviour
                 break;
 
             case ENEMY_TYPE.NULL:
+                var dengerScript = gameManager._Danger.GetComponent<Danger>();
+                dengerScript.AddPathList(playerPath);
+
                 GotoNextPoint();
                 return;
         }
