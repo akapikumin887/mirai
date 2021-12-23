@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour
     // 生成フレーム管理
     private float frame;
     // 生成間隔(秒)
-    private float frameCount = 10;
+    private float frameCount;
     // 左右管理(trueで右falseで左)
     private bool footPrint_RoL;
     // 生成場所
@@ -117,13 +117,14 @@ public class Enemy : MonoBehaviour
         playerPath = new NavMeshPath();
         // プレイヤーへのパス計算
         NavMesh.CalculatePath(transform.position, points[playerPoint].position, NavMesh.AllAreas, playerPath);
-        // 足跡生成フレーム初期化
+        // 生成フレーム初期化
         frame = 0;
         // 右足跡から生成
         footPrint_RoL = true;
-        // 足跡生成角度初期化
+        // 生成角度初期化
         footPrintAngle = Quaternion.Euler(transform.localEulerAngles.x + 90.0f, transform.localEulerAngles.y, transform.localEulerAngles.z);
-
+        // 生成間隔設定
+        frameCount = 0.3f;
         // 最初の目的地に向かう
         //GotoNextPoint();
     }
@@ -154,7 +155,7 @@ public class Enemy : MonoBehaviour
         {
             case ENEMY_TYPE.PATROL: // 巡回
                 GetComponent<Renderer>().material.color = Color.red; //色を変える
-                agent.speed = 1.5f;    // 移動速度1.5
+                agent.speed = 5.0f;    // 移動速度5.0
                 // 現目的地に近づいたら次の目的地を選択
                 if (!agent.pathPending && agent.remainingDistance < 0.5f)
                     GotoNextPoint();
@@ -166,7 +167,7 @@ public class Enemy : MonoBehaviour
             case ENEMY_TYPE.TRACKING: // 発見
                 GetComponent<Renderer>().material.color = Color.black; //色を変える
                 GetComponent<NavMeshAgent>().isStopped = false;
-                agent.speed = 2.0f;    // 移動速度2.0
+                agent.speed = 6.0f;    // 移動速度6.0
                 agent.SetDestination(destination);
                 break;
 
