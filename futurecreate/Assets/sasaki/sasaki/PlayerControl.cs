@@ -28,6 +28,8 @@ public class PlayerControl : MonoBehaviour
 
     private Rigidbody rb;
 
+    [SerializeField] float FSBlanK = 20.0f;
+
     private bool Run = false;
 
     [SerializeField] private AudioClip clip;
@@ -52,13 +54,40 @@ public class PlayerControl : MonoBehaviour
             if (_Time > 0.01666667f)
             {
                 _Frame++;
+                
+
                 _Time = 0.0f;
             }
         }
         else
         {
-            _Frame = 0;
+            //_Frame = 0;
         }
+
+        //足音兼足音 ==============================================
+        if (_Frame >= FSBlanK)
+        {
+            if (_Frame % FSBlanK == 0)
+            {
+                audioSource.PlayOneShot(clip);
+
+                GameObject bell = Instantiate(_Bell, transform.position, Quaternion.identity);
+                ring b = bell.GetComponent<ring>();
+                b.SetBell(20.0f, 2);
+            }
+
+            if (Run
+                && _Frame % (FSBlanK / 2) == 0)
+            {
+                audioSource.PlayOneShot(clip);
+
+                GameObject bell = Instantiate(_Bell, transform.position, Quaternion.identity);
+                ring b = bell.GetComponent<ring>();
+                b.SetBell(40.0f, 2);
+            }
+        }
+        //==========================================================
+
 
         //矢印↓で目覚まし時計設置
         if (Input.GetKeyDown(KeyCode.DownArrow) && _GameManagerScript._ClockCount > 0)
@@ -84,19 +113,19 @@ public class PlayerControl : MonoBehaviour
         }
 
         //ベルを生成して疑似的に足音を発生させる
-        if (_Frame > _FrameCount)
         {
-            GameObject bell = Instantiate(_Bell, transform.position, Quaternion.identity);
-            ring b = bell.GetComponent<ring>();
+            //if (_Frame > _FrameCount)
+            //{
+            //    GameObject bell = Instantiate(_Bell, transform.position, Quaternion.identity);
+            //    ring b = bell.GetComponent<ring>();
 
-            float soundSize = 20.0f;
-            if(Run)
-            {
-                soundSize *= 2.0f;
-            }
-            b.SetBell(soundSize, 2);
-            //audioSource.PlayOneShot(clip);
-            _Frame = 0;
+            //    float soundSize = 20.0f;
+            //    if(Run)
+            //    {
+            //        soundSize *= 2.0f;
+            //    }
+            //    b.SetBell(soundSize, 2);
+            //}
         }
     }
 

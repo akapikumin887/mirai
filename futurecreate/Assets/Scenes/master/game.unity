@@ -13284,7 +13284,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 354603512}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &354603514
 Camera:
   m_ObjectHideFlags: 0
@@ -13602,10 +13602,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _PlayerSpeed: 5
-  _FrameCount: 15
+  _FrameCount: 24
   _Bell: {fileID: 1398721664031847351, guid: 95eb86e52bda7b94bad0d1f9743ee3d1, type: 3}
   _Alarm: {fileID: 2437409488637515198, guid: 1f1d10959f505a6459a477a5249c2a2f, type: 3}
-  clip: {fileID: 8300000, guid: 03a59a2c97261d942b4257ff3dc3815b, type: 3}
+  FSBlanK: 24
+  clip: {fileID: 8300000, guid: 8071fcc30a917f54dba1fd3d8fc3d143, type: 3}
 --- !u!95 &575608787
 Animator:
   serializedVersion: 3
@@ -13671,7 +13672,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 03a59a2c97261d942b4257ff3dc3815b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -13864,6 +13865,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 672cadc6ce9004142835958f9bc721d8, type: 3}
+--- !u!81 &575608794
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575608785}
+  m_Enabled: 1
 --- !u!4 &577409615 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8281417780105350795, guid: b1221f26210227b4191753a77e4f2f9f, type: 3}
