@@ -50,7 +50,6 @@ public class GameMng : MonoBehaviour
 
         //危険度のオブジェクト取得
         _Danger = GameObject.FindGameObjectWithTag("Danger");
-        Debug.Log(_Danger);
     }
 
     void Start()

@@ -25020,6 +25020,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4439786438632759817, guid: c024199751491804796768be4e0b522f, type: 3}
+      propertyPath: m_TagString
+      value: Danger
+      objectReference: {fileID: 0}
     - target: {fileID: 4439786438632759927, guid: c024199751491804796768be4e0b522f, type: 3}
       propertyPath: player
       value: 
