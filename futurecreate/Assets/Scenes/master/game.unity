@@ -16132,7 +16132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &1053511048
 Light:
   m_ObjectHideFlags: 0
@@ -17932,6 +17932,18 @@ PrefabInstance:
       propertyPath: m_step
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 7185636565088734127, guid: b4482f0677841804da57c5f1912e515a, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7185636565088734127, guid: b4482f0677841804da57c5f1912e515a, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7185636565088734127, guid: b4482f0677841804da57c5f1912e515a, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7201559169933770498, guid: b4482f0677841804da57c5f1912e515a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -19147,6 +19159,10 @@ PrefabInstance:
     - target: {fileID: 8167451734988195083, guid: b4482f0677841804da57c5f1912e515a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8179938383655951123, guid: b4482f0677841804da57c5f1912e515a, type: 3}
+      propertyPath: isLock
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8194046341906655837, guid: b4482f0677841804da57c5f1912e515a, type: 3}
       propertyPath: m_StaticEditorFlags

@@ -66,4 +66,9 @@ public class DoorController : MonoBehaviour
 
         return false;
     }
+
+    public bool GetDoorLock()
+    {
+        return isLock;
+    }
 }
