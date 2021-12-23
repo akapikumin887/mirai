@@ -6,6 +6,15 @@ public class scene_transition : MonoBehaviour
 {
     [SerializeField] int num;
 
+    [SerializeField] private AudioClip clip;
+    private AudioSource audioSource;
+    void Start()
+    {
+        //Component‚ðŽæ“¾
+        audioSource = GetComponent<AudioSource>();
+    }
+
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
@@ -17,5 +26,6 @@ public class scene_transition : MonoBehaviour
     public void SceneGame()
     {
         scene_manager.FadeOut(num);
+        audioSource.Stop();
     }
 }
