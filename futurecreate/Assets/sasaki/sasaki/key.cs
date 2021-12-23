@@ -57,9 +57,13 @@ public class key : MonoBehaviour
 
                         var objs = enemyPoints.GetComponentsInChildren<Transform>();
                         foreach (var obj in objs)
-                            enemyScript.points.Add(obj);
+                        {
+                            if(!(obj.transform.position == new Vector3(0.0f, 0.0f, 0.0f)))
+                                enemyScript.points.Add(obj);
+                            //Debug.Log(obj.transform.position);
+                        }
 
-                        enemyScript.eType = Enemy.ENEMY_TYPE.PATROL;
+                        enemyScript.eType = Enemy.ENEMY_TYPE.NULL;
                         enemyScript.GotoNextPoint();
 
                         break;

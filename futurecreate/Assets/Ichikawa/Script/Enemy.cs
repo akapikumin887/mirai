@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using System.Collections.Generic;
 
 /*=========================================================
 
@@ -77,7 +75,7 @@ public class Enemy : MonoBehaviour
     // 生成フレーム管理
     private float frame;
     // 生成間隔(秒)
-    public float frameCount;
+    private float frameCount = 10;
     // 左右管理(trueで右falseで左)
     private bool footPrint_RoL;
     // 生成場所
@@ -87,8 +85,6 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        //eType = ENEMY_TYPE.NULL;
-
         agent = GetComponent<NavMeshAgent>();
         // autoBrakingを無効にすると目的地に近づいても速度が落ちない
         agent.autoBraking = false;
@@ -135,7 +131,7 @@ public class Enemy : MonoBehaviour
     public void GotoNextPoint()
     {
         // 地点がなにも設定されていないときに返す
-        if (points.Count == null)
+        if (points.Count == 0 || agent == null)
             return;
 
         // 現在設定された目的地に行くように設定
@@ -146,20 +142,21 @@ public class Enemy : MonoBehaviour
         nextPoint = (nextPoint + 1) % (points.Count);
         if (nextPoint == 0)
             nextPoint = 1;
+
+        if (eType == ENEMY_TYPE.NULL)
+            eType = ENEMY_TYPE.PATROL;
     }
 
     void Update()
     {
-        Debug.Log(eType);
-
         switch (eType)
         {
             case ENEMY_TYPE.PATROL: // 巡回
                 GetComponent<Renderer>().material.color = Color.red; //色を変える
                 agent.speed = 1.5f;    // 移動速度1.5
                 // 現目的地に近づいたら次の目的地を選択
-                //if (!agent.pathPending && agent.remainingDistance < 0.5f)
-                //    GotoNextPoint();
+                if (!agent.pathPending && agent.remainingDistance < 0.5f)
+                    GotoNextPoint();
                 break;
 
             case ENEMY_TYPE.VIGILANCE: // 警戒
@@ -186,6 +183,7 @@ public class Enemy : MonoBehaviour
                 break;
 
             case ENEMY_TYPE.NULL:
+                GotoNextPoint();
                 return;
         }
 

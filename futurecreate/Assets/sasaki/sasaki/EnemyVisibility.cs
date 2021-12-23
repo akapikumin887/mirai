@@ -57,6 +57,8 @@ public class EnemyVisibility : MonoBehaviour
 
         if (light_visibility(Enemy_forward_direction, Player_direction, 6.1f, 0.4f))
         {
+            if (hit.collider == null)
+                return;
 
             if (hit.collider.tag == "wall")   //ƒvƒŒƒCƒ„[‚Ü‚ÅáŠQ•¨‚ª‚È‚¢‚Æ‚«
             {
