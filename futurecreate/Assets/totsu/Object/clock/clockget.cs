@@ -13,8 +13,13 @@ public class clockget : MonoBehaviour
 
     private bool _FirstTime;    //始めてだったらここをtrueにする
 
+    [SerializeField] private AudioClip clip;
+    private AudioSource audioSource;
+
     void Start()
-    {
+    { 
+        //Componentを取得
+        audioSource = GetComponent<AudioSource>();
         _Script = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameMng>();
     }
 
@@ -31,9 +36,11 @@ public class clockget : MonoBehaviour
             //UIの表示
 
 
-            //clockを押したらアイテム入手
+                audioSource.PlayOneShot(clip);
+            //KEYを押したらアイテム入手
             if (Input.GetKeyDown(KeyCode.E))
             {
+
                 Destroy(this.gameObject);
                 _Script._ClockCount++;
                 Notification nof = notificationUI.GetComponent<Notification>();
