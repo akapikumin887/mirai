@@ -20,7 +20,7 @@ public class PlayerControl : MonoBehaviour
     private GameMng _GameManagerScript;
 
     //‘«‰¹”­¶ƒtƒŒ[ƒ€ŠÇ—
-    private uint _Frame;
+    private int _Frame;
 
     private List<GameObject> _PathFindings = new List<GameObject>();
 
@@ -28,7 +28,7 @@ public class PlayerControl : MonoBehaviour
 
     private Rigidbody rb;
 
-    [SerializeField] float FSBlanK = 20.0f;
+    [SerializeField] int FSBlanK = 20;
 
     private bool Run = false;
 
@@ -61,7 +61,7 @@ public class PlayerControl : MonoBehaviour
         }
         else
         {
-            //_Frame = 0;
+            _Frame = FSBlanK / 2 - 1;
         }
 
         //‘«‰¹Œ“‘«‰¹ ==============================================
