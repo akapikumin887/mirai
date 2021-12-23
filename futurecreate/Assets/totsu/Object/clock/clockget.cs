@@ -7,7 +7,6 @@ public class clockget : MonoBehaviour
 {
     [SerializeField] private int _clockNum;
     [SerializeField] private GameObject notificationUI;
-    [SerializeField] private GameObject clockUI;
     [SerializeField] private GameObject findUI;
     private GameMng _Script;
 
@@ -36,14 +35,15 @@ public class clockget : MonoBehaviour
             //UIの表示
 
 
-                audioSource.PlayOneShot(clip);
             //KEYを押したらアイテム入手
             if (Input.GetKeyDown(KeyCode.E))
             {
 
+                audioSource.PlayOneShot(clip);
                 Destroy(this.gameObject);
                 _Script._ClockCount++;
                 Notification nof = notificationUI.GetComponent<Notification>();
+                nof.CallNotification("目覚まし時計　を入手した");
 
             }
 
