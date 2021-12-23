@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class G_BGM : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private AudioClip clip;
+    private AudioSource audioSource;
     void Start()
     {
-        
+        //Component‚ðŽæ“¾
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
-    void Update()
+
+    private void OnDestroy()
     {
-        
+        audioSource.Stop();
     }
 }
