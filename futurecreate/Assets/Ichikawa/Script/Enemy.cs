@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour
     // 生成フレーム管理
     private float frame;
     // 生成間隔(秒)
-    private float frameCount = 10;
+    private float frameCount = 2;
     // 左右管理(trueで右falseで左)
     private bool footPrint_RoL;
     // 生成場所
