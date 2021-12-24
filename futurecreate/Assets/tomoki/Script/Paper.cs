@@ -12,7 +12,7 @@ public class Paper : MonoBehaviour
     private Image image;
     private Text text;
 
-    private bool _IsLook;
+    [SerializeField] private bool _IsLook;
 
     GameMng _Script;
     ItemUI _ItemUI;
@@ -30,15 +30,13 @@ public class Paper : MonoBehaviour
     {
         if (_IsLook)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("‚¨‚·‚æ");
                 IsPaper(false);
                 _IsLook = false;
 
                 var player = _Script._Pleyer.GetComponent<PlayerControl>();
                 player._Freeze = false;
-                Debug.Log("‚¨‚¹‚½");
             }
         }
     }
@@ -51,7 +49,7 @@ public class Paper : MonoBehaviour
             _ItemUI._IsDraw = true;
 
             //key‚ð‰Ÿ‚µ‚½‚çƒAƒCƒeƒ€“üŽè
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Return))
             {
                 IsPaper(true);
                 _IsLook = true;

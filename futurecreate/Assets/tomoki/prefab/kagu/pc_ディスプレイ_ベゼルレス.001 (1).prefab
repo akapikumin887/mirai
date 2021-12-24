@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 7345551112143883389}
   - component: {fileID: 8520201152053638780}
   m_Layer: 0
-  m_Name: "pc_\u30C7\u30A3\u30B9\u30D7\u30EC\u30A4_\u30D9\u30BC\u30EB\u30EC\u30B9.001
-    (1)"
+  m_Name: "pc_\u30C7\u30A3\u30B9\u30D7\u30EC\u30A4_\u30D9\u30BC\u30EB\u30EC\u30B9"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
