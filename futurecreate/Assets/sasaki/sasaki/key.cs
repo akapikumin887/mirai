@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 public class key : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public class key : MonoBehaviour
             _ItemUI._IsDraw = true;
 
             //key‚ð‰Ÿ‚µ‚½‚çƒAƒCƒeƒ€“üŽè
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space)||Gamepad.current.buttonEast.wasPressedThisFrame)
             {
                 Destroy(this.gameObject);
                 _Script._Keys[_KeyNum] = true;
