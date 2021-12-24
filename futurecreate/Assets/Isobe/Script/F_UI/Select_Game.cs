@@ -43,7 +43,7 @@ public class Select_Game : MonoBehaviour
 
         if (Gamepad.current != null)
         {
-            if (Gamepad.current.leftStick.ReadValue().y == 0.0f)
+            if (Gamepad.current.leftStick.ReadValue().y != 0.0f)
             {
                 A.SetActive(!A.activeSelf);
                 B.SetActive(!B.activeSelf);
