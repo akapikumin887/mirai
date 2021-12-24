@@ -15,6 +15,7 @@ TagManager:
   - key
   - door
   - Danger
+  - item
   layers:
   - Default
   - TransparentFX
