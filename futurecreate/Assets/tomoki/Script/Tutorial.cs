@@ -50,5 +50,38 @@ public class Tutorial : MonoBehaviour
             }
             num++;
         }
+
+        if (Gamepad.current != null)
+        {
+            if (Gamepad.current.leftStick.ReadValue().x == 0.0f)
+            {
+                if (num == 0)
+                {
+                    Image1.SetActive(false);
+                    Image2.SetActive(true);
+                }
+                else if (num == 1)
+                {
+                    Image2.SetActive(false);
+                    scene_manager.FadeOut(2);
+                }
+                num++;
+            }
+
+            if (Gamepad.current.buttonEast.wasPressedThisFrame)
+            {
+                if (num == 0)
+                {
+                    Image1.SetActive(false);
+                    Image2.SetActive(true);
+                }
+                else if (num == 1)
+                {
+                    Image2.SetActive(false);
+                    scene_manager.FadeOut(2);
+                }
+                num++;
+            }
+        }
     }
 }
