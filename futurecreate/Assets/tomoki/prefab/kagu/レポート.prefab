@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1708590486777931313}
   - component: {fileID: 3893356689113723036}
   - component: {fileID: 4861567468883635972}
+  - component: {fileID: 1892962720328566149}
   m_Layer: 0
   m_Name: "\u30EC\u30DD\u30FC\u30C8"
   m_TagString: Untagged
@@ -98,3 +99,16 @@ MonoBehaviour:
   paper: {fileID: 0}
   moji: {fileID: 0}
   _IsLook: 0
+--- !u!65 &1892962720328566149
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8594408209670390683}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 40, y: 2, z: 40}
+  m_Center: {x: 0, y: 0, z: 0}
