@@ -41,10 +41,11 @@ public class EnemyVisibility : MonoBehaviour
         //ベクトルの宣言（せってい）
         Enemy_forward_direction = transform.forward;//敵の正面ベクトルを取得
         //Enemy_forward_direction = new Vector3(Enemy_forward_direction.x * 100, Enemy_forward_direction.y, Enemy_forward_direction.z * 100);
-        Player_direction = (Player.transform.position - this.transform.position).normalized;     // プレイヤーの方向ベクトル
-        //RaycastHit hit = new RaycastHit();
+        Player_direction = (Player.transform.position + new Vector3(0f, 0.5f, 0f) - this.transform.position).normalized;     // プレイヤーの方向ベクトル
+                                                                                                                             //RaycastHit hit = new RaycastHit();
 
-        Debug.DrawLine(transform.position, transform.position + Enemy_forward_direction * 100 ,Color.red);
+        Debug.DrawLine(transform.position, transform.position + Enemy_forward_direction * 100, Color.red);
+        Debug.DrawLine(transform.position, transform.position + Player_direction * 100, Color.blue);
 
         //if (light_visibility(this.transform.position, Player.transform.position, Mathf.Infinity, 0.0f))
         //{
