@@ -8,11 +8,9 @@ public class key : MonoBehaviour
     [SerializeField] private int _KeyNum;
     [SerializeField] private GameObject notificationUI;
     [SerializeField] private GameObject keyUI;
-    [SerializeField] private GameObject findUI;
 
     [SerializeField] private GameObject enemyPoints1;
     [SerializeField] private GameObject enemyPoints2;
-    [SerializeField] private GameObject enemyPoints3;
 
     GameMng _Script;
     ItemUI _ItemUI;
@@ -61,9 +59,9 @@ public class key : MonoBehaviour
                         nof.CallNotification("上司用のカードキーを入手した");
 
                         enemy = _Script.AddEnemyVisibility(new Vector3(50.0f, 0.5f, 41.0f));
-                        AddEnemy(enemy, enemyPoints2);
+                        AddEnemy(enemy, enemyPoints1);
                         enemy = _Script.AddEnemyListen(new Vector3(50.0f, 0.5f, 41.0f));
-                        AddEnemy(enemy, enemyPoints3);
+                        AddEnemy(enemy, enemyPoints2);
                         break;
                     case 2:
                         nof.CallNotification("研究室のカードキーを入手した");
