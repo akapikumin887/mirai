@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class scene_transition : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class scene_transition : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)||Gamepad.current.buttonEast.wasPressedThisFrame)
         {
            scene_manager.FadeOut(num);
         }
