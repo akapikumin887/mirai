@@ -10,7 +10,9 @@ public class key : MonoBehaviour
     [SerializeField] private GameObject keyUI;
     [SerializeField] private GameObject findUI;
 
-    [SerializeField] private GameObject enemyPoints;
+    [SerializeField] private GameObject enemyPoints1;
+    [SerializeField] private GameObject enemyPoints2;
+    [SerializeField] private GameObject enemyPoints3;
 
     GameMng _Script;
     ItemUI _ItemUI;
@@ -44,36 +46,39 @@ public class key : MonoBehaviour
 
                 _ItemUI._IsDraw = false;
 
+                GameObject enemy = null;
+
                 switch (_KeyNum)
                 {
                     case 0:
-                        nof.CallNotification("社員用カードキーを入手した");
-                        var keyChange = keyUI.GetComponent<spritchange>();
-                        keyChange.GetCardKey();
+                        nof.CallNotification("社員用のカードキーを入手した");
 
-                        //最初のカギを入手したら敵を生成する
-                        var enemy = _Script.AddEnemyVisibility(new Vector3(50.0f, 0.5f, 41.0f));
-                        var enemyScript = enemy.GetComponent<Enemy>();
-
-                        enemyScript.points.Add(_Script._Pleyer.transform);
-
-                        var objs = enemyPoints.GetComponentsInChildren<Transform>();
-                        foreach (var obj in objs)
-                        {
-                            if(!(obj.transform.position == new Vector3(0.0f, 0.0f, 0.0f)))
-                                enemyScript.points.Add(obj);
-                        }
-
-                        enemyScript.eType = Enemy.ENEMY_TYPE.NULL;
-                        enemyScript.GotoNextPoint();
+                        enemy = _Script.AddEnemyVisibility(new Vector3(50.0f, 0.5f, 41.0f));
+                        AddEnemy(enemy, enemyPoints1);
                         break;
-                    case 1:
 
+                    case 1:
+                        nof.CallNotification("上司用のカードキーを入手した");
+
+                        enemy = _Script.AddEnemyVisibility(new Vector3(50.0f, 0.5f, 41.0f));
+                        AddEnemy(enemy, enemyPoints2);
+                        enemy = _Script.AddEnemyListen(new Vector3(50.0f, 0.5f, 41.0f));
+                        AddEnemy(enemy, enemyPoints3);
                         break;
                     case 2:
+                        nof.CallNotification("研究室のカードキーを入手した");
+
+                        break;
+
+                    case 3:
+                        nof.CallNotification("非常口のカードキーを入手した");
 
                         break;
                 }
+
+                spritchange key = keyUI.GetComponent<spritchange>();
+                key.GetCardKey();
+
 
                 ////オブジェクトの色を赤に変更する
                 //GetComponent<Renderer>().material.color = Color.red;
@@ -85,5 +90,21 @@ public class key : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         _ItemUI._IsDraw = false;
+    }
+
+    private void AddEnemy(GameObject enemy, GameObject point)
+    {
+        Enemy script = enemy.GetComponent<Enemy>();
+        script.points.Add(_Script._Pleyer.transform);
+
+        var objs = point.GetComponentsInChildren<Transform>();
+        foreach (var obj in objs)
+        {
+            if (!(obj.transform.position == new Vector3(0.0f, 0.0f, 0.0f)))
+                script.points.Add(obj);
+        }
+
+        script.eType = Enemy.ENEMY_TYPE.NULL;
+        script.GotoNextPoint();
     }
 }
