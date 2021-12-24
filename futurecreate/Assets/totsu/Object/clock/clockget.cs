@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
+
 
 public class clockget : MonoBehaviour
 {
@@ -30,7 +32,7 @@ public class clockget : MonoBehaviour
     {
         if (me)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || Gamepad.current.buttonEast.wasPressedThisFrame)
             {
                 audioSource.PlayOneShot(clip);
                 Destroy(this.gameObject);

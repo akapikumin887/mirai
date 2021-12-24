@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+
 
 public class Paper : MonoBehaviour
 {
@@ -32,7 +34,7 @@ public class Paper : MonoBehaviour
     {
         if (me)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || Gamepad.current.buttonEast.wasPressedThisFrame)
             {
                 if (!_IsLook)
                 {

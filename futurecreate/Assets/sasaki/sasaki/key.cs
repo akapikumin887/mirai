@@ -11,7 +11,6 @@ public class key : MonoBehaviour
     [SerializeField] private GameObject keyUI;
 
     [SerializeField] private GameObject enemyPoints1;
-    [SerializeField] private GameObject enemyPoints2;
 
     GameMng _Script;
     ItemUI _ItemUI;
@@ -63,7 +62,7 @@ public class key : MonoBehaviour
                         break;
 
                     case 3:
-                        nof.CallNotification("非常口のカードキーを入手した");
+                        nof.CallNotification("所長のカードキー　を入手した");
 
                         break;
                 }
