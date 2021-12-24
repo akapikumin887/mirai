@@ -13,15 +13,18 @@ public class key : MonoBehaviour
     [SerializeField] private GameObject enemyPoints;
 
     GameMng _Script;
+    ItemUI _ItemUI;
 
     void Start()
     {
         _Script = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameMng>();
+        _ItemUI = _Script._Pleyer.transform.GetChild(5).GetComponent<ItemUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
     }
 
     void OnTriggerStay(Collider other)
@@ -30,7 +33,7 @@ public class key : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //UIの表示
-
+            _ItemUI._UI.enabled = true;
 
             //keyを押したらアイテム入手
             if (Input.GetKey(KeyCode.E))
@@ -50,7 +53,6 @@ public class key : MonoBehaviour
                         var enemy = _Script.AddEnemyVisibility(new Vector3(50.0f, 0.5f, 41.0f));
                         var enemyScript = enemy.GetComponent<Enemy>();
 
-
                         enemyScript.points.Add(_Script._Pleyer.transform);
 
                         var objs = enemyPoints.GetComponentsInChildren<Transform>();
@@ -58,7 +60,6 @@ public class key : MonoBehaviour
                         {
                             if(!(obj.transform.position == new Vector3(0.0f, 0.0f, 0.0f)))
                                 enemyScript.points.Add(obj);
-                            //Debug.Log(obj.transform.position);
                         }
 
                         enemyScript.eType = Enemy.ENEMY_TYPE.NULL;
@@ -66,8 +67,10 @@ public class key : MonoBehaviour
 
                         break;
                     case 1:
+
                         break;
                     case 2:
+
                         break;
                 }
 
@@ -76,5 +79,10 @@ public class key : MonoBehaviour
             }
 
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        _ItemUI._UI.enabled = false;
     }
 }
