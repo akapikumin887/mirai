@@ -36,7 +36,7 @@ public class key : MonoBehaviour
             _ItemUI._IsDraw = true;
 
             //key‚ð‰Ÿ‚µ‚½‚çƒAƒCƒeƒ€“üŽè
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(KeyCode.Space))
             {
                 Destroy(this.gameObject);
                 _Script._Keys[_KeyNum] = true;

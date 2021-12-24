@@ -35,6 +35,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private AudioClip clip;
     private AudioSource audioSource;
 
+    public bool _TutorialFlag { set; get; }
+
     void Start()
     {
         //Component‚ğæ“¾
@@ -47,6 +49,9 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
+        if (_TutorialFlag)
+            return;
+
         //ˆÚ“®‚Æ‘«‰¹‚Ìˆ—
         if (KeyInput())
         {
@@ -55,7 +60,6 @@ public class PlayerControl : MonoBehaviour
             {
                 _Frame++;
                 
-
                 _Time = 0.0f;
             }
         }
