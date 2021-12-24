@@ -31,7 +31,7 @@ public class Tutorial : MonoBehaviour
             else if (num == 1)
             {
                 Image2.SetActive(false);
-                scene_manager.FadeOut(1);
+                scene_manager.FadeOut(2);
             }
             num++;
         }
@@ -46,7 +46,7 @@ public class Tutorial : MonoBehaviour
             else if (num == 1)
             {
                 Image2.SetActive(false);
-                scene_manager.FadeOut(1);
+                scene_manager.FadeOut(2);
             }
             num++;
         }
