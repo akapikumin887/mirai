@@ -369,11 +369,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18938749}
   m_CullTransparentMesh: 0
---- !u!1 &24421324 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100004, guid: 05a81c3d5091440058129444d28322f3, type: 3}
-  m_PrefabInstance: {fileID: 1208828689}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &24421328 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 22400004, guid: 05a81c3d5091440058129444d28322f3, type: 3}
@@ -5779,7 +5774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 24421324}
+  m_FirstSelected: {fileID: 617662591}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!224 &508788165 stripped
@@ -18521,7 +18516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea773076d418d974e9b8ad00a2aa6a9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  num: 4
+  num: 1
 --- !u!82 &1855926885
 AudioSource:
   m_ObjectHideFlags: 0

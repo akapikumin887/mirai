@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loop: {fileID: 32900000, guid: 0fa477076eac8854aa67b9c18a8cc409, type: 3}
+  canvas: {fileID: 0}
 --- !u!1 &1555064451
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,7 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea773076d418d974e9b8ad00a2aa6a9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  num: 2
+  num: 0
 --- !u!114 &2095937200
 MonoBehaviour:
   m_ObjectHideFlags: 0

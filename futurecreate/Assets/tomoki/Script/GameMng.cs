@@ -76,7 +76,7 @@ public class GameMng : MonoBehaviour
 
         if (GameOver)
         {
-            scene_manager.FadeOut(1);
+            scene_manager.FadeOut(4);
         }
 
         //if (Input.GetKey(KeyCode.Space))
