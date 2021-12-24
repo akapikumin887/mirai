@@ -94,7 +94,7 @@ public class PlayerControl : MonoBehaviour
 
 
         //–îˆó«‚Å–ÚŠo‚Ü‚µŽžŒvÝ’u
-        if (Input.GetKeyDown(KeyCode.DownArrow) && _GameManagerScript._ClockCount > 0)
+        if ((Input.GetKeyDown(KeyCode.DownArrow)||Gamepad.current.buttonEast.wasPressedThisFrame )&& _GameManagerScript._ClockCount > 0)
         {
             _GameManagerScript._ClockCount--;
             Instantiate(_Alarm, transform.position, Quaternion.identity);
