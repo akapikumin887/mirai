@@ -3,13 +3,15 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 public class MenuManager : MonoBehaviour
 {
 
-    [SerializeField] GameObject game;
-
-	private int m_OpenParameterId;
+    [SerializeField] GameObject start;
+    [SerializeField] GameObject option;
+    [SerializeField] GameObject quit;
+    private int m_OpenParameterId;
 	private Animator m_Open;
 	private GameObject m_PreviouslySelected;
 
@@ -18,7 +20,25 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
-        EventSystem.current.SetSelectedGameObject(game);
+        EventSystem.current.SetSelectedGameObject(start);
+    }
+
+    private void Update()
+    {
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            GameObject g= EventSystem.current.currentSelectedGameObject;
+            g.GetComponent<Button>().onClick.Invoke();
+        }
+
+        if (Gamepad.current != null)
+        {
+            if (Gamepad.current.buttonEast.wasPressedThisFrame)
+            {
+                GameObject g = EventSystem.current.currentSelectedGameObject;
+                g.GetComponent<Button>().onClick.Invoke();
+            }
+        }
     }
 
     //public void OnEnable()
