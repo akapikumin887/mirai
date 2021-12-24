@@ -22,7 +22,8 @@ public class Select_Game : MonoBehaviour
         if(Keyboard.current.wKey.wasPressedThisFrame||
            Keyboard.current.sKey.wasPressedThisFrame||
            Keyboard.current.upArrowKey.wasPressedThisFrame||
-           Keyboard.current.downArrowKey.wasPressedThisFrame)
+           Keyboard.current.downArrowKey.wasPressedThisFrame
+           )
         {
             A.SetActive(!A.activeSelf);
             B.SetActive(!B.activeSelf);
@@ -37,6 +38,27 @@ public class Select_Game : MonoBehaviour
             else if (B.activeSelf)
             {
                 scene_manager.FadeOut(title_scene);
+            }
+        }
+
+        if (Gamepad.current != null)
+        {
+            if (Gamepad.current.leftStick.ReadValue().y == 0.0f)
+            {
+                A.SetActive(!A.activeSelf);
+                B.SetActive(!B.activeSelf);
+            }
+
+            if (Gamepad.current.buttonEast.wasPressedThisFrame)
+            {
+                if (A.activeSelf)
+                {
+                    scene_manager.FadeOut(game_scene);
+                }
+                else if (B.activeSelf)
+                {
+                    scene_manager.FadeOut(title_scene);
+                }
             }
         }
     }
