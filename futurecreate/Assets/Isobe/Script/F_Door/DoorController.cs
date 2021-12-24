@@ -31,9 +31,12 @@ public class DoorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isLock && !GameManagerScript._Keys[lockNum])
+        if (isLock)
+        {
+            if (GameManagerScript._Keys[lockNum])
+                isLock = false;
             return;
-
+        }
 
         if ((DistancePlayer() || DistanceEnemy()) && !door)
         {
