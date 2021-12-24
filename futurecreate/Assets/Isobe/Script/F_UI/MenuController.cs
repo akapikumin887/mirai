@@ -47,10 +47,10 @@ public class MenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            OpenWindow();
-        }
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    OpenWindow();
+        //}
         if (Gamepad.current != null)
         {
             if (Gamepad.current.startButton.isPressed)
