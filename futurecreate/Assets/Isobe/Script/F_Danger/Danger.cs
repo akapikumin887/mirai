@@ -72,7 +72,7 @@ public class Danger : MonoBehaviour
                     float minus = angle - offset < 0.0f ? angle - offset + 360.0f : angle - offset;
                     num++;
 
-                    if (path_list[num] == null)
+                    if (path_list[num] == null|| path_list[num].corners.Length ==0)
                     {
                         continue;
                     }
