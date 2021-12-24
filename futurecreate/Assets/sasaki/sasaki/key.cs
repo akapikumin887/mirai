@@ -25,19 +25,10 @@ public class key : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    void OnTriggerStay(Collider other)
-    {
-        //接触しているオブジェクトのタグが"Player"のとき
-        if (other.CompareTag("Player"))
+        if (_ItemUI._IsDraw == true)
         {
-            //UIの表示
-            _ItemUI._IsDraw = true;
-
             //keyを押したらアイテム入手
-            if (Input.GetKey(KeyCode.Space)||Gamepad.current.buttonEast.wasPressedThisFrame)
+            if (Input.GetKey(KeyCode.Space) || Gamepad.current.buttonEast.wasPressedThisFrame)
             {
                 Destroy(this.gameObject);
                 _Script._Keys[_KeyNum] = true;
@@ -82,9 +73,19 @@ public class key : MonoBehaviour
                 ////オブジェクトの色を赤に変更する
                 //GetComponent<Renderer>().material.color = Color.red;
             }
-
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //接触しているオブジェクトのタグが"Player"のとき
+        if (other.CompareTag("Player"))
+        {
+            //UIの表示
+            _ItemUI._IsDraw = true;
+        }
+    }
+
 
     private void OnTriggerExit(Collider other)
     {

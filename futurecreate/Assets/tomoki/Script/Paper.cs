@@ -28,35 +28,37 @@ public class Paper : MonoBehaviour
 
     void Update()
     {
-        if (_IsLook)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                IsPaper(false);
-                _IsLook = false;
 
-                var player = _Script._Pleyer.GetComponent<PlayerControl>();
-                player._Freeze = false;
+        if (_ItemUI._IsDraw == true)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (!_IsLook)
+                {
+                    IsPaper(true);
+                    _IsLook = true;
+
+                    var player = _Script._Pleyer.GetComponent<PlayerControl>();
+                    player._Freeze = true;
+                }
+                else
+                {
+                    IsPaper(false);
+                    _IsLook = false;
+
+                    var player = _Script._Pleyer.GetComponent<PlayerControl>();
+                    player._Freeze = false;
+                }
             }
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !_IsLook)
+        if (other.CompareTag("Player"))
         {
             //UIの表示
             _ItemUI._IsDraw = true;
-
-            //keyを押したらアイテム入手
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                IsPaper(true);
-                _IsLook = true;
-
-                var player = _Script._Pleyer.GetComponent<PlayerControl>();
-                player._Freeze = true;
-            }
         }
     }
 
