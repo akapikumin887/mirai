@@ -35,7 +35,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private AudioClip clip;
     private AudioSource audioSource;
 
-    public bool _TutorialFlag { set; get; }
+    public bool _Freeze { set; get; }
 
     void Start()
     {
@@ -49,7 +49,7 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
-        if (_TutorialFlag)
+        if (_Freeze)
             return;
 
         //ˆÚ“®‚Æ‘«‰¹‚Ìˆ—
