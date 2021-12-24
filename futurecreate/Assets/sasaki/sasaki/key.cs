@@ -52,7 +52,7 @@ public class key : MonoBehaviour
                     case 1:
                         nof.CallNotification("上司用のカードキーを入手した");
 
-                        enemy = _Script.AddEnemyVisibility(new Vector3(-8.72f, 0.5f, 41.2f));
+                        enemy = _Script.AddEnemyVisibility(new Vector3(-11.0f, 0.5f, 41.2f));
                         AddEnemy(enemy, enemyPoints1);
                         enemy = _Script.AddEnemyListen(new Vector3(50.0f, 0.5f, 101.5f));
                         AddEnemy(enemy, enemyPoints1);
