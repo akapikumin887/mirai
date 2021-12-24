@@ -17,6 +17,8 @@ public class Paper : MonoBehaviour
     GameMng _Script;
     ItemUI _ItemUI;
 
+    bool me;
+
     void Start()
     {
         _IsLook = false;
@@ -28,7 +30,7 @@ public class Paper : MonoBehaviour
 
     void Update()
     {
-        if (_ItemUI._IsDraw == true)
+        if (me)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -58,12 +60,14 @@ public class Paper : MonoBehaviour
         {
             //UI‚Ì•\Ž¦
             _ItemUI._IsDraw = true;
+            me = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         _ItemUI._IsDraw = false;
+        me = false;
     }
 
     private void IsPaper(bool draw)

@@ -15,6 +15,7 @@ public class clockget : MonoBehaviour
     private AudioSource audioSource;
     private ItemUI _ItemUI;
 
+    bool me;
 
     void Start()
     { 
@@ -27,7 +28,7 @@ public class clockget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_ItemUI._IsDraw == true)
+        if (me)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -41,19 +42,22 @@ public class clockget : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         //接触しているオブジェクトのタグが"Player"のとき
         if (other.CompareTag("Player"))
         {
             //UIの表示
             _ItemUI._IsDraw = true;
+            me = true;
+
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         _ItemUI._IsDraw = false;
+        me = false;
     }
 
 }

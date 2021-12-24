@@ -16,6 +16,8 @@ public class key : MonoBehaviour
     GameMng _Script;
     ItemUI _ItemUI;
 
+    bool me;
+
     void Start()
     {
         _Script = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameMng>();
@@ -25,10 +27,10 @@ public class key : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_ItemUI._IsDraw == true)
+        if (me)
         {
             //keyを押したらアイテム入手
-            if (Input.GetKey(KeyCode.Space) || Gamepad.current.buttonEast.wasPressedThisFrame)
+            if (Input.GetKeyDown(KeyCode.Space) || Gamepad.current.buttonEast.wasPressedThisFrame)
             {
                 Destroy(this.gameObject);
                 _Script._Keys[_KeyNum] = true;
@@ -69,20 +71,19 @@ public class key : MonoBehaviour
                 spritchange key = keyUI.GetComponent<spritchange>();
                 key.GetCardKey();
 
-
-                ////オブジェクトの色を赤に変更する
-                //GetComponent<Renderer>().material.color = Color.red;
             }
         }
+
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         //接触しているオブジェクトのタグが"Player"のとき
         if (other.CompareTag("Player"))
         {
             //UIの表示
             _ItemUI._IsDraw = true;
+            me = true;
         }
     }
 
@@ -90,6 +91,7 @@ public class key : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         _ItemUI._IsDraw = false;
+        me = false;
     }
 
     private void AddEnemy(GameObject enemy, GameObject point)
@@ -107,4 +109,5 @@ public class key : MonoBehaviour
         script.eType = Enemy.ENEMY_TYPE.NULL;
         script.GotoNextPoint();
     }
+
 }

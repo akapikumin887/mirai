@@ -17442,6 +17442,7 @@ MonoBehaviour:
   alpha: {fileID: 2100896032}
   paper: {fileID: 1923803158}
   moji: {fileID: 1798705325}
+  _IsLook: 0
 --- !u!1 &609235125 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3317399335866569987, guid: b4482f0677841804da57c5f1912e515a, type: 3}
@@ -21928,6 +21929,10 @@ PrefabInstance:
       propertyPath: denger
       value: 
       objectReference: {fileID: 698249348}
+    - target: {fileID: 6301107824951056239, guid: 495508f865191d64ba0c39b7b95c1afe, type: 3}
+      propertyPath: _KeyNum
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6301107824951056239, guid: 495508f865191d64ba0c39b7b95c1afe, type: 3}
       propertyPath: enemyPoints
       value: 
