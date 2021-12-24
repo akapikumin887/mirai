@@ -28018,6 +28018,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 877701649}
     m_Modifications:
+    - target: {fileID: 3502504052467903600, guid: 88d0d92f9a70bfa4f85d3727e92f54e7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3563493989375632017, guid: 88d0d92f9a70bfa4f85d3727e92f54e7, type: 3}
       propertyPath: m_Name
       value: ItemUI

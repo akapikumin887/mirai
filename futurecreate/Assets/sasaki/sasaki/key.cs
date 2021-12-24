@@ -33,7 +33,7 @@ public class key : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //UIの表示
-            _ItemUI._UI.enabled = true;
+            _ItemUI._IsDraw = true;
 
             //keyを押したらアイテム入手
             if (Input.GetKey(KeyCode.E))
@@ -41,6 +41,8 @@ public class key : MonoBehaviour
                 Destroy(this.gameObject);
                 _Script._Keys[_KeyNum] = true;
                 Notification nof = notificationUI.GetComponent<Notification>();
+
+                _ItemUI._IsDraw = false;
 
                 switch (_KeyNum)
                 {
@@ -64,7 +66,6 @@ public class key : MonoBehaviour
 
                         enemyScript.eType = Enemy.ENEMY_TYPE.NULL;
                         enemyScript.GotoNextPoint();
-
                         break;
                     case 1:
 
@@ -83,6 +84,6 @@ public class key : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        _ItemUI._UI.enabled = false;
+        _ItemUI._IsDraw = false;
     }
 }
