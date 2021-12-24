@@ -21930,6 +21930,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 698249348}
     - target: {fileID: 6301107824951056239, guid: 495508f865191d64ba0c39b7b95c1afe, type: 3}
+      propertyPath: _KeyNum
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6301107824951056239, guid: 495508f865191d64ba0c39b7b95c1afe, type: 3}
       propertyPath: enemyPoints
       value: 
       objectReference: {fileID: 2124498418}
