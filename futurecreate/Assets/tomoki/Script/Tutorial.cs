@@ -53,7 +53,7 @@ public class Tutorial : MonoBehaviour
 
         if (Gamepad.current != null)
         {
-            if (Gamepad.current.leftStick.ReadValue().x == 0.0f)
+            if (Gamepad.current.leftStick.ReadValue().x != 0.0f)
             {
                 if (num == 0)
                 {
