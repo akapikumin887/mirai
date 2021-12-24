@@ -189,7 +189,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8050045740473267353}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -222,10 +222,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eClass: 0
-  points: []
   footPrint_L: {fileID: 9026116702965889150, guid: ebdbda6016902a048ae9d9bcbbf6bd2f, type: 3}
   footPrint_R: {fileID: 8881907086572217497, guid: c7f7c1cd08256804a970be4d96d3ee54, type: 3}
-  frameCount: 0
 --- !u!195 &7140543478309668294
 NavMeshAgent:
   m_ObjectHideFlags: 0
