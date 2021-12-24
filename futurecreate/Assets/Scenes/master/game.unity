@@ -34546,6 +34546,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2732256116124853029, guid: fc2cdf967598db84fa47356dd28f6345, type: 3}
+      propertyPath: m_Text
+      value: "\u3042\u3044\u3046\u3048\u304A\u304B\u304D\u304F\u3051 \u3092 \u624B\u306B\u5165\u308C\u305F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120434214313843677, guid: fc2cdf967598db84fa47356dd28f6345, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 295.7742
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120434214313843677, guid: fc2cdf967598db84fa47356dd28f6345, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 83.45361
+      objectReference: {fileID: 0}
     - target: {fileID: 8392796588526314019, guid: fc2cdf967598db84fa47356dd28f6345, type: 3}
       propertyPath: m_Name
       value: Image3
