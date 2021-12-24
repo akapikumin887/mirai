@@ -5,13 +5,12 @@ using UnityEngine;
 public class ItemUI : MonoBehaviour
 {
     public MeshRenderer _UI { set; get; }
-
     private bool _IsDraw;
 
     // Start is called before the first frame update
     void Start()
     {
-        _UI = GetComponent<MeshRenderer>();
+        _UI =transform.GetChild(0).GetComponent<MeshRenderer>();
         _UI.enabled = false;
         _IsDraw = false;
     }

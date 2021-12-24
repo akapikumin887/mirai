@@ -6,6 +6,7 @@ public class videochange : MonoBehaviour
 {
     private VideoPlayer videoPlayer;
     [SerializeField] VideoClip loop;
+    [SerializeField] GameObject canvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,10 @@ public class videochange : MonoBehaviour
         {
             videoPlayer.clip = loop;
             videoPlayer.isLooping = true;
+            if (canvas)
+            {
+                canvas.SetActive(true);
+            }
         }
     }
 
