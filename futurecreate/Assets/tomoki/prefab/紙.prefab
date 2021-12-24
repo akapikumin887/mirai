@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2777176458927414999}
   - component: {fileID: 5637145912919479207}
   - component: {fileID: 8037501391718925578}
+  - component: {fileID: 4976974519964200227}
   m_Layer: 0
   m_Name: "\u7D19"
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3371070845614306829}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: 0, z: 3}
+  m_LocalPosition: {x: 3, y: 0.01, z: 3}
   m_LocalScale: {x: 0.08, y: 1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -81,3 +82,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4976974519964200227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3371070845614306829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f294b3d07d46d4b909e50e6b6886e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

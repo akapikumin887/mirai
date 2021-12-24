@@ -29953,6 +29953,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 575608785}
+    - target: {fileID: 4439786438632759927, guid: c024199751491804796768be4e0b522f, type: 3}
+      propertyPath: range_max
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 4439786438938251827, guid: c024199751491804796768be4e0b522f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
