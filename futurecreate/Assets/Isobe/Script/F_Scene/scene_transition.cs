@@ -15,7 +15,7 @@ public class scene_transition : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
            scene_manager.FadeOut(num);
         }

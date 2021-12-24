@@ -6472,6 +6472,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 764312929}
+--- !u!1 &617662591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: 05a81c3d5091440058129444d28322f3, type: 3}
+  m_PrefabInstance: {fileID: 1794496594}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &617830910 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 22400002, guid: a93c012dd9ef6454fa7d140e976926f7, type: 3}
@@ -17353,6 +17358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1718598009}
   - component: {fileID: 1718598010}
+  - component: {fileID: 1718598011}
   m_Layer: 0
   m_Name: TitleMenu
   m_TagString: Untagged
@@ -17401,6 +17407,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1718598011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718598008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004fd2abc8993c1449bd2e8b933d490f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  game: {fileID: 617662591}
 --- !u!1 &1726267676
 GameObject:
   m_ObjectHideFlags: 0

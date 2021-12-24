@@ -7,6 +7,8 @@ public class Select_Game : MonoBehaviour
 {
     private GameObject A;
     private GameObject B;
+    [SerializeField] int game_scene;
+    [SerializeField] int title_scene;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,18 @@ public class Select_Game : MonoBehaviour
         {
             A.SetActive(!A.activeSelf);
             B.SetActive(!B.activeSelf);
+        }
+
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            if (A.activeSelf)
+            {
+                scene_manager.FadeOut(game_scene);
+            }
+            else if (B.activeSelf)
+            {
+                scene_manager.FadeOut(title_scene);
+            }
         }
     }
 }
