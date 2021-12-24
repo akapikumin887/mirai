@@ -89,6 +89,7 @@ public class GameMng : MonoBehaviour
     public GameObject AddEnemyVisibility(Vector3 pos)
     {
         var enemy = Instantiate(_VisEnemy, pos, Quaternion.identity);
+        enemy.tag = "Enemy";
         _Enemys.Add(enemy);
 
         return enemy;
