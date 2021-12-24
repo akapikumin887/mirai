@@ -28,7 +28,6 @@ public class Paper : MonoBehaviour
 
     void Update()
     {
-
         if (_ItemUI._IsDraw == true)
         {
             if (Input.GetKeyDown(KeyCode.Space))

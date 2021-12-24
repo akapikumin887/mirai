@@ -27,17 +27,8 @@ public class clockget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    }
-
-    void OnTriggerStay(Collider other)
-    {
-        //接触しているオブジェクトのタグが"Player"のとき
-        if (other.CompareTag("Player"))
+        if (_ItemUI._IsDraw == true)
         {
-            //UIの表示
-            _ItemUI._IsDraw = true;
-
-            //KEYを押したらアイテム入手
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 audioSource.PlayOneShot(clip);
@@ -47,7 +38,16 @@ public class clockget : MonoBehaviour
                 nof.CallNotification("目覚まし時計　　を入手した");
                 _ItemUI._IsDraw = false;
             }
+        }
+    }
 
+    void OnTriggerEnter(Collider other)
+    {
+        //接触しているオブジェクトのタグが"Player"のとき
+        if (other.CompareTag("Player"))
+        {
+            //UIの表示
+            _ItemUI._IsDraw = true;
         }
     }
 
