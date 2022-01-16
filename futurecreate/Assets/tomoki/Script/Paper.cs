@@ -32,26 +32,23 @@ public class Paper : MonoBehaviour
 
     void Update()
     {
-        if (me)
+        if (Input.GetKeyDown(KeyCode.Space) || Gamepad.current.buttonEast.wasPressedThisFrame)
         {
-            if (Input.GetKeyDown(KeyCode.Space) || Gamepad.current.buttonEast.wasPressedThisFrame)
+            if (!_IsLook && me)
             {
-                if (!_IsLook)
-                {
-                    IsPaper(true);
-                    _IsLook = true;
+                IsPaper(true);
+                _IsLook = true;
 
-                    var player = _Script._Pleyer.GetComponent<PlayerControl>();
-                    player._Freeze = true;
-                }
-                else
-                {
-                    IsPaper(false);
-                    _IsLook = false;
+                var player = _Script._Pleyer.GetComponent<PlayerControl>();
+                player._Freeze = true;
+            }
+            else if(_IsLook)
+            {
+                IsPaper(false);
+                _IsLook = false;
 
-                    var player = _Script._Pleyer.GetComponent<PlayerControl>();
-                    player._Freeze = false;
-                }
+                var player = _Script._Pleyer.GetComponent<PlayerControl>();
+                player._Freeze = false;
             }
         }
     }

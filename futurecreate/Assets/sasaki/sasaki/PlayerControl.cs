@@ -50,7 +50,10 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         if (_Freeze)
+        {
+            rb.velocity = new Vector3();
             return;
+        }
 
         //ˆÚ“®‚Æ‘«‰¹‚Ìˆ—
         if (KeyInput())
