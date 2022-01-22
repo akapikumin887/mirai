@@ -51,18 +51,18 @@ public class MenuController : MonoBehaviour
         //{
         //    OpenWindow();
         //}
-        if (Gamepad.current != null)
-        {
-            if (Gamepad.current.startButton.isPressed)
-            {
-                OpenWindow();
-            }
-        }
+        //if (Gamepad.current != null)
+        //{
+        //    if (Gamepad.current.startButton.isPressed)
+        //    {
+        //        OpenWindow();
+        //    }
+        //}
 
-        if (SceneManager.GetActiveScene().name == "game"&&!flag)
-        {
-            CloseWindow();
-        }
+        //if (SceneManager.GetActiveScene().name == "game"&&!flag)
+        //{
+        //    CloseWindow();
+        //}
 
     }
 
